@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>交易明细</title>
+  <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1, minimum-scale=1,maximum-scale=1"/>
+  <meta name="description" content="Z家园，2017最火爆种植游戏。" />
+  <meta name="keywords" content="Z家园|环保|绿色|种树|农场|种植" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="renderer" content="webkit"/>
+  <meta name="force-rendering" content="webkit"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  <meta name="msapplication-tap-highlight" content="no">
+  <meta name="full-screen" content="yes"/>
+  <meta name="x5-fullscreen" content="true"/>
+  <meta name="360-fullscreen" content="true"/>
+  <meta name="screen-orientation" content=""/>
+  <meta name="x5-orientation" content="">
+  <meta name="browsermode" content="application">
+  <meta name="x5-page-mode" content="app">
+  <link rel="icon" type="image/x-icon" href="../assets/images/favicon.ico">
+  <script src="../assets/js/plugin/flexible.css.js"></script>
+  <script src="../assets/js/plugin/flexible.ios.js"></script>
+  <link href="../assets/css/reset.css" rel="stylesheet">
+  <link href="../assets/css/global.css" rel="stylesheet">
+</head>
+<body  style="background: #f8f8f8">
+
+<!--.hide隐藏此div-->
+<div class="rechargeRecord promoteAward TradeRecordList">
+  <div class="header keyBgHeader">
+    <i class="leftSwordIcon feedbtn" onclick="window.history.back()"></i>
+    <h3 class="headerTitle">交易明细</h3>
+  </div>
+  <div class="grayBgBar mt80Rem"></div>
+    <ul class="rchRecList AwardList">
+      <!--.buy .sale 买入卖出样式-->
+      <li class="rchRecItem AwardItem WrapB wx feedbtn sale" onclick="location='/html/trade-record-detail.html'">
+        <div class="recLeft fl">
+          <div class="rchType userPic">
+            <img src="../assets/images/green.png" alt="">
+          </div>
+          <div class="payStr">
+            <div class="rchTypeText">
+              柳树绿能 <span class="tradeType">(市场卖出)</span>
+            </div>
+            <div class="rchTime">
+              2017/01/10 20:10:20
+            </div>
+          </div>
+        </div>
+        <div class="recRight awardRight fr">
+          100
+          <p>成交量</p>
+        </div>
+      </li>
+      <li class="rchRecItem AwardItem WrapB wx feedbtn buy" >
+        <div class="recLeft fl">
+          <div class="rchType userPic">
+            <img src="../assets/images/green.png" alt="">
+          </div>
+          <div class="payStr">
+            <div class="rchTypeText">
+              柳树绿能 <span class="tradeType">(市场买入)</span>
+            </div>
+            <div class="rchTime">
+              2017/01/10 20:10:20
+            </div>
+          </div>
+        </div>
+        <div class="recRight awardRight fr">
+          100
+          <p>成交量</p>
+        </div>
+      </li>
+    </ul>
+    <!--.hide隐藏此提示-->
+    <div class="noCon hide">
+      没有任何内容
+    </div>
+    <!--.active显示此提示-->
+    <div class="loadFinished">
+      <!--加载完毕-->
+    </div>
+</div>
+
+<script src="../assets/js/lib/zepto.js"></script>
+<script src="../assets/js/plugin/layer/layer.js"></script>
+<script src="../assets/js/myModule.js"></script>
+<script src="../assets/js/global/global.js"></script>
+<script src="../assets/js/global.js"></script>
+</body>
+</html>

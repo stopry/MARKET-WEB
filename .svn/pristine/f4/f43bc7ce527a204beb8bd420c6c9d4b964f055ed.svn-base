@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>个人中心</title>
+  <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1, minimum-scale=1,maximum-scale=1"/>
+  <meta name="description" content="Z家园，2017最火爆种植游戏。" />
+  <meta name="keywords" content="Z家园|环保|绿色|种树|农场|种植" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="renderer" content="webkit"/>
+  <meta name="force-rendering" content="webkit"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  <meta name="msapplication-tap-highlight" content="no">
+  <meta name="full-screen" content="yes"/>
+  <meta name="x5-fullscreen" content="true"/>
+  <meta name="360-fullscreen" content="true"/>
+  <meta name="screen-orientation" content=""/>
+  <meta name="x5-orientation" content="">
+  <meta name="browsermode" content="application">
+  <meta name="x5-page-mode" content="app">
+  <link rel="icon" type="image/x-icon" href="../assets/images/favicon.ico">
+  <script src="../assets/js/plugin/flexible.css.js"></script>
+  <script src="../assets/js/plugin/flexible.ios.js"></script>
+  <link href="../assets/css/reset.css" rel="stylesheet">
+  <link href="../assets/css/global.css" rel="stylesheet">
+</head>
+<body>
+
+  <div class="userCenter">
+  <div class="ucHeader">
+    <div feedButton routerLink="/nameAuth" class="toVerify tc">
+      完善实名认证
+    </div>
+    <div class="baseInfo WrapB">
+      <img id="userPic" class="userPic" src="../assets/images/default_user_pic.png" alt="">
+      <div class="playerInfo">
+        <div class="infoTop">
+          <span class="userName">我的姓名</span>
+          <span class="userId">ID：10086</span>
+        </div>
+        <div class="infoBot">
+          <div feedButton routerLink="/goldRecharge" class="linkBtn btnRch feedbtn">金币充值</div>
+          <div feedButton routerLink="/goldCash" class="linkBtn btnCash feedbtn">金币提现</div>
+        </div>
+      </div>
+    </div>
+    <div class="accountInfo w100">
+      <div class="infoItem">
+        <p class="itemTop">总额</p>
+        <p class="itemBot">123</p>
+      </div>
+      <div class="infoItem">
+        <p class="itemTop">冻结金</p>
+        <p class="itemBot">456</p>
+      </div>
+      <div class="infoItem">
+        <p class="itemTop">可用金</p>
+        <p class="itemBot">789</p>
+      </div>
+    </div>
+  </div>
+  <div class="orderArea w100">
+    <div feedButton routerLink="/entrustOrder" class="orderItem feedbtn">
+      <img src="../assets/images/deg_order.png" alt="">
+      <p>委托订单</p>
+    </div>
+    <div feedButton routerLink="/tradeRecord" class="orderItem feedbtn">
+      <img src="../assets/images/trade_detail.png" alt="">
+      <p>交易明细</p>
+    </div>
+    <div feedButton routerLink="/assignTradeOrder" class="orderItem feedbtn">
+      <img src="../assets/images/appoint_order.png" alt="">
+      <p>赠送详情</p>
+    </div>
+  </div>
+  <div class="grayBgBar"></div>
+  <div class="w100 accountRevise accountReviseTop">
+    <div feedButton routerLink="/alterMobileFirst" class="reviseItem feedbtn">
+      <img src="../assets/images/center_list_mobile.png" alt="">修改绑定手机
+    </div>
+    <div feedButton routerLink="/alterLoginPassword" class="reviseItem feedbtn">
+      <img src="../assets/images/center_list_mobile.png" alt="">修改登陆密码
+    </div>
+    <div feedButton routerLink="/resetPayPassword" class="reviseItem feedbtn">
+      <img src="../assets/images/center_list_mobile.png" alt="">重置支付密码
+    </div>
+    <div feedButton (click)="toSetAccount()" class="reviseItem feedbtn">
+      <img src="../assets/images/center_list_mobile.png" alt="">管理账户
+    </div>
+  </div>
+  <div class="grayBgBar"></div>
+  <div class="w100 accountRevise accountReviseBot goldArea pb80Rem">
+    <div feedButton routerLink="/rechargeRecord" class="reviseItem feedbtn">
+      <img src="../assets/images/center_list_mobile.png" alt="">充值记录
+    </div>
+    <div feedButton routerLink="/cashRecord" class="reviseItem feedbtn">
+      <img src="../assets/images/center_list_mobile.png" alt="">提现记录
+    </div>
+    <div feedButton routerLink="/myGoods" class="reviseItem feedbtn">
+      <img src="../assets/images/center_list_mobile.png" alt="">持有产品
+    </div>
+    <div feedButton routerLink="/goldDetail" class="reviseItem feedbtn">
+      <img src="../assets/images/center_list_mobile.png" alt="">金币明细
+    </div>
+    <div feedButton (click)="openProDrop()" class="reviseItem prtCenter open feedbtn" [ngClass]="{
+      open:isClose,
+      close:!isClose
+    }">
+      <i class="staIcon"></i>
+      <img src="../assets/images/center_list_mobile.png" alt="">推广中心
+    </div>
+    <div class="prtOpen open feedbtn" [ngClass]="{open:isClose}">
+      <div feedButton routerLink="/promoteLink" class="prtItem">
+        <img src="../assets/images/prt_link_icon.png" alt="">
+        <p>推广链接</p>
+      </div>
+      <div feedButton routerLink="/promoteList" class="prtItem feedbtn">
+        <img src="../assets/images/prt_list_icon.png" alt="">
+        <p>推广列表</p>
+      </div>
+      <div feedButton routerLink="/promoteAward" class="prtItem feedbtn">
+        <img src="../assets/images/prt_award_icon.png" alt="">
+        <p>推广奖励</p>
+      </div>
+    </div>
+    <div class="grayBgBar"></div>
+    <div feedButton class="reviseItem eixtLogin feedbtn" (click)="exit()">
+      退出登录
+    </div>
+  </div>
+  <div class="footer">
+    <a feedButton href="./quotation.html" class="navItem feedbtn">
+      <div class="navIcon">
+
+      </div>
+      <p>行情</p>
+    </a>
+    <a feedButton class="navItem feedbtn">
+      <div class="navIcon">
+
+      </div>
+      <p>市场</p>
+    </a>
+    <a feedButton href="./user-center.html"  class="navItem active feedbtn">
+      <div class="navIcon">
+
+      </div>
+      <p>个人</p>
+    </a>
+  </div>
+</div>
+
+  <script src="../assets/js/lib/zepto.js"></script>
+  <script src="../assets/js/plugin/qrcode.js"></script>
+  <script src="../assets/js/plugin/upload/plupload.full.min.js"></script>
+  <script src="../assets/js/myModule.js"></script>
+  <script src="../assets/js/global/global.js"></script>
+</body>
+</html>

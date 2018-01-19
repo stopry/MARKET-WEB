@@ -1,0 +1,60 @@
+$(function () {
+    objVerticalCenter('.paiBox');
+    objVerticalCenter('.listedSelProBox');
+    //显示挂牌弹框
+    function showGuaBox(){
+        showLayerBlack(1);
+        $(".paiBox.gau").addClass('active');
+    }
+    //关闭挂牌弹框
+    function closeGuaBox(){
+        showLayerBlack(!1);
+        $(".paiBox.gau").removeClass('active');
+    }
+    $(".botOprArea .guaPai").click(function () {
+        showGuaBox();
+    });
+    $(".paiBox.gau .closeThis").click(function () {
+        closeGuaBox();
+    });
+    //显示摘牌弹框
+    function showZaiBox(){
+        showLayerBlack(1);
+        $(".paiBox.zai").addClass('active');
+    }
+    //关闭摘牌弹框
+    function closeZaiBox(){
+        showLayerBlack(!1);
+        $(".paiBox.zai").removeClass('active');
+    }
+    $(".botOprArea .zaiPai").click(function () {
+        showZaiBox();
+    });
+    $(".paiBox.zai .closeThis").click(function () {
+        closeZaiBox();
+    });
+    //显示绿能选择框
+    function showGreenSelBox(){
+        showLayerDia(1);
+        $(".listedSelProBox").addClass('active');
+    }
+    //关闭绿能选择框
+    function closeGreenSelBox(){
+        showLayerDia(!1);
+        $(".listedSelProBox").removeClass('active');
+    }
+    $(".paiBox.zai .iptDiv .selAdonGreen").click(function () {
+        showGreenSelBox();
+    });
+    $(".paiBox.gau .iptDiv .selAdonGreen").click(function () {
+        showGreenSelBox();
+    });
+    $(".listedSelProBox .closeThis").click(function () {
+       closeGreenSelBox();
+    });
+    //选择绿能
+    $(document).on('click',".greenSelBox .greenItem",function () {
+       $(this).addClass('active');
+       $(this).siblings('.greenItem').removeClass('active');
+    });
+});

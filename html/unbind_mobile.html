@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>修改绑定手机</title>
+  <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1, minimum-scale=1,maximum-scale=1"/>
+  <meta name="description" content="Z家园，2017最火爆种植游戏。" />
+  <meta name="keywords" content="Z家园|环保|绿色|种树|农场|种植" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="renderer" content="webkit"/>
+  <meta name="force-rendering" content="webkit"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  <meta name="msapplication-tap-highlight" content="no">
+  <meta name="full-screen" content="yes"/>
+  <meta name="x5-fullscreen" content="true"/>
+  <meta name="360-fullscreen" content="true"/>
+  <meta name="screen-orientation" content=""/>
+  <meta name="x5-orientation" content="">
+  <meta name="browsermode" content="application">
+  <meta name="x5-page-mode" content="app">
+  <link rel="icon" type="image/x-icon" href="../assets/images/favicon.ico">
+  <script src="../assets/js/plugin/flexible.css.js"></script>
+  <script src="../assets/js/plugin/flexible.ios.js"></script>
+  <link href="../assets/css/reset.css" rel="stylesheet">
+  <link href="../assets/css/global.css" rel="stylesheet">
+</head>
+<body>
+<div class="alterMobile alterLoginPwd">
+  <div class="header">
+    <i class="leftSwordIcon feedbtn" onclick="window.history.back()"></i>
+    <h3 class="headerTitle">修改绑定手机</h3>
+  </div>
+  <div class="grayBgBar mt80Rem"></div>
+  <div class="alterMobileForm WrapB">
+    <div class="formIpt">
+      <div class="title">原手机号码</div>
+      <input class="input" type="text" id="mobile" name="originPwd"  type="password" disabled>
+    </div>
+    <div class="formIpt">
+      <div class="title">图片验证码</div>
+      <input class="input right"  id="verCode"  type="text">
+      <div class="rightOpr getCapCode feedbtn">
+        <img alt="" id="imgCode" src="../assets/images/erw_code.png" style="width: 100%;height: 1.1425rem !important;">
+      </div>
+    </div>
+    <div class="formIpt">
+      <div class="title">短信验证码</div>
+      <input class="input right"  id="msgCode" type="number">
+      <div class="rightOpr getVerCode feedbtn" id="getVerCode">
+        获取验证码
+      </div>
+    </div>
+    <div class="completeBtn btn feedbtn" id="updatePwdBtn" >下一步</div>
+  </div>
+  <div class="tipsArea bgGreen">
+    <p>温馨提示</p>
+    <p>1、登录密码不能和您的支付密码一致</p>
+    <p>2、请勿将支付密码告诉他人</p>
+    <p>3、请勿在其他平台、软件中输入支付密码</p>
+  </div>
+</div>
+
+<script src="../assets/js/lib/zepto.js"></script>
+<script src="../assets/js/plugin/layer/layer.js"></script>
+<script src="../assets/js/myModule.js"></script>
+<script src="../assets/js/global/global.js"></script>
+<script src="../assets/js/global.js"></script>
+<script src="../assets/js/validate.js"></script>
+<script src="../assets/js/unbind_mobile.js"></script>
+</body>
+</html>
+
+
+
+

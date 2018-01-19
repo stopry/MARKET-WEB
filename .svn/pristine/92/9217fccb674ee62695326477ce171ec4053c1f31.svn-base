@@ -1,0 +1,39 @@
+$(function () {
+    var para = {
+        pageNum: 1
+    };
+
+    var lock = Lock.createNew();
+    if (!lock.getLock()) {
+        return;
+    }
+    ajaxHelper.get(getUrl('promote/promoteList'), para, function (ret) {
+        if (ret.success) {
+            var data = ret.obj;
+            $("#total").html(data.total+"<span>人</span>");
+            var items = data.records;
+            var html = "";
+            for (var i = 0; i < items.length; i++) {
+                var item = items[i];
+                html += '<tr class="tableContent prtListContent">';
+                html += '<td>'+item.id+'</td>';
+                html += '<td>'+item.realName+'</td>';
+                html += '<td>'+Util.formatDate(item.createTime)+'</td>';
+                html += '</tr>';
+            }
+            if (html != "") {
+                $('#tb').append(html);
+            } else {
+                $(".pageCtr").hide();
+            }
+
+
+
+
+
+        } else {
+            showTips('加载信息异常',"error");
+        }
+        lock.release();
+    });
+});

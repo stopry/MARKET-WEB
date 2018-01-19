@@ -1,0 +1,39 @@
+@charset "UTF-8";
+/*小提示动画start*/
+.week-alert {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  text-align: center;
+  background-color: rgba(75, 75, 75, 0.85);
+  color: #fff;
+  padding: 9px 20px;
+  font-size: 15px;
+  z-index: 999; }
+  .week-alert.alert-show {
+    -webkit-animation: show 2s; }
+
+@-webkit-keyframes show {
+  0% {
+    -webkit-transform: translateY(-100%); }
+  20% {
+    -webkit-transform: translateY(0); }
+  50% {
+    -webkit-transform: translateY(0); }
+  80% {
+    -webkit-transform: translateY(0); }
+  100% {
+    -webkit-transform: translateY(-100%); } }
+
+/*小提示动画end*/
+/*遮罩层*/
+.alertLayer {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 10; }
+
+/*遮罩层*/

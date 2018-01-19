@@ -1,0 +1,38 @@
+$(function(){
+
+    var money = 50;//默认金额50
+    var payType = 1;//默认支付方式快捷支付 input输入支付为2
+    var payChannel = 1;//默认支付渠道 微信 1 2 3 微信 支付宝 银联
+    var _index = 0;//默认快捷支付选择的dom index
+
+    // 快捷支付选择效果
+    $(".quickPayBox .payItem").click(function () {
+        payType = 1;
+       $(this).addClass('active').siblings(".payItem").removeClass('active');
+       var idx = $(this).index();
+       var _money = $(this).data("val");
+       money = _money;
+       console.log(money);
+    });
+    //支付渠道选择效果
+    $(".thirdPay .thirdItem").click(function () {
+        $(this).addClass('active').siblings(".thirdItem").removeClass('active');
+        var _idx = $(this).index();
+        payChannel = _idx+1;
+        console.log(payChannel);
+    });
+    // 输入框事件
+    $(".rchNum").focus(function () {//输入框获得焦点事件
+        $(".quickPayBox .payItem").removeClass('active');
+    }).blur(function () {//输入框是去焦点事件
+        var iptMoney = $.trim($(this).val());
+        if(!iptMoney||iptMoney<=0){
+            $(this).val('');
+            $(".quickPayBox .payItem").eq(_index).addClass('active').siblings(".payItem").removeClass('active');
+        }else{
+            money = iptMoney;
+            payType = 2;
+        }
+    });
+
+});

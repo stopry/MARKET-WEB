@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>个人中心</title>
+  <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1, minimum-scale=1,maximum-scale=1"/>
+  <meta name="description" content="Z家园，2017最火爆种植游戏。" />
+  <meta name="keywords" content="Z家园|环保|绿色|种树|农场|种植" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="renderer" content="webkit"/>
+  <meta name="force-rendering" content="webkit"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  <meta name="msapplication-tap-highlight" content="no">
+  <meta name="full-screen" content="yes"/>
+  <meta name="x5-fullscreen" content="true"/>
+  <meta name="360-fullscreen" content="true"/>
+  <meta name="screen-orientation" content=""/>
+  <meta name="x5-orientation" content="">
+  <meta name="browsermode" content="application">
+  <meta name="x5-page-mode" content="app">
+  <link rel="icon" type="image/x-icon" href="../assets/images/favicon.ico">
+  <script src="../assets/js/plugin/flexible.css.js"></script>
+  <script src="../assets/js/plugin/flexible.ios.js"></script>
+  <link href="../assets/css/reset.css" rel="stylesheet">
+  <link href="../assets/css/global.css" rel="stylesheet">
+</head>
+<body>
+  <div class="userCenter">
+  <div class="ucHeader">
+    <div onclick="location='/html/name-auth.html'" class="toVerify tc feedbtn">
+      <img src="../assets/images/nama_auth-icon.png" alt="" style="width: 100%">
+    </div>
+    <div class="baseInfo WrapB">
+      <img id="userPic" class="userPic feedbtn" src="../assets/images/default_user_pic.png" alt="">
+      <div class="playerInfo">
+        <div class="infoTop">
+          <span class="userName" id="userName">我的姓名</span>
+          <span class="userId" id="userId">ID：00000</span>
+        </div>
+        <div class="infoBot">
+          <div onclick="location='/html/gold-recharge.html'" class="linkBtn btnRch feedbtn">金币充值</div>
+          <div onclick="location='/html/gold-cash.html'" class="linkBtn btnCash feedbtn">金币提现</div>
+        </div>
+      </div>
+    </div>
+    <div class="accountInfo w100">
+      <div class="infoItem">
+        <p class="itemTop">总额</p>
+        <p class="itemBot" id="totalBalance">0.00</p>
+      </div>
+      <div class="infoItem">
+        <p class="itemTop">冻结金</p>
+        <p class="itemBot" id="blockedBalance">0.00</p>
+      </div>
+      <div class="infoItem">
+        <p class="itemTop">可用金</p>
+        <p class="itemBot" id="usableBalance">0.00</p>
+      </div>
+    </div>
+  </div>
+  <div class="orderArea w100">
+    <div onclick="location='/html/entrust-order.html'" class="orderItem feedbtn">
+      <img src="../assets/images/deg_order.png" alt="">
+      <p>委托订单</p>
+    </div>
+    <div onclick="location='/html/trade-record-list.html'" class="orderItem feedbtn">
+      <img src="../assets/images/trade_detail.png" alt="">
+      <p>交易明细</p>
+    </div>
+    <div onclick="location='/html/listed-market.html'" class="orderItem feedbtn">
+      <img src="../assets/images/appoint_order.png" alt="">
+      <p>上市下架</p>
+    </div>
+  </div>
+  <div class="grayBgBar"></div>
+  <div class="w100 accountRevise accountReviseTop">
+    <div onclick="location='/html/unbind_mobile.html'" class="reviseItem feedbtn">
+      <img src="../assets/images/center_list_mobile.png" alt="">修改绑定手机
+    </div>
+    <div onclick="location='/html/alter-login-password.html'" class="reviseItem feedbtn">
+      <img src="../assets/images/center_list_mobile.png" alt="">修改登陆密码
+    </div>
+    <div onclick="location='/html/alter-pay-password.html'" class="reviseItem feedbtn">
+      <img src="../assets/images/center_list_mobile.png" alt="">重置支付密码
+    </div>
+    <div onclick="location='/html/admin_account.html'" class="reviseItem feedbtn">
+      <img src="../assets/images/center_list_mobile.png" alt="">管理账户
+    </div>
+  </div>
+  <div class="grayBgBar"></div>
+  <div class="w100 accountRevise accountReviseBot goldArea pb80Rem">
+    <div onclick="location='/html/recharge-record.html'" class="reviseItem feedbtn">
+      <img src="../assets/images/center_list_mobile.png" alt="">充值记录
+    </div>
+    <div onclick="location='/html/cash-record.html'" class="reviseItem feedbtn">
+      <img src="../assets/images/center_list_mobile.png" alt="">提现记录
+    </div>
+    <div onclick="location='/html/my-goods.html'" class="reviseItem feedbtn">
+      <img src="../assets/images/center_list_mobile.png" alt="">持有产品
+    </div>
+    <div onclick="location='/html/gold-detail.html'" class="reviseItem feedbtn">
+      <img src="../assets/images/center_list_mobile.png" alt="">金币明细
+    </div>
+    <!--.open打开折叠菜单 .close关闭折叠菜单-->
+    <div class="reviseItem prtCenter open feedbtn">
+      <i class="staIcon"></i>
+      <img src="../assets/images/center_list_mobile.png" alt="">推广中心
+    </div>
+    <!--.open打开这个折叠菜单-->
+    <div class="prtOpen open feedbtn">
+      <div onclick="location='/html/promote-link.html'" class="prtItem">
+        <img src="../assets/images/prt_link_icon.png" alt="">
+        <p>推广链接</p>
+      </div>
+      <div onclick="location='/html/promote-list.html'" class="prtItem feedbtn">
+        <img src="../assets/images/prt_list_icon.png" alt="">
+        <p>推广列表</p>
+      </div>
+      <div onclick="location='/html/promote-award.html'" class="prtItem feedbtn">
+        <img src="../assets/images/prt_award_icon.png" alt="">
+        <p>推广奖励</p>
+      </div>
+    </div>
+    <div class="grayBgBar"></div>
+    <div class="reviseItem eixtLogin feedbtn" id="eixtLogin">
+      退出登录
+    </div>
+  </div>
+    <div class="footer">
+      <a href="/index.html" class="navItem feedbtn">
+        <div class="navIcon">
+
+        </div>
+        <p>资讯</p>
+      </a>
+      <a href="/html/quotation.html" class="navItem feedbtn">
+        <div class="navIcon">
+
+        </div>
+        <p>行情</p>
+      </a>
+      <a href="/html/market.html" class="navItem feedbtn">
+        <div class="navIcon">
+
+        </div>
+        <p>市场</p>
+      </a>
+      <a href="###" class="navItem active feedbtn">
+        <div class="navIcon">
+
+        </div>
+        <p>个人</p>
+      </a>
+    </div>
+</div>
+  <script src="../assets/js/lib/zepto.js"></script>
+  <script src="../assets/js/plugin/layer/layer.js"></script>
+  <script src="../assets/js/plugin/upload/plupload.full.min.js"></script>
+  <script src="../assets/js/myModule.js"></script>
+  <script src="../assets/js/global/global.js"></script>
+  <script src="../assets/js/global.js"></script>
+  <script src="../assets/js/usercenter.js"></script>
+</body>
+</html>

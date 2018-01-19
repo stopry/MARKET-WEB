@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>行情</title>
+  <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1, minimum-scale=1,maximum-scale=1"/>
+  <meta name="description" content="Z家园，2017最火爆种植游戏。" />
+  <meta name="keywords" content="Z家园|环保|绿色|种树|农场|种植" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="renderer" content="webkit"/>
+  <meta name="force-rendering" content="webkit"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  <meta name="msapplication-tap-highlight" content="no">
+  <meta name="full-screen" content="yes"/>
+  <meta name="x5-fullscreen" content="true"/>
+  <meta name="360-fullscreen" content="true"/>
+  <meta name="screen-orientation" content=""/>
+  <meta name="x5-orientation" content="">
+  <meta name="browsermode" content="application">
+  <meta name="x5-page-mode" content="app">
+  <link rel="icon" type="image/x-icon" href="./assets/images/favicon.ico">
+  <script src="./assets/js/plugin/flexible.css.js"></script>
+  <script src="./assets/js/plugin/flexible.ios.js"></script>
+  <link href="./assets/css/reset.css" rel="stylesheet">
+  <link href="./assets/css/global.css" rel="stylesheet">
+</head>
+<body>
+  <script src="./assets/js/lib/zepto.js"></script>
+  <div class="quotationBox">
+  <div class="header keyBgHeader">
+    行情
+  </div>
+  <ul class="quotationList">
+    <!--class .up .down-->
+    <li feedButton class="quotationItem up">
+      <div class="proBase fl">
+        <div class="baseTop">
+          <img class="proPic" src="./assets/images/green.png" alt="">
+          银杏树绿能
+        </div>
+        <div class="quoText clip ani">5.00</div>
+      </div>
+      <div class="proDetail fr">
+        <div class="detailItem fl itemL">
+          <dl class="itemTab">
+            <div class="dt">
+              <dd class="nth">今开</dd>
+              <dd class="clip ani">5.00</dd>
+            </div>
+            <div class="dt">
+              <dd class="nth">最高</dd>
+              <dd class="highest clip ani">6.00</dd>
+            </div>
+            <div class="dt">
+              <dd class="nth">最低</dd>
+              <dd class="lowest clip ani">4.00</dd>
+            </div>
+          </dl>
+        </div>
+        <div class="detailItem fr itemR">
+          <dl class="itemTab">
+            <div class="dt">
+              <dd>涨跌幅</dd>
+              <dd class="range clip ani">0.23%</dd>
+            </div>
+            <div class="dt">
+              <dd>涨跌额</dd>
+              <dd class="limit clip ani">1.00</dd>
+            </div>
+            <div class="dt">
+              <dd>成交量</dd>
+              <dd class="clip ani">5000</dd>
+            </div>
+          </dl>
+        </div>
+      </div>
+    </li>
+    <li feedButton class="quotationItem down">
+      <div class="proBase fl">
+        <div class="baseTop">
+          <img class="proPic" src="./assets/images/green.png" alt="">
+          银杏树绿能
+        </div>
+        <div class="quoText clip ani">5.00</div>
+      </div>
+      <div class="proDetail fr">
+        <div class="detailItem fl itemL">
+          <dl class="itemTab">
+            <div class="dt">
+              <dd class="nth">今开</dd>
+              <dd class="clip ani">5.00</dd>
+            </div>
+            <div class="dt">
+              <dd class="nth">最高</dd>
+              <dd class="highest clip ani">6.00</dd>
+            </div>
+            <div class="dt">
+              <dd class="nth">最低</dd>
+              <dd class="lowest clip ani">4.00</dd>
+            </div>
+          </dl>
+        </div>
+        <div class="detailItem fr itemR">
+          <dl class="itemTab">
+            <div class="dt">
+              <dd>涨跌幅</dd>
+              <dd class="range clip ani">0.23%</dd>
+            </div>
+            <div class="dt">
+              <dd>涨跌额</dd>
+              <dd class="limit clip ani">1.00</dd>
+            </div>
+            <div class="dt">
+              <dd>成交量</dd>
+              <dd class="clip ani">5000</dd>
+            </div>
+          </dl>
+        </div>
+      </div>
+    </li>
+  </ul>
+  <div class="footer">
+    <a feedButton href="./html/market.html" class="navItem active">
+      <div class="navIcon">
+
+      </div>
+      <p>行情</p>
+    </a>
+    <a feedButton (click)="toMarket()" class="navItem">
+      <div class="navIcon">
+
+      </div>
+      <p>市场</p>
+    </a>
+    <a feedButton href="./html/user-center.html" class="navItem">
+      <div class="navIcon">
+
+      </div>
+      <p>个人</p>
+    </a>
+  </div>
+</div>
+  <script src="./assets/js/plugin/qrcode.js"></script>
+  <script src="./assets/js/plugin/upload/plupload.full.min.js"></script>
+  <script src="./assets/js/global/global.js"></script>
+</body>
+</html>

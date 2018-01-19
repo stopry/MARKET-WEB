@@ -1,0 +1,534 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>市场</title>
+  <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1, minimum-scale=1,maximum-scale=1"/>
+  <meta name="description" content="Z家园，2017最火爆种植游戏。" />
+  <meta name="keywords" content="Z家园|环保|绿色|种树|农场|种植" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="renderer" content="webkit"/>
+  <meta name="force-rendering" content="webkit"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  <meta name="msapplication-tap-highlight" content="no">
+  <meta name="full-screen" content="yes"/>
+  <meta name="x5-fullscreen" content="true"/>
+  <meta name="360-fullscreen" content="true"/>
+  <meta name="screen-orientation" content=""/>
+  <meta name="x5-orientation" content="">
+  <meta name="browsermode" content="application">
+  <meta name="x5-page-mode" content="app">
+  <link rel="icon" type="image/x-icon" href="../assets/images/favicon.ico">
+  <script src="../assets/js/plugin/flexible.css.js"></script>
+  <script src="../assets/js/plugin/flexible.ios.js"></script>
+  <link href="../assets/css/reset.css" rel="stylesheet">
+  <link href="../assets/css/global.css" rel="stylesheet">
+</head>
+<body>
+<div class="marketDetailBox">
+  <div class="toAssignTrade feedbtn" onclick="location='/html/history-trade.html'">
+    <img src="../assets/images/trade_his_icon.png" style="width: 100%" alt="">
+  </div>
+  <div class="greenTypeSel greenTypeSe2" scroll="no">
+    <div class="greenItemWrap">
+      <div class="greemItem feedbtn active">
+        <p class="treeName">柳树</p>
+      </div>
+      <div class="greemItem feedbtn">
+        <p class="treeName">松树</p>
+      </div>
+      <div class="greemItem feedbtn">
+        <p class="treeName">槐树</p>
+      </div>
+      <div class="greemItem feedbtn">
+        <p class="treeName">梧桐</p>
+      </div>
+      <div class="greemItem feedbtn">
+        <p class="treeName">杉树</p>
+      </div>
+      <div class="greemItem feedbtn">
+        <p class="treeName">银杏</p>
+      </div>
+    </div>
+  </div>
+  <div class="marketBaseInfo">
+    <div class="conWrap">
+      <div class="infoLeft fl">
+        <!--.down下跌样式-->
+        <div class="upDwonIndex">
+          <div class="greenPic">
+            <img src="../assets/images/tree1_txt.png" class="greenTextPic" alt="">
+          </div>
+          <!--.ani动画效果-->
+          <div class="indexNum clip">42.00</div>
+          <div class="indexPic">
+            &nbsp;
+          </div>
+        </div>
+        <!--.down下跌样式-->
+        <div class="detailInfo">
+          <!--.ani动画效果-->
+          <div class="infoDetail fl clip">2.00</div>
+          <!--.ani动画效果-->
+          <div class="infoDetail fl clip">.012%</div>
+        </div>
+      </div>
+      <div class="infoRight fr">
+        <table>
+          <tr>
+            <td>
+              <p>今开</p>
+              <!--.ani动画效果-->
+              <span class="clip" style="display: inline-block">20.33</span>
+            </td>
+            <td>
+              <p>成交</p>
+              <!--.ani动画效果-->
+              <span class="clip" style="display: inline-block">20.00%</span>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>最高</p>
+              <!--.ani动画效果-->
+              <span class="mostUp clip" style="display: inline-block">100.00</span>
+            </td>
+            <td>
+              <p>最低</p>
+              <!--.ani动画效果-->
+              <span class="mostDown clip" style="display: inline-block">20.00</span>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+  <!--.close关闭买三卖三-->
+  <div class="dgtTableWrap">
+    <!--.close按钮关闭状态-->
+    <div class="dgtOpenBtn feedbtn">
+
+    </div>
+    <div class="WrapB tableBox">
+      <table class="dgtTable fl">
+        <tr class="tableTop">
+          <td>买/卖</td>
+          <td>价格</td>
+          <td>委托量</td>
+        </tr>
+        <tr class="tableCon">
+          <td class="keyColor">卖一</td>
+          <!--.ani动画效果-->
+          <td class="upColor clip">5.00</td>
+          <!--.ani动画效果-->
+          <td class="clip">200</td>
+        </tr>
+      </table>
+      <table class="dgtTable fr">
+        <tr class="tableTop">
+          <td>买/卖</td>
+          <td>价格</td>
+          <td>委托量</td>
+        </tr>
+        <tr class="tableCon">
+          <td class="upColor">买一</td>
+          <!--.ani动画效果-->
+          <td class="upColor clip">100</td>
+          <!--.ani动画效果-->
+          <td class="clip">20</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <div class="ChartBox">
+    <div class="WrapB">
+      <div class="chartChange">
+        <!--.seled选中状态-->
+        <div class="chartBtn fLine feedbtn">分时</div>
+        <div class="chartBtn kLine feedbtn seled">15分</div>
+        <div class="chartBtn kLine feedbtn">15分</div>
+        <div class="chartBtn kLine feedbtn">1时</div>
+        <div class="chartBtn kLine feedbtn">4时</div>
+        <div class="chartBtn kLine feedbtn">日K</div>
+        <div class="chartBtn kLine feedbtn">周K</div>
+      </div>
+      <!--图标id-->
+      <div class="chart" style="border: 1px solid red;">
+
+      </div>
+    </div>
+  </div>
+  <div class="oprBtnWrap">
+    <div class="dfInfo">
+      <div class="woodCnt fl">
+        <span>持仓数量：</span>
+        <span class="keyColor">15555</span>
+      </div>
+      <!--.down下跌样式-->
+      <div class="floatYk fr">
+        <span>浮动盈亏：</span>
+        <span class="upColor">
+          15555
+        </span>
+        <span class="infoIcon">
+
+        </span>
+      </div>
+    </div>
+    <div class="xsjIcon">
+
+    </div>
+    <div class="innerBox">
+      <!--.down下跌按钮-->
+      <div class="fdWrap oprBtnS fl feedbtn">
+        <div class="infoIocn">
+
+        </div>
+      </div>
+      <div class="oprBtn buyBtn cl_w keyColorBg fl feedbtn">
+        卖出
+      </div>
+      <div class="oprBtn saleBtn cl_w upColorBg fl feedbtn">
+        买入
+      </div>
+      <div class="dlgOrder oprBtnS fr feedbtn">
+        <span class="infoDote">
+          10
+        </span>
+      </div>
+    </div>
+  </div>
+  <div class="footer">
+    <a feedButton href="/index.html" class="navItem">
+      <div class="navIcon">
+
+      </div>
+      <p>资讯</p>
+    </a>
+    <a feedButton href="/html/quotation.html" class="navItem">
+      <div class="navIcon">
+
+      </div>
+      <p>行情</p>
+    </a>
+    <a feedButton href="javascript:void(0)" class="navItem active">
+      <div class="navIcon">
+
+      </div>
+      <p>市场</p>
+    </a>
+    <a feedButton href="/html/user-center.html" class="navItem">
+      <div class="navIcon">
+
+      </div>
+      <p>个人</p>
+    </a>
+  </div>
+  <!--够买弹框-->
+  <!--.active显示-->
+  <div class="marketBuyBox marketBuyBoxObj">
+    <div class="boxHeader upColorBg">
+      <span class="boxTitle">购买</span>
+      <i class="closeIcon feedbtn"></i>
+    </div>
+    <div class="mBoxCon">
+      <div class="aniText">0000</div>
+      <div class="mBoxConLeft">
+        <div class="inputAR">
+          <i class="arOpr redOpr feedbtn">-</i>
+          <input type="number" class="arInput"/>
+          <i class="arOpr addOpr feedbtn">+</i>
+        </div>
+        <div class="zdInfo">
+          <span class="zt">涨停：15.00</span>
+          <span class="dt">跌停：15.00</span>
+        </div>
+        <div class="inputAR">
+          <i class="arOpr redOpr feedbtn">-</i>
+          <input type="number" placeholder="可购买1600" class="arInput"/>
+          <i class="arOpr addOpr feedbtn">+</i>
+        </div>
+        <div class="selPerArea">
+          <div class="item feedbtn">
+            1/3
+          </div>
+          <div class="item feedbtn">
+            1/2
+          </div>
+          <div class="item feedbtn active">
+            全部
+          </div>
+        </div>
+        <div class="confirmBtn feedbtn">
+          买入
+        </div>
+        <div class="zdInfo">
+          <span class="zt">持仓：1500</span>
+          <span class="dt">盈亏：<i class="yk keyColor up">1500</i></span>
+        </div>
+      </div>
+      <div class="mBoxConRight">
+        <table class="fiveTable saleFiveTable">
+          <tr class="feedbtn">
+            <td class="keyColor">卖五</td>
+            <td class="upColor">0.0122</td>
+            <td>163200</td>
+          </tr>
+          <tr class="feedbtn">
+            <td class="keyColor">卖四</td>
+            <td class="upColor">0.0122</td>
+            <td>163200</td>
+          </tr>
+          <tr class="feedbtn">
+            <td class="keyColor">卖三</td>
+            <td class="upColor">0.0122</td>
+            <td>163200</td>
+          </tr>
+          <tr class="feedbtn">
+            <td class="keyColor">卖二</td>
+            <td class="upColor">0.0122</td>
+            <td>163200</td>
+          </tr>
+          <tr class="feedbtn">
+            <td class="keyColor">卖一</td>
+            <td class="upColor">0.0122</td>
+            <td>163200</td>
+          </tr>
+        </table>
+        <div class="dashSplit">
+
+        </div>
+        <table class="fiveTable buyFiveTable">
+          <tr class="feedbtn">
+            <td class="upColor">买五</td>
+            <td class="upColor">0.0122</td>
+            <td>163200</td>
+          </tr>
+          <tr class="feedbtn">
+            <td class="upColor">买四</td>
+            <td class="upColor">0.0122</td>
+            <td>163200</td>
+          </tr>
+          <tr class="feedbtn">
+            <td class="upColor">买三</td>
+            <td class="upColor">0.0122</td>
+            <td>163200</td>
+          </tr>
+          <tr class="feedbtn">
+            <td class="upColor">买二</td>
+            <td class="upColor">0.0122</td>
+            <td>163200</td>
+          </tr>
+          <tr class="feedbtn">
+            <td class="upColor">买一</td>
+            <td class="upColor">0.0122</td>
+            <td>163200</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!--卖出弹框-->
+  <!--.active显示-->
+  <div class="marketBuyBox marketSaleBox">
+    <div class="boxHeader keyBg">
+      <span class="boxTitle">卖出</span>
+      <i class="closeIcon feedbtn"></i>
+    </div>
+    <div class="mBoxCon">
+      <div class="aniText">0000</div>
+      <div class="mBoxConLeft">
+        <div class="inputAR">
+          <i class="arOpr redOpr feedbtn">-</i>
+          <input type="number" class="arInput"/>
+          <i class="arOpr addOpr feedbtn">+</i>
+        </div>
+        <div class="zdInfo">
+          <span class="zt">涨停：15.00</span>
+          <span class="dt">跌停：15.00</span>
+        </div>
+        <div class="inputAR">
+          <i class="arOpr redOpr feedbtn">-</i>
+          <input type="number" placeholder="可购买1600" class="arInput"/>
+          <i class="arOpr addOpr feedbtn">+</i>
+        </div>
+        <div class="selPerArea">
+          <div class="item feedbtn">
+            1/3
+          </div>
+          <div class="item feedbtn">
+            1/2
+          </div>
+          <div class="item feedbtn active">
+            全部
+          </div>
+        </div>
+        <div class="confirmBtn keyBg feedbtn">
+          卖出
+        </div>
+        <div class="zdInfo">
+          <span class="zt">持仓：1500</span>
+          <span class="dt">盈亏：<i class="yk keyColor up">1500</i></span>
+        </div>
+      </div>
+      <div class="mBoxConRight">
+        <table class="fiveTable saleFiveTable">
+          <tr class="feedbtn">
+            <td class="keyColor">卖五</td>
+            <td class="upColor">0.0122</td>
+            <td>163200</td>
+          </tr>
+          <tr class="feedbtn">
+            <td class="keyColor">卖四</td>
+            <td class="upColor">0.0122</td>
+            <td>163200</td>
+          </tr>
+          <tr class="feedbtn">
+            <td class="keyColor">卖三</td>
+            <td class="upColor">0.0122</td>
+            <td>163200</td>
+          </tr>
+          <tr class="feedbtn">
+            <td class="keyColor">卖二</td>
+            <td class="upColor">0.0122</td>
+            <td>163200</td>
+          </tr>
+          <tr class="feedbtn">
+            <td class="keyColor">卖一</td>
+            <td class="upColor">0.0122</td>
+            <td>163200</td>
+          </tr>
+        </table>
+        <div class="dashSplit">
+
+        </div>
+        <table class="fiveTable buyFiveTable">
+          <tr class="feedbtn">
+            <td class="upColor">买五</td>
+            <td class="upColor">0.0122</td>
+            <td>163200</td>
+          </tr>
+          <tr class="feedbtn">
+            <td class="upColor">买四</td>
+            <td class="upColor">0.0122</td>
+            <td>163200</td>
+          </tr>
+          <tr class="feedbtn">
+            <td class="upColor">买三</td>
+            <td class="upColor">0.0122</td>
+            <td>163200</td>
+          </tr>
+          <tr class="feedbtn">
+            <td class="upColor">买二</td>
+            <td class="upColor">0.0122</td>
+            <td>163200</td>
+          </tr>
+          <tr class="feedbtn">
+            <td class="upColor">买一</td>
+            <td class="upColor">0.0122</td>
+            <td>163200</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+  <!--委托订单弹框-->
+  <!--.active显示-->
+  <div class="dgtOrderBox">
+    <div class="closeBox">
+      <div class="closeBtn feedbtn">
+
+      </div>
+    </div>
+    <div class="boxCon">
+      <!--.hide隐藏这个提示-->
+      <div class="noCon hide">
+        没有任何订单
+      </div>
+      <!--.hide隐藏table列表-->
+        <table class="w100 entOrderTable">
+          <tr class="tabTop">
+            <td>产品</td>
+            <td>价格</td>
+            <td>已成交/委托量</td>
+            <td>操作</td>
+          </tr>
+          <!--.sale .buy .ing .fure 四个类对应不同数据-->
+          <tr class="tabCon sale ing">
+            <td>
+              梧桐木
+              <span>卖</span>
+            </td>
+            <td>
+              0.015
+            </td>
+            <td>0/100</td>
+            <td>
+              <div class="canelBtn feedbtn">
+                撤销
+              </div>
+            </td>
+          </tr>
+          <tr class="tabCon buy ing">
+            <td>
+              梧桐木
+              <span>买</span>
+            </td>
+            <td>
+              0.015
+            </td>
+            <td>0/100</td>
+            <td>
+              <div class="canelBtn feedbtn">
+                撤销
+              </div>
+            </td>
+          </tr>
+          <tr class="tabCon sale fure">
+            <td>
+              梧桐木
+              <span>卖</span>
+            </td>
+            <td>
+              0.015
+            </td>
+            <td>0/100</td>
+            <td>
+              <div class="canelBtn feedbtn">
+                撤销
+              </div>
+            </td>
+          </tr>
+          <tr class="tabCon buy fure">
+            <td>
+              梧桐木
+              <span>买</span>
+            </td>
+            <td>
+              0.015
+            </td>
+            <td>0/100</td>
+            <td>
+              <div class="canelBtn feedbtn">
+                撤销
+              </div>
+            </td>
+          </tr>
+        </table>
+        <!--.active 显示这个提示-->
+        <!--<div class="loadFinished">加载完毕</div>-->
+    </div>
+  </div>
+</div>
+
+<script src="../assets/js/lib/zepto.js"></script>
+<script src="../assets/js/plugin/layer/layer.js"></script>
+<script src="../assets/js/myModule.js"></script>
+<script src="../assets/js/global/global.js"></script>
+<script src="../assets/js/global.js"></script>
+<script src="./market.js"></script>
+</body>
+</html>

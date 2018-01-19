@@ -1,0 +1,96 @@
+$(function () {
+
+    var userInfo=JSON.parse(localStorage.getItem('userInfo'));
+    if(userInfo.certLevel == "C0"){
+        $(".authC1").addClass("active");
+        $(".authC2").removeClass("active");
+    }else if(userInfo.certLevel == "C1"){
+        $(".authC1").removeClass("active");
+        $(".authC2").addClass("active");
+    }else {
+        showTips("你已经完成认证啦!")
+    }
+
+    //图形验证码
+    var captchaCode;//uuid
+    var captchaValue;//图形码
+    var codeUrl;
+    function getCaptcha() {
+        captchaCode = Util.createUUID();
+        codeUrl = '/market/captcha-image' + '?ck=' + captchaCode + '&' + new Date().getTime();
+        $("#imgCode").attr('src', codeUrl);
+    }
+    getCaptcha();
+    $("#imgCode").click(function(){
+        getCaptcha();
+    })
+
+
+    //短信验证码
+    var timer = 90;
+    var interVal = null;
+    $("#getVerCode").click(function(){
+        if(!canGetVcode) return;
+        captchaValue= ($("#verCode").val()).trim();
+        if(!captchaValue){
+            showTips('请输入验证码');
+            return false;
+        }
+        ajaxHelper.post(getUrl('sms/su/sendConeSms'),{"captchaCode":captchaCode,"captchaValue":captchaValue},function(res){
+            if(!res.success){
+                showTips(res.msg);
+            }else{
+                vCodeCount("#getVerCode",interVal,timer);
+                showTips('验证码发送成功');
+            }
+        },false,false)
+    });
+
+    var lock = Lock.createNew();
+    $('#c1btn').on('click', function () {
+        var para = {};
+        para.realName = FormUtil.getParaVal('#realName');
+        para.idCard = FormUtil.getParaVal('#idCard');
+        para.code = FormUtil.getParaVal('#msgCode');
+        if (!lock.getLock()) {
+            return;
+        }
+        ajaxHelper.post(getUrl('security/commitCertOne'), para, function (ret) {
+            if (ret.success) {
+                showTips('C1认证成功');
+                location="user-center.html";
+            } else {
+                showTips(ret.msg,"error");
+            }
+            lock.release();
+        });
+    });
+
+
+    var certLock = Lock.createNew();
+    $('#certCommitBtn').on('click', function (ret) {
+        var para = {
+            passportFrontImg: FormUtil.getParaVal('#idCardPos'),
+            passportBackImg: FormUtil.getParaVal('#idCardRvs')
+        }
+        if (!para.passportFrontImg) {
+            validate.showErr('请上传身份证正面照', '#idCardPos');
+            return;
+        }
+        if (!para.passportBackImg) {
+            validate.showErr('请上传身份证背面照', '#idCardRvs');
+            return;
+        }
+        if (!certLock.getLock()) {
+            return;
+        }
+        ajaxHelper.post(getUrl('security/commitCert'), para, function (ret) {
+            if (ret.success) {
+                showTips('上传成功，请耐心等待');
+            } else {
+                showTips(ret.msg,"error");
+            }
+            certLock.release();
+        });
+    });
+});

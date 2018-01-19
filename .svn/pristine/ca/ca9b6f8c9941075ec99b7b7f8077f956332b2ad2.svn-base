@@ -1,0 +1,32 @@
+$(function () {
+
+    var lock = Lock.createNew();
+    if (!lock.getLock()) {
+        return;
+    }
+    ajaxHelper.get(getUrl('user/getItemList'), null, function (ret) {
+        if (ret.success) {
+            var items = ret.obj;
+            var html = "";
+            var totalvale=0;
+            for (var i = 0; i < items.length; i++) {
+                var item = items[i];
+                    html += '<tr class="tableCon">';
+                    html += '<td>'+item.pName+'</td>';
+                    html += '<td>'+item.cnt +'</td>';
+                    html += '<td class="td3">'+item.dCnt+'</td>';
+                    html += '<td class="td4">'+item.marketValue+'</td>';
+                    html += '</tr>';
+                    totalvale+=item.marketValue;
+            }
+            if (html != "") {
+                $('#tbody').append(html);
+                $('#totalvale').html(totalvale);
+            } else {
+                $(".pageCtr").hide();
+            }
+        }
+        lock.release();
+    });
+
+});

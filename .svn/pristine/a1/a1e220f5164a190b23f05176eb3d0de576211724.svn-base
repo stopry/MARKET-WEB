@@ -1,0 +1,89 @@
+<script src="../market/market.routing.module.ts"></script>
+<script src="../component/skipPage/skip-page.component.ts"></script>
+<div class="registBox" [ngClass]="{hide:registSuccess}">
+  <Header
+    [title]="headerTitile"
+    (onVoted)="back()">
+  </Header>
+  <div class="regBanner">
+
+  </div>
+  <form class="regForm">
+    <div class="conWrap">
+      <div class="inputCtr borderBot">
+        <i class="leftIcon reg_mobile"></i>
+        <input class="input right" autocomplete="off" [(ngModel)]="reg.mobile" name="mobile" placeholder="请输入手机号码" type="text">
+      </div>
+
+      <!--<div class="inputCtr borderBot">-->
+        <!--<i class="leftIcon reg_name"></i>-->
+        <!--<input class="input right" name="realName" [(ngModel)]="reg.name" placeholder="请输入您的真实姓名" type="text">-->
+      <!--</div>-->
+      <!--<div class="inputCtr borderBot">-->
+        <!--<i class="leftIcon reg_idcard"></i>-->
+        <!--<input class="input right" name="idCard" [(ngModel)]="reg.cardId" placeholder="请输入您的身份证号码" type="text">-->
+      <!--</div>-->
+
+      <div class="inputCtr borderBot getVerCode">
+        <i class="leftIcon reg_capcode"></i>
+        <input class="input right" name="msgCode" [(ngModel)]="reg.captchaValue" placeholder="请输入图形验证码" type="text">
+        <div feedButton class="rightOpr getCapCode" (click)="getCaptcha()">
+          <img [src]="codeUrl" style="width: 100%;height: 0.9425rem !important;"  alt="">
+        </div>
+      </div>
+      <div class="inputCtr borderBot getMsgCode">
+        <i class="leftIcon reg_vercode"></i>
+        <input class="input right" name="msgCode" [(ngModel)]="reg.code" placeholder="请输入短信验证码" type="number">
+        <div feedButton class="getVerCode" (click)="getMsgCode()" [ngClass]="{disable:!canGetVcode}">
+          {{getCodeText}}
+        </div>
+      </div>
+      <div class="inputCtr borderBot">
+        <i class="leftIcon reg_pwd"></i>
+        <input class="input right" name="pwd" [(ngModel)]="reg.password" placeholder="请输入密码" type="password">
+      </div>
+      <div class="inputCtr borderBot">
+        <i class="leftIcon reg_pwdagain"></i>
+        <input class="input right" name="pwdAgain" [(ngModel)]="passwordAgain" placeholder="请再次输入密码" type="password">
+      </div>
+      <div class="inputCtr borderBot">
+        <i class="leftIcon reg_prtcode"></i>
+        <input class="input right" name="superId" [(ngModel)]="reg.superiorId" [disabled]="!sidCanInput"  placeholder="请填写您的推荐码(非必填)" type="text">
+      </div>
+      <div class="clause">
+        <label>
+          <input type="checkbox" class="cluaseCheck" name="clause" [(ngModel)]="isAgreenClause"/>
+          <span class="clauseCon">同意Z家园</span>
+        </label>
+        <i feedButton (click)="showClasue()">《服务条款》</i>
+      </div>
+      <div feedButton (click)="regist()" class="regBtn btn keyBtn">
+        注册
+      </div>
+      <p class="hasAccount" routerLink="/login">已有账号现在登录</p>
+    </div>
+  </form>
+</div>
+<div class="regSuccess" [ngClass]="{active:registSuccess}">
+  <div class="tipsImg">
+
+  </div>
+  <div feedButton routerLink="/login" class="nowLoadBtb">
+    立即登陆
+  </div>
+</div>
+<div vertical class="readcClauseBox" [ngClass]="{hide:!isShowClause}">
+  <div class="clauseHeader">
+    Z家园服务条款
+    <i feedButton class="close" (click)="hideClause()">
+      ×
+    </i>
+  </div>
+  <div class="clauseBoxCon">
+    服务条框服<br/>
+    服务条框服
+  </div>
+  <div feedButton (click)="hideClause()" class="okClose">
+    确定
+  </div>
+</div>

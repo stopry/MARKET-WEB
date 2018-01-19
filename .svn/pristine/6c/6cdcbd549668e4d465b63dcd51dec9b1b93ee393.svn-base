@@ -1,0 +1,3467 @@
+//@import "./reset";
+@import "./component";
+//rem转换
+*{
+ max-width: 600px !important;
+ margin:0 auto;
+}
+@function rem($n) {
+  @return ($n/64)+rem;
+}
+//flip动画
+@keyframes iFlipy{
+  0%{
+    -webkit-transform: rotateX(0deg); -ms-transform: rotateX(0deg); -o-transform: rotateX(0deg); transform: rotateX(0deg);
+  }
+  100%{
+    -webkit-transform: rotateX(360deg); -ms-transform: rotateX(360deg); -o-transform: rotateX(360deg); transform: rotateX(360deg);
+  }
+}
+@-webkit-keyframes iFlipy{
+  0%{
+    -webkit-transform: rotateX(0deg); -ms-transform: rotateX(0deg); -o-transform: rotateX(0deg); transform: rotateX(0deg);
+  }
+  100%{
+    -webkit-transform: rotateX(360deg); -ms-transform: rotateX(360deg); -o-transform: rotateX(360deg); transform: rotateX(360deg);
+  }
+}
+//定时刷星动画
+.clip{
+  &.ani{
+    animation: iFlipy .8s ease-in-out forwards;
+  }
+}
+//输入框placeholder颜色
+::-webkit-input-placeholder { /* WebKit browsers */
+  color: #aaa;
+}
+input:disabled, input[disabled]{
+  color: #444;
+  -webkit-text-fill-color:#444;
+  -webkit-opacity:1;
+  opacity: 1;
+}
+//公共变量
+$keyColor:#01ddb6;//主色调
+$whiteColor:#fff;//白色
+$borderColor:#d8d8d8;//边框颜色
+$upBg:#fce5e6;//上涨背景
+$downBg:#e5fcf8;//下跌背景
+$upColor:#dd0125;//上涨颜色
+
+$dangerColor:#F18E00;//警告色
+/*共用类*/
+//3px圆角
+.w100{
+  width: 100%;
+}
+.tl{
+  text-align: left;
+}
+.tr{
+  text-align: right;
+}
+.fl{
+  float: left;
+}
+.fr{
+  float: right;
+}
+.dangerColor{
+  color: $dangerColor !important;
+}
+.dangerBg{
+  background: $dangerColor !important;
+}
+.upColor{
+  color: $upColor !important;
+}
+.keyColor{
+  color: $keyColor !important;
+}
+.upColorBg{
+  background: $upColor !important;
+}
+.keyColorBg{
+  background: $keyColor !important;
+}
+.tc{
+  text-align: center;
+}
+.cl_w{
+  color: #fff !important;
+}
+.borRau5{
+  border-radius: 5px;
+}
+.mt80Rem{
+  margin-top: rem(80);
+}
+.pb80Rem{
+  padding-bottom: rem(120);
+}
+//内容区域
+.conWrap{
+  width: rem( 580);
+  margin: 0 auto;
+}
+.noCon{
+  width: 100%;
+  text-align: center;
+  line-height: rem(80);
+  font-size: rem(18);
+  color: #bbb;
+  text-shadow: 0 0 1px 2px rgba(0,0,0,1);
+  &.hide{
+    display: none;
+  }
+}
+//section标题
+.secTitle{
+  width: 100%;
+  height: rem(74);
+  line-height: rem(74);
+  text-align: left;
+  color: $keyColor;
+  font-size: rem(24);
+  text-indent: rem(20);
+  background: #fff;
+  letter-spacing: 2px;
+  &.gold{
+    color: #e7bf04;
+  }
+}
+//listTable 列表表格
+.listTable{
+  width: 100%;
+  text-align: center;
+  .tableHeader{
+    text-align: center;
+    height: rem(62);
+    line-height: rem(62);
+    color: #4e4e4e;
+    font-size: rem(24);
+    background: $downBg;
+  }
+  .tableContent{
+    position: relative;
+    height: rem(100);
+    line-height: rem(100);
+    font-size: rem(24);
+    color: #4e4e4e;
+    border-bottom: 1px solid #ececec;
+  }
+}
+//弹框内容区域
+.alertCon{
+  width: rem(510);
+  margin: 0 auto;
+}
+.WrapB{
+  width: rem(602);
+  margin: 0 auto;
+}
+.borRau8{
+  border-radius: 8px;
+  overflow: hidden;
+}
+/*公用css组件*/
+//头部
+.header{
+  z-index: 9;
+  position: fixed;
+  top:0;
+  left: 0;
+  letter-spacing: 2px;
+  width: 100%;
+  height: rem(80);
+  background: $whiteColor;
+  font-size: rem(32);
+  text-align: center;
+  line-height: rem(80);
+  color: #000;
+  i.leftSwordIcon{
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: rem(80);
+    width: rem(80);
+    float: left;
+    background: url("../images/left_sword_icon.png") no-repeat center;
+    background-size: rem(19) auto;
+  }
+  .headerTitle{
+    width: 100%;
+    height: rem(80);
+  }
+  &.keyBgHeader{
+    background: $keyColor;
+    color: #fff;
+  }
+}
+//底部导航
+.footer{
+  z-index: 9;
+  width: 100%;
+  height: rem(98);
+  background: #f1f1f1;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  display: flex;
+  .navItem{
+    text-align: center;
+    color: #bbbbbb;
+    text-decoration: none;
+    flex: 1;
+    .navIcon{
+      margin: rem(16) auto 0 auto;
+      width: rem(50);
+      height: rem(40);
+      font-size: rem(20);
+      text-align: center;
+    }
+    &:nth-child(1){
+      .navIcon{
+        background: url("../images/nav_msg_icon.png") no-repeat center;
+        background-size:rem(40) rem(35);
+      }
+      &.active{
+        color: $keyColor;
+        .navIcon{
+          background: url("../images/nav_msg_icon2.png") no-repeat center;
+          background-size:rem(40) rem(35);
+        }
+      }
+    }
+    &:nth-child(2){
+      .navIcon{
+        background: url("../images/kline_nav_icon.png") no-repeat center;
+        background-size:rem(40) rem(35);
+      }
+      &.active{
+        color: $keyColor;
+        .navIcon{
+          background: url("../images/kline_nav_icon2.png") no-repeat center;
+          background-size:rem(40) rem(35);
+        }
+      }
+    }
+    &:nth-child(3){
+      .navIcon{
+        background: url("../images/mark_nav_icon.png") no-repeat center;
+        background-size:rem(36) rem(35);
+      }
+      &.active{
+        color: $keyColor;
+        .navIcon{
+          background: url("../images/mark_nav_icon2.png") no-repeat center;
+          background-size:rem(36) rem(35);
+        }
+      }
+    }
+    &:nth-child(4){
+      .navIcon{
+        background: url("../images/nav_person_icon.png") no-repeat center;
+        background-size:rem(30) rem(34);
+      }
+      &.active{
+        color: $keyColor;
+        .navIcon{
+          background: url("../images/nav_person_icon2.png") no-repeat center;
+          background-size:rem(30) rem(34);
+        }
+      }
+    }
+  }
+}
+//按钮
+.btn{
+  height: rem(68);
+  width: 100%;
+  @extend .borRau5;
+  color: #fff;
+  text-align: center;
+  letter-spacing: 1px;
+  font-size: rem(26);
+  line-height: rem(68);
+  background: $keyColor;
+  &.small{
+    height: rem(50);
+    line-height: rem(50);
+    font-size: rem(24);
+  }
+  .keyBtn{
+    background: $keyColor;
+  }
+  &.dangerBtn{
+    background: #f18e00;
+  }
+  &.upBtn{
+    background: $upColor;
+  }
+  &.next{
+    background: #fdcd88;
+    box-sizing: border-box;
+    border: 1px solid $dangerColor;
+  }
+}
+//输入框
+.inputCtr{
+  width: 100%;
+  height: rem(68);
+  line-height: rem(68);
+  position: relative;
+  border-color: #d8d8d8;
+  &.radiu{//圆角-5
+    @extend .borRau5;
+  }
+  .rightOpr{
+    height:rem(68);
+    width: rem(140);
+    line-height: rem(68);
+    position: absolute;
+    top:0;
+    right: 0;
+  }
+  &.withTitle{
+    position: relative;
+    .leftTitle{
+      font-size: rem(18);
+      text-align: center;
+      color: #444;
+      display: block;
+      width: rem(99);
+      height: rem(68);
+      position: absolute;
+      top:0;
+      left: 0;
+      background: #f5f5f5;
+      border-right: 1px solid #cbcbcb;
+      box-sizing: border-box;
+    }
+    .input{
+      display: block;
+      position: absolute;
+      top:0;
+      width: rem(346);
+      left: rem(99);
+      text-indent: rem(20);
+      &.wT{
+        width: rem(390);
+      }
+    }
+    .rightText{
+      display: block;
+      height: rem(68);
+      line-height: rem(68);
+      text-align: center;
+      width: rem(68);
+      position: absolute;
+      right: 0;
+      top: 0;
+      color: #444;
+      font-size: rem(18);
+      &.lb{
+        box-sizing: border-box;
+        border-left: 1px solid #cbcbcb;
+      }
+    }
+  }
+  .leftIcon{//左边的icon
+    display: block;
+    width: rem(68);
+    height: rem(68);
+    position: absolute;
+    top:0;
+    left: 0;
+    background: red;
+  }
+  .input{//输入框
+    display: block;
+    background: none;
+    border: none;
+    height: rem(68);
+    line-height: rem(68);
+    font-size: rem(26);
+    text-align: left;
+    color: #444;
+    &.right{//靠右边
+      position: absolute;
+      left: rem(80);
+      top: 0;
+      width: rem(456);
+      float: right;
+    }
+  }
+  &.border{//带边框
+    border: 1px solid #d8d8d8;
+  }
+  &.borderBot{//底边框
+    //&:before{
+    //  content: "";
+    //  position: absolute;
+    //  left: 0;
+    //  bottom: 0;
+    //  right: 0;
+    //  width: 100%;
+    //  height: 1px;
+    //  border-top: 1px solid #d8d8d8;
+    //  color: #e5e5e5;
+    //  -webkit-transform-origin: 0 0;
+    //  transform-origin: 0 0;
+    //  -webkit-transform: scaleY(0.5);
+    //  transform: scaleY(0.5);
+    //  z-index: 2;
+    //}
+  }
+}
+//formInput
+.formIpt{
+  overflow: hidden;
+  position: relative;
+  box-sizing: border-box;
+  border: 1px solid #e2e2e2;
+  letter-spacing: 1px;
+  @extend .borRau5;
+  width: 100%;
+  height: rem(68);
+  line-height: rem(68);
+  font-size: rem(24);
+  .selAdon{
+    height: rem(68);
+    line-height: rem(68);
+    color: #fff;
+    width: rem(100);
+    position: absolute;
+    top:0;
+    right: 0;
+    text-align: center;
+    font-size: rem(24);
+    background: $keyColor;
+  }
+  .title{
+    position: absolute;
+    box-sizing: border-box;
+    border-right: 1px solid #e2e2e2;
+    text-indent: rem(18);
+    top:0;
+    left: 0;
+    width: rem(160);
+    color: #000;
+    text-align: left;
+    background: #f5f5f5;
+    font-size: rem(22);
+  }
+  .input{
+    &:disabled{
+      background: #fafafa;
+      color: #767676;
+    }
+    display: block;
+    border: none;
+    text-indent: rem(18);
+    position: absolute;
+    top:0;
+    left: rem(160);
+    font-size: rem(24);
+    width: rem(440);
+    height: rem(68);
+    line-height: rem(68);
+    &.short{
+      width: rem(280);
+    }
+  }
+  .rightOpr{
+    font-size: rem(22);
+    position: absolute;
+    box-sizing: border-box;
+    border-left: 1px solid #e2e2e2;
+    top:0;
+    right: 0;
+    width: rem(160);
+    color: #fff;
+    text-align: center;
+    background: #01ddb6;
+    img{
+      width: 100%;
+      height: 100%;
+    }
+    &.disable{
+      background: #999;
+    }
+  }
+  &.dangerIpt{
+    border: 1px solid $dangerColor;
+    .title{
+      background: $dangerColor;
+      color: #fff;
+    }
+    .input{
+      &:disabled{
+        background: #fff8ee;
+      }
+    }
+  }
+  &.keyIpt{
+    border: 1px solid $keyColor;
+    .title{
+      background: $keyColor;
+      color: #fff;
+    }
+    .input{
+      &:disabled{
+        background: #fbfbfb;
+      }
+    }
+  }
+  &.small{
+    height: rem(50);
+    line-height: rem(50);
+    .title{
+      height: rem(50);
+      line-height: rem(50);
+      width: rem(130);
+    }
+    .input{
+      height: rem(50);
+      line-height: rem(50);
+      left: rem(130);
+    }
+    .selAdon{
+      height: rem(50);
+      line-height: rem(50);
+    }
+  }
+}
+//无背景
+.noBg{
+  background: none !important;
+}
+//提示区域
+.tipsArea{
+  text-align: left;
+  line-height: rem(24);
+  padding-top: rem(22);
+  padding-bottom: rem(22);
+
+  font-size: rem(18);
+  color: #444;
+  p{
+    margin-left: rem(22);
+    margin-right: rem(22);
+  }
+  &.bgGray{
+    background: #f4f4f4;
+  }
+  &.bgYellow{
+    background: #FEF3E5;
+  }
+  &.bgGreen{
+    background: #E7FFFB;
+  }
+}
+.borderBot{//底边框
+  &:after{
+      content: " ";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      height: 1px;
+      border-bottom: 1px solid #e5e5e5;
+      color: #e5e5e5;
+      -webkit-transform-origin: 0 100%;
+      transform-origin: 0 100%;
+      -webkit-transform: scaleY(0.5);
+      transform: scaleY(0.5);
+      z-index: 2;
+    }
+}
+.borderTop{//上边框
+  &:before{
+    content: " ";
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    height: 1px;
+    border-bottom: 1px solid #e5e5e5;
+    color: #e5e5e5;
+    -webkit-transform-origin: 0 100%;
+    transform-origin: 0 100%;
+    -webkit-transform: scaleY(0.5);
+    transform: scaleY(0.5);
+    z-index: 2;
+  }
+}
+//灰色背景条
+.grayBgBar{
+  width: 100%;
+  height: rem(12);
+  background: #f4f4f4;
+}
+/*页面*/
+//注册页
+.readcClauseBox{
+  &.hide{
+    display: none;
+  }
+  position: fixed;
+  z-index: 11;
+  height: rem(640);
+  width:rem(500);
+  border-radius: rem(8);
+  overflow: hidden;
+  background: #fff;
+  .clauseHeader{
+    position: relative;
+    height: rem(60);
+    line-height: rem(60);
+    background: $keyColor;
+    color: #fff;
+    text-align: center;
+    font-size: rem(26);
+    .close{
+      display: block;
+      height: rem(60);
+      width: rem(60);
+      position: absolute;
+      top:0;
+      font-size: rem(36);
+      right: 0;
+    }
+  }
+  .clauseBoxCon{
+    height: rem(480);
+    padding: rem(20) rem(20);
+    font-size: rem(22);
+    color: #777;
+    text-align: left;
+    text-indent: rem(40);
+    line-height: rem(30);
+    letter-spacing: 1px;
+    overflow: scroll;
+  }
+  .okClose{
+    width: 100%;
+    height: rem(60);
+    line-height: rem(60);
+    text-align: center;
+    color: #fff;
+    background: #01ddb6;
+    font-size: rem(24);
+    letter-spacing: 2px;
+  }
+}
+.registBox{
+  &.hide{
+    display: none;
+  }
+  .cluaseCheck{
+    vertical-align: middle;
+    margin-bottom: 2px;
+  }
+  .regBanner{
+    margin-top: rem(80);
+    width: 100%;
+    height: rem(250);
+    background: url(../images/regist_bg.jpg) no-repeat center;
+    background-size: 100% 100%;
+  }
+  .regForm{
+    //服务条款
+    .clause{
+      text-align: left;
+      height: rem(60);
+      line-height: rem(60);
+      font-size: rem(22);
+      color: #999;
+      margin-top: rem(0);
+      i{
+        color: $keyColor;
+      }
+    }
+    .getMsgCode{
+      .getVerCode{
+        position: absolute;
+        right: 0;
+        top:rem(5);
+        height: rem(50);
+        line-height: rem(50);
+        width: rem(140);
+        color: #fff;
+        text-align: center;
+        background: $keyColor;
+        border-radius: 5px;
+        font-size: rem(20);
+        &.disable{
+          background: #ccc;
+        }
+      }
+    }
+    background: #f7f7f7;
+    width: 100%;
+    .inputCtr{
+      .getCapCode{
+
+      }
+      .leftIcon{
+        &.reg_mobile{
+          background: url(../images/regist_mobile.png) no-repeat left;
+          background-size: 50%;
+        }
+        &.reg_name{
+          background: url(../images/regist_name.png) no-repeat left;
+          background-size: 50%;
+        }
+        &.reg_idcard{
+          background: url(../images/regist_idcard.png) no-repeat left;
+          background-size: 50%;
+        }
+        &.reg_vercode{
+          background: url(../images/regist_vercode.png) no-repeat left;
+          background-size: 50%;
+        }
+        &.reg_capcode{
+          background: url(../images/regist_msgcode.png) no-repeat left;
+          background-size: 50%;
+        }
+        &.reg_pwd{
+          background: url(../images/regist_pwd.png) no-repeat left;
+          background-size: 50%;
+        }
+        &.reg_pwdagain{
+          background: url(../images/regist_pwdagain.png) no-repeat left;
+          background-size: 50%;
+        }
+        &.reg_prtcode{
+          background: url(../images/regist_prtode.png) no-repeat left;
+          background-size: 50%;
+        }
+      }
+    }
+    .regBtn{
+      margin-top: rem(36);
+    }
+  }
+}
+//注册成功提示页
+.regSuccess{
+  display: none;
+  &.active{
+    display: block;
+  }
+  background: #fff;
+  width: 100%;
+  .tipsImg{
+    width: rem(317);
+    height: rem(395);
+    margin: rem(137) auto rem(73) auto;
+    background: url(../images/regist_success_tip.jpg) no-repeat center;
+    background-size: 100% auto;
+  }
+  .nowLoadBtb{
+    width: rem(582);
+    height: rem(68);
+    line-height: rem(68);
+    text-align: center;
+    color: $keyColor;
+    font-size: rem(30);
+    border-radius: rem(68);
+    border: 1px solid $keyColor;
+    margin: 0 auto;
+  }
+}
+
+//登陆页面
+.loadBox{
+  width: 100%;
+  background: $whiteColor;
+  .loadLogo{
+    margin: rem(122) auto rem(67) auto;
+    width: 100%;
+    height: rem(167);
+    background: url(../images/load_logo.png) no-repeat center;
+    background-size: rem(295) auto;
+  }
+  .loadForm{
+    width: 100%;
+    .inputCtr{
+      margin-bottom: rem(20);
+      .load_account{
+        background: url("../images/load_account.png") no-repeat center;
+        background-size: 50% auto;
+      }
+      .load_pwd{
+        background: url("../images/load_pwd.png") no-repeat center;
+        background-size: 50% auto;
+      }
+    }
+    .loadBtn{
+      margin: rem(36) auto rem(100) auto;
+    }
+    .quickLoadText{
+      width: 100%;
+      height: rem(22);
+      background: url("../images/qiuck_load_text.png") no-repeat center;
+      background-size: auto 100%;
+      margin-bottom: rem(23);
+    }
+    .quickLoadBox{
+      width: rem(240);
+      overflow: hidden;
+      margin: 0 auto;
+      height: rem(77);
+      .quickLoadItem{
+        display: inline-block;
+        width: rem(77);
+        height: rem(77);
+        &.WX{
+          background: url("../images/wx_quick_load.png") no-repeat center;
+          background-size: 100%;
+        }
+        &.QQ{
+          float: right;
+          background: url("../images/q_quick_load.png") no-repeat center;
+          background-size: 100%;
+        }
+      }
+    }
+    .loadBotBox{
+      width: 100%;
+      overflow: hidden;
+      height: rem(40);
+      .clause{
+        color: #999;
+        float: left;
+        input{
+          margin-top: rem(-2);
+          vertical-align: middle;
+        }
+      }
+      .forgetPwd{
+        float: right;
+      }
+    }
+  }
+  .toRegistPage{
+    //position: fixed;
+    //bottom: rem(40);
+    width: 100%;
+    text-align: center;
+    color: $keyColor;
+    font-size: rem(22);
+    margin-top: rem(60);
+    padding-bottom: rem(20);
+  }
+}
+//行情页面
+.quotationBox{
+  .quotationList{
+    width: 100%;
+    overflow: hidden;
+    //padding-top: rem(86);
+    padding-bottom: rem(106);
+    background: #fff;
+    li{
+      &.up{
+        .range,.limit,.quoText{
+          color: #ec0000;
+        }
+      }
+      &.down{
+        .range,.limit,.quoText{
+          color: #01ddb6;
+        }
+      }
+      width: 100%;
+      overflow: hidden;
+      height: rem(180);
+      .proBase{
+        height: rem(180);
+        width: rem(180);
+        background: #cef9f1;
+        .baseTop{
+          margin-top: rem(30);
+          width: 100%;
+          overflow: hidden;
+          height: rem(60);
+          text-align: center;
+          line-height: rem(56);
+          font-size: rem(18);
+          color: #000;
+          .proPic{
+            width: rem(60);
+            margin-top: rem(-2);
+          }
+        }
+        .quoText{
+          text-align: center;
+          height: rem(56);
+          line-height: rem(56);
+          font-size: rem(30);
+        }
+      }
+      .proDetail{
+        height: rem(180);
+        width: rem(460);
+        background: #e5fcf8;
+        overflow: hidden;
+        .detailItem{
+          &.itemL{
+            margin-left: 4%;
+          }
+          width: 48%;
+          height: rem(180);
+          dl{
+            .dt{
+              overflow: hidden;
+              dd{
+                &:nth-child(1){
+                  width: 40%;
+                  &.nth{
+                    text-indent: rem(20);
+                  }
+                }
+                &:nth-child(2){
+                  width: 60%;
+                }
+              }
+            }
+            margin-top: rem(30);
+            width: 100%;
+            height: rem(126);
+            .dt dd{
+              line-height: rem(41);
+              float: left;
+              text-align: left;
+              font-size: rem(20);
+              &.highest{
+                color: #ec0000;
+              }
+              &.lowest{
+                color: #01ddb6;
+              }
+            }
+          }
+        }
+      }
+      &:nth-child(even){
+        .proBase{
+          background: #f2fdfb;
+        }
+        .proDetail{
+          background: #ffffff;
+        }
+      }
+    }
+  }
+  background: #f5f5f5;
+  .quotationTable{
+    width: 100%;
+    tr{
+      width: 100%;
+      text-align: center;
+      &.tableTop{
+        height: rem(44);
+        color: #000;
+        font-size: rem(18);
+      }
+      &.tableCon{
+        &.up{
+          background: $upBg;
+        }
+        &.down{
+          background: $downBg;
+        }
+        img{
+          width: rem(45);
+          height: rem(30);
+        }
+        height: rem(68);
+        color: #4e4e4e;
+        td{
+          &.up{
+            color: $upColor;
+          }
+          &.down{
+            color: $keyColor;
+          }
+        }
+      }
+    }
+  }
+  .ChartBox{
+    background: #fff;
+    margin-top: rem(10);
+    width: 100%;
+    height: rem(420);
+    .chartChange{
+      height: rem(60);
+      line-height: rem(36);
+      font-size: rem(20);
+      color: #444;
+      .chartBtn{
+        margin-top: rem(10);
+        text-align: center;
+        display: inline-block;
+        height: rem(36);
+        &.seled{
+          color: $keyColor;
+          border-bottom: 1px solid $keyColor;
+        }
+        &.kLine{
+          margin-left: rem(10);
+        }
+      }
+    }
+    .chart{
+      height: rem(360);
+      width: 100%;
+      //background: $downBg;
+      background: #fff;
+    }
+  }
+}
+.marketDetailBox{
+  position: relative;
+  .changeProType{
+    position: fixed;
+    top: 0;
+    text-align: center;
+    width: 50%;
+    left: 25%;
+    height: rem(80);
+    line-height: rem(80);
+    font-size: rem(32);
+    color: #000;
+    z-index: 9;
+    letter-spacing: 2px;
+  }
+  .toAssignTrade{
+    position: absolute;
+    top:rem(14);
+    z-index: 10;
+    right: rem(0);
+    width: rem(110);
+    letter-spacing: 1px;
+    height: rem(40);
+    line-height: rem(40);
+    background: none;
+    color: #fff;
+    font-size: rem(18);
+    text-align: center;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    //box-shadow: 0 0 4px 2px rgba(0,0,0,.1);
+  }
+  .marketBaseInfo{
+    overflow: hidden;
+    padding-top: rem(20);
+    width: 100%;
+    height: rem(148);
+    .infoLeft{
+      width: rem(270);
+      .upDwonIndex{
+        overflow: hidden;
+        color: $upColor;
+        position: relative;
+        width: 100%;
+        height: rem(70);
+        line-height: rem(70);
+        font-size: rem(48);
+        .indexNum,.indexPic{
+          height: rem(70);
+          display:inline-block;
+        }
+        .indexPic{
+          display: inline-block;
+          width: rem(30);
+          background: url("../images/up_sword.png") no-repeat center;
+          background-size: auto rem(40);
+        }
+        &.down{
+          color: $keyColor;
+          .indexPic{
+            display: inline-block;
+            width: rem(30);
+            background: url("../images/down_sword.png") no-repeat center;
+            background-size: auto rem(40);
+          }
+        }
+      }
+      &.down{
+        .upDwonIndex{
+          color: $keyColor;
+          .indexPic{
+            display: inline-block;
+            width: rem(30);
+            background: url("../images/down_sword.png") no-repeat center;
+            background-size: auto rem(40);
+          }
+        }
+      }
+      .detailInfo{
+        width: 100%;
+        color: $upColor;
+        line-height: rem(40);
+        overflow: hidden;
+        .infoDetail{
+          margin-right: rem(20);
+        }
+        &.down{
+          color: $keyColor;
+        }
+      }
+    }
+    .infoRight{
+      text-align: center;
+      width: rem(194);
+      height: rem(114);
+      table{
+        font-size: rem(18);
+        color: #444;
+        width: rem(194);
+        height: rem(114);
+        .mostUp{
+          color: $upColor;
+        }
+        .mostDown{
+          color: $keyColor;
+        }
+      }
+    }
+  }
+  .dgtTableWrap{
+    transition: all linear 300ms;
+    &.close{
+      height: 1px;
+      .tableBox{
+        display: none;
+      }
+    }
+    position: relative;
+    width: 100%;
+    height: rem(136);
+    background: #f5f5f5;
+    overflow: visible;
+    .dgtOpenBtn{
+      z-index: 2;
+      position: absolute;
+      width: rem(65);
+      height: rem(65);
+      background: url("../images/pull_down_open.png") no-repeat center;
+      background-size: rem(65);
+      top: rem(-32);
+      left: rem(282);
+      transition: all linear 300ms;
+      &.close{
+        transform: rotate(180deg);
+      }
+    }
+    .tableBox{
+      color: #444;
+      height: rem(136);
+      font-size: rem(18);
+      overflow: auto;
+      table{
+        width: 48%;
+        &.fl{
+          text-align: center;
+        }
+        &.fr{
+          text-align: center;
+        }
+        .tableTop{
+          height: rem(32);
+        }
+        .tableCon{
+          height: rem(30);
+        }
+      }
+    }
+  }
+  .ChartBox{
+    padding-bottom: rem(200);
+    background: #fff;
+    margin-top: rem(5);
+    width: 100%;
+    height: rem(420);
+    .chartChange{
+      position: relative;
+      height: rem(60);
+      line-height: rem(36);
+      font-size: rem(20);
+      color: #444;
+      .appointInfo{
+        display: none;
+        color: #444;
+        position: absolute;
+        top:0;
+        left: 0;
+        width: 100%;
+        height: rem(60);
+        line-height: rem(60);
+        background: #fff;
+        &.active{
+          display: block;
+        }
+        span{
+          margin-right: rem(10);
+        }
+      }
+      .chartBtn{
+        margin-top: rem(10);
+        text-align: center;
+        display: inline-block;
+        height: rem(36);
+        &.seled{
+          color: $keyColor;
+          border-bottom: 1px solid $keyColor;
+        }
+        &.kLine{
+          margin-left: rem(10);
+        }
+      }
+    }
+    .chart{
+      height: rem(360);
+      width: 100%;
+      background: #fff;
+    }
+  }
+  .oprBtnWrap{
+    height: rem(80);
+    width: 100%;
+    position: fixed;
+    overflow: visible;
+    left: 0;
+    bottom: rem(100);
+    .innerBox{
+      width: 100%;
+      position: relative;
+      overflow: visible;
+      .oprBtn{
+        display: inline-block;
+        text-align: center;
+        width: 50%;
+        font-size: rem(26);
+        height: rem(70);
+        line-height: rem(70);
+      }
+      .dgtOrderBtn{
+        position: absolute;
+        z-index: 8;
+        height: rem(84);
+        width: rem(84);
+        background: url(../images/delg_order_btn.png) no-repeat center;
+        background-size: 100%;
+        top: rem(-42);
+        left: rem(282);
+      }
+    }
+  }
+}
+.curPriseTradBox{
+  display: none;
+  &.active{
+    display: block;
+  }
+  left: rem(32);
+  background: #fff;
+  @extend .borRau8;
+  position: fixed;
+  z-index: 11;
+  height: rem(582);
+  .alertTop{
+    height: rem(60);
+    line-height: rem(60);
+    width: 100%;
+    color: #fff;
+    position: relative;
+    background: $upColor;
+    &.keyBg{
+      background: $keyColor;
+    }
+    font-size: rem(24);
+    text-align: left;
+    .alertCon{
+      height: rem(60);
+      .closeIcon{
+        position: absolute;
+        height: rem(60);
+        width: rem(60);
+        background: url(../images/close_icon.png) no-repeat center;
+        background-size: rem(16);
+        top: 0;
+        right: 0;
+      }
+    }
+  }
+  .alertCen{
+    .inputCtr{
+      margin-top: rem(20);
+    }
+    .accountInfo{
+      line-height: rem(36);
+      font-size: rem(20);
+      color: #444;
+    }
+  }
+}
+.dgtOrderBox{
+  display: none;
+  &.active{
+    display: block;
+  }
+  .entOrderTable{
+    &.hide{
+      display: none;
+    }
+  }
+  width: 100%;
+  position: fixed;
+  z-index: 11;
+  bottom: -1px;
+  left: 0;
+  height: rem(505);
+  .closeBox{
+    width: 100%;
+    background: none;
+    height: rem(44);
+    .closeBtn{
+      width: rem(64);
+      height: rem(44);
+      float: right;
+      margin-right: rem(18);
+      background:$keyColor url(../images/close_icon.png) no-repeat center;
+      background-size: rem(16);
+      border-top-right-radius: 5px;
+      border-top-left-radius: 5px;
+      overflow: hidden;
+    }
+  }
+  .boxCon{
+    width: 100%;
+    height: rem(459);
+    background: #fff;
+    overflow: auto;
+    table{
+      text-align: center;
+      width: 100%;
+      .tabTop{
+        height: rem(60);
+        font-size: rem(24);
+        font-weight: bold;
+        color: #444;
+      }
+      .tabCon{
+        position: relative;
+        height: rem(80);
+        color: #444;
+        font-size: rem(24);
+        border-bottom: 1px solid #eee;
+        .canelBtn{
+          width: rem(77);
+          height: rem(44);
+          line-height: rem(44);
+          border-radius: rem(5);
+          background: $keyColor;
+          color: #fff;
+          text-align: center;
+          font-size: rem(20);
+          margin: auto;
+        }
+        &.buy{//买
+          span{
+            color: $upColor;
+          }
+        }
+        &.sale{//卖
+          span{
+            color: $keyColor;
+          }
+        }
+        &.fure{//未确定
+          td:nth-child(3){
+            color: #d5b900;
+          }
+        }
+        &.ing{//进行中
+          td:nth-child(3){
+            color: $upColor;
+          }
+        }
+      }
+    }
+  }
+}
+//金币充值
+.goldRechargeBox{
+  .quickPayTitle{
+    background: #f4f4f4;
+    line-height: rem(60);
+    font-size: rem(24);
+    color: #000;
+    width: 100%;
+    text-align: left;
+    text-indent: rem(20);
+    &.rchNum{
+      background: #fdf6ed;
+    }
+  }
+  .quickPayBox{
+    width:100%;
+    position: relative;
+    .payItem{
+      &.active{
+        background: url("../images/sel_true_icon.png") no-repeat rem(590) center;
+        background-size: rem(29) rem(19);
+      }
+      position: relative;
+      text-indent: rem(20);
+      height: rem(80);
+      line-height: rem(80);
+      text-align: left;
+      font-size: rem(36);
+      color: #000;
+      &:after{
+        content: " ";
+        position: absolute;
+        top: 0;
+        right: 0;
+        height: 1px;
+        border-top: 1px solid #e5e5e5;
+        color: #e5e5e5;
+        -webkit-transform-origin: 0 0;
+        transform-origin: 0 0;
+        -webkit-transform: scaleY(0.5);
+        transform: scaleY(0.5);
+        left: rem(20);
+        z-index: 2;
+      }
+    }
+    @extend .borderTop;
+    @extend .borderBot;
+  }
+  .rchIpt{
+    position: relative;
+    margin-top: rem(60);
+    height: rem(100);
+    line-height: rem(100);
+    color: #000;
+    font-size: rem(42);
+    background: url("../images/rmb_icon.png") no-repeat left;
+    background-size: rem(39) auto;
+    @extend .borderBot;
+    .rchNum{
+      background: none;
+      display: block;
+      border: none;
+      width: 100%;
+      height: rem(100);
+      line-height: rem(100);
+      text-indent: rem(50);
+    }
+  }
+  .thirdPay{
+    display: flex;
+    margin: rem(20) auto rem(60) auto;
+    .thirdItem{
+      flex: 1;
+      text-align: center;
+      vertical-align: middle;
+      font-size: rem(24);
+      color: #000;
+      background: url(../images/check_uncheck.png) no-repeat rem(10) rem(12);
+      background-size: rem(20);
+      &.active{
+        background: url(../images/check_checked.png) no-repeat rem(10) rem(12);
+        background-size: rem(20);
+      }
+      &:nth-child(1){
+        img{
+          width: rem(28);
+          height: rem(24);
+        }
+      }
+      &:nth-child(2){
+        img{
+          width: rem(24);
+          height: rem(24);
+        }
+      }
+      &:nth-child(3){
+        img{
+          width: rem(33);
+          height: rem(19);
+        }
+      }
+    }
+  }
+}
+//充值成功页面
+.rechargeSuccessBox{
+  .keyColor{
+    .header{
+      background: $keyColor;
+      i.leftSwordIcon{
+        background-image: url("../images/left_sword_w_icon.png");
+      }
+      h3{
+        color: #fff;
+      }
+    }
+
+  }
+  .rchSusPic{
+    width: rem(265);
+    height: rem(306);
+    margin: rem(144) auto rem(42) auto;
+    background: url("../images/recharge_success_tips.png") no-repeat center;
+    background-size: 100%;
+  }
+  .payInfoWrap{
+    width: 100%;
+    background: #e5fcf8;
+    .payInfo{
+      tr{
+        width: 100%;
+        height: rem(54);
+        line-height: rem(54);
+        font-size: rem(24);
+        td:nth-child(1){
+          color: #7b7b7b;
+          text-align: left;
+        }
+        td:nth-child(2){
+          text-align: right;
+          color: #000;
+        }
+      }
+    }
+  }
+}
+//充值记录页面
+.rechargeRecord{
+  &.hide{
+    display: none
+  }
+  .rchRecList{
+    background: #fff;
+    width: 100%;
+    .rchRecItem{
+      position: relative;
+      height: rem(98);
+      background: #fff url("../images/right_sword_icon.png") no-repeat right;
+      background-size: rem(12) auto;
+      @extend .borderBot;
+      overflow: hidden;
+      .recLeft{
+        .rchType{
+          float: left;
+          margin-top: rem(14);
+          display: inline-block;
+          height: rem(69);
+          width: rem(69);
+          border-radius: 50%;
+          overflow: hidden;
+        }
+        .payStr{
+          float: left;
+          margin-top: rem(18);
+          margin-left: rem(20);
+          display: inline-block;
+          .rchTypeText{
+            text-align: left;
+            color: #000;
+            font-size: rem(24);
+          }
+          .rchTime{
+            text-align: left;
+            font-size: rem(18);
+            color: #979797;
+          }
+        }
+      }
+      .recRight{
+        height: rem(98);
+        line-height: rem(98);
+        color: #f6b32e;
+        font-size: rem(32);
+        margin-right: rem(40);
+      }
+      &.wx{
+        .rchType{
+          background: url("../images/rch_recorde_list_wx.png") no-repeat center;
+          background-size: 100%;
+        }
+      }
+      &.ali{
+        .rchType{
+          background: url("../images/rch_recorde_list_ali.png") no-repeat center;
+          background-size: 100%;
+        }
+      }
+      &.bank{
+        .rchType{
+          background: url("../images/rch_recorde_list_bank.png") no-repeat center;
+          background-size: 100%;
+        }
+      }
+    }
+  }
+}
+//充值记录详情
+.rechargeRecordDetail{
+  .rchRecBase{
+    overflow: hidden;
+    .rchType{
+      margin-top: rem(36);
+      vertical-align: middle;
+      img{
+        vertical-align: middle;
+        width: rem(42);
+        height: rem(42);
+        border-radius: 50%;
+        line-height: rem(42);
+      }
+      font-size: rem(24);
+      color: #000;
+    }
+    .rchNum{
+      font-size: rem(94);
+      color: #f6b32e;
+      line-height: rem(120);
+    }
+    .rchSratus{
+      font-size: rem(24);
+      color: #929292;
+    }
+  }
+  .rchInfoTable{
+    margin-top: rem(64);
+    .tableT{
+      position: relative;
+      @extend .borderBot;
+    }
+    table{
+      tr{
+        width: 100%;
+        font-size: rem(24);
+        height: rem(48);
+        td{
+          &:nth-child(1){
+            color: #979797;
+            text-align: left;
+          }
+          &:nth-child(2){
+            color: #000;
+            text-align: right;
+          }
+        }
+      }
+    }
+  }
+}
+//推广奖励
+.promoteAward{
+  .AwardList{
+    .rchRecItem{
+      background: none;
+      .userPic{
+        background: none !important;
+        img{
+         width: 100%;
+          height: 100%;
+        }
+      }
+      .awardRight{
+        margin-right: 0;
+        color: $upColor;
+        padding-top: rem(24);
+        line-height: rem(30);
+        p{
+          font-size: rem(18);
+          color: #979797;
+        }
+      }
+    }
+  }
+}
+//推广列表
+.promoteList{
+  .prtAllNum{
+    //height: rem(140);
+    width: 100%;
+    line-height: rem(140);
+    text-align: center;
+    font-size: rem(108);
+    text-shadow: 2px 2px 2px rgba(0,0,0,0.1);
+    span{
+      font-size: rem(18);
+    }
+    background: #fff url("../images/prt_list_img.png") no-repeat right bottom;
+    background-size: rem(94) rem(37);
+  }
+}
+//推广链接
+.promoteLink{
+  .promoteLinkText{
+    text-align: center;
+    margin-bottom: rem(56);
+  }
+  .prtCodeText{
+    width: 100%;
+    height: rem(196);
+    background: #fff url(../images/prt_link_bg.png) no-repeat bottom;
+    background-size: 100% auto;
+    overflow: hidden;
+    .codeText{
+      text-indent: 3px;
+      text-align: center;
+      margin: rem(45) auto rem(0) auto;
+      font-size: rem(48);
+      color: #000;
+    }
+    .codeDesc{
+      margin-top: rem(-5);
+      text-align: center;
+      font-size: rem(18);
+      color: #4a4a4a;
+    }
+  }
+  .prtCodeCon{
+    width: rem(300);
+    height: rem(310);
+    margin: rem(36) auto rem(10) auto;
+    box-sizing: border-box;
+    border: 1px solid #4c726a;
+    border-radius: rem(6);
+    img{
+      display: block;
+      width: rem(220);
+      height: rem(220);
+      margin: rem(20) auto;
+    }
+    .top,.bot{
+      height: rem(45);
+      line-height: rem(45);
+      background: #1c987f;
+      font-size: rem(18);
+      text-align: center;
+      letter-spacing: 1px;
+    }
+    .bot{
+      background: #828786;
+    }
+  }
+}
+//个人中心主页
+.userCenter{
+  .ucHeader{
+    overflow: hidden;
+    width: 100%;
+    height: rem(286);
+    background: url(../images/user-center_header_bg.jpg) no-repeat center;
+    background-size: 100% 100%;
+    position: relative;
+    .toVerify{
+      width: rem(142);
+      height:rem(50);
+      text-align: center;
+      //background: #c8c6c7;
+      border-top-left-radius: rem(25);
+      border-bottom-left-radius: rem(25);
+      line-height: rem(50);
+      font-size: rem(18);
+      color: #383838;
+      position: absolute;
+      top:rem(20);
+      right:0;
+      z-index: 2;
+    }
+    .baseInfo{
+      margin-top: rem(40);
+      overflow: hidden;
+      height: rem(100);
+      .userPic{
+        box-sizing: border-box;
+        float: left;
+        height: rem(100);
+        border-radius: 50%;
+        border: 3px solid #ffffff;
+        overflow: hidden;
+        width: rem(100);
+        margin-right: rem(22);
+      }
+      .playerInfo{
+        float: left;
+        .infoTop{
+          margin-top: rem(8);
+          text-align: left;
+          .userName{
+            font-size: rem(24);
+            color: #fff;
+            font-weight: bold;
+          }
+          .userId{
+            margin-left: rem(10);
+            font-size: rem(18);
+            color: #fff;
+          }
+        }
+        .infoBot{
+          margin-top: rem(8);
+          .linkBtn{
+            width: rem(110);
+            height: rem(40);
+            box-sizing: border-box;
+            border-radius: rem(6);
+            text-align: center;
+            line-height: rem(40);
+            font-size: rem(18);
+            margin-right: rem(9);
+            display: inline-block;
+            &.btnRch{
+              color: #edd900;
+              border: 1px solid #edd900;
+            }
+            &.btnCash{
+              color: #ff8181;
+              border: 1px solid #ff8181;
+            }
+          }
+        }
+      }
+    }
+    .accountInfo{
+      height: rem(100);
+      background: rgba(0,0,0,.3);
+      margin-top: rem(56);
+      display: flex;
+      .infoItem{
+        text-align: center;
+        vertical-align: middle;
+        flex: 1;
+        height: rem(65);
+        margin-top: rem(13);
+        letter-spacing: 1px;
+        border-right: 1px solid #5e5e5e;
+        box-sizing: border-box;
+        color: #fff;
+        .itemTop{
+          margin-top: rem(4);
+          font-size: rem(18);
+          line-height: rem(18);
+        }
+        .itemBot{
+          font-size: rem(24);
+          line-height: rem(24);
+          margin-top: rem(19);
+        }
+      }
+    }
+  }
+  .orderArea{
+    overflow: hidden;
+    display: flex;
+    height: rem(122);
+    .orderItem{
+      text-align: center;
+      color: #3b3b3b;
+      font-size: rem(24);
+      line-height: rem(24);
+      flex: 1;
+      height: rem(40);
+      margin-top: rem(35);
+      box-sizing: border-box;
+      border-right: 1px solid #eaeaea;
+      img{
+        margin-top: rem(-23);
+        margin-bottom: rem(14);
+      }
+      &:nth-child(1){
+        img{
+          width: rem(45);
+          height: rem(55);
+        }
+      }
+      &:nth-child(2){
+        img{
+          width: rem(46);
+          height: rem(53);
+        }
+      }
+      &:nth-child(3){
+        img{
+          width: rem(48);
+          height: rem(54);
+        }
+      }
+    }
+  }
+  .accountRevise{
+    .reviseItem{
+      position: relative;
+      @extend .borderBot;
+      height: rem(68);
+      line-height: rem(68);
+      font-size: rem(24);
+      color: #000;
+      text-indent: rem(20);
+      vertical-align: middle;
+      img{
+        width: rem(25);
+        margin-right: rem(15);
+        opacity: 0;
+      }
+      &.eixtLogin{
+        color: #852929;
+        text-align: center;
+        background: #F8F8F8;
+        border: none;
+        letter-spacing: 2px;
+        &:after{
+          display: none;
+        }
+      }
+    }
+    &.accountReviseTop{
+      .reviseItem{
+        &:nth-child(1){
+          background: url("../images/center_list_mobile.png") no-repeat rem(20);
+          background-size: rem(25) auto;
+        }
+        &:nth-child(2){
+          background: url("../images/center_list_pwd.png") no-repeat rem(20);
+          background-size: rem(25) auto;
+        }
+        &:nth-child(3){
+          background: url("../images/center_list_pay.png") no-repeat rem(20);
+          background-size: rem(25) auto;
+        }
+        &:nth-child(4){
+          background: url("../images/center_list_mgr.png") no-repeat rem(20);
+          background-size: rem(25) auto;
+        }
+      }
+    }
+    &.accountReviseBot{
+      .reviseItem{
+        &:nth-child(1){
+          background: url("../images/center_list_rch.png") no-repeat rem(20);
+          background-size: rem(25) auto;
+        }
+        &:nth-child(2){
+          background: url("../images/center_list_cash.png") no-repeat rem(20);
+          background-size: rem(25) auto;
+        }
+        &:nth-child(3){
+          background: url("../images/my_goods_icon.png") no-repeat rem(20);
+          background-size: rem(25) auto;
+        }
+        &:nth-child(4){
+          background: url("../images/center_list_money-detail.png") no-repeat rem(20);
+          background-size: rem(25) auto;
+        }
+        &:nth-child(5){
+          background: url("../images/center_list_prt.png") no-repeat rem(20);
+          background-size: rem(25) auto;
+        }
+      }
+    }
+  }
+  .goldArea{
+    .prtCenter{
+      &:after{
+        content: " ";
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        height: 1px;
+        border-bottom: 1px solid #fff;
+        color: #fff;
+        -webkit-transform-origin: 0 100%;
+        transform-origin: 0 100%;
+        -webkit-transform: scaleY(0.5);
+        transform: scaleY(0.5);
+        z-index: 3;
+      }
+      .staIcon{
+        position: absolute;
+        width: rem(21);
+        height: rem(11);
+        background: url("../images/bottom_sword_icon.png") no-repeat center;
+        background-size: 100%;
+        top: rem(24);
+        right: rem(24);
+      }
+      &.close{
+        .staIcon{
+          transform: rotate(90deg);
+        }
+      }
+    }
+    .prtOpen{
+      display: none;
+      &.close{
+        display: none;
+      }
+      &.open{
+        display: flex;
+      }
+      background: #f9f9f9;
+      height: rem(84);
+      width: 100%;
+      color: #000;
+      font-size: rem(24);
+      line-height: rem(24);
+      .prtItem{
+        text-align: center;
+        flex: 1;
+        img{
+          margin: rem(9) auto rem(7) auto;
+        }
+        &:nth-child(1){
+          img{
+            width: rem(36);
+            height: rem(35);
+          }
+        }
+        &:nth-child(2){
+          img{
+            width: rem(31);
+            height: rem(27);
+          }
+        }
+        &:nth-child(3){
+          img{
+            width: rem(34);
+            height: rem(31);
+          }
+        }
+      }
+    }
+  }
+}
+//修改手机号码
+.alterMobile{
+  .alterMobileForm{
+    margin-top: rem(60);
+    .formIpt{
+      margin-bottom: rem(20);
+    }
+    .nextStepBtn{
+      margin-top: rem(290);
+    }
+  }
+  .tipsArea{
+    position: fixed;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+  }
+}
+//修改登录密码
+.alterLoginPwd{
+  .completeBtn{
+    margin-top: rem(150);
+  }
+}
+//充值支付密码
+.resetPayPwd{
+  .completeBtn{
+    margin-top: rem(120);
+  }
+}
+//管理账户
+.manageAccount{
+  .tipsArea{
+    position: static;
+  }
+  .alterAccountBtn{
+    margin-top: rem(100);
+    border: none;
+    &.disable{
+      background: #cccccc !important;
+    }
+  }
+  .formIpt{
+    margin-top: rem(20);
+  }
+}
+.selBankBox{
+  display: none;
+  &.active{
+    display: block;
+  }
+  position: fixed;
+  width: rem(510);
+  height: rem(646);
+  z-index: 11;
+  left: rem(64);
+  .selBankWrap{
+    background: #fff;
+    width: 100%;
+    overflow: hidden;
+    border-radius: rem(6);
+    height: rem(524);
+    .selBankList{
+      width: 100%;
+      height: rem(480);
+      overflow: auto;
+      margin-top: rem(20);
+      .bankListItem{
+        width: 100%;
+        overflow: hidden;
+        height: rem(76);
+        line-height: rem(76);
+        font-size: rem(24);
+        color: #000;
+        .bankPic{
+          margin-left: rem(20);
+          height: rem(76);
+          img{
+            height: rem(46);
+          }
+        }
+        .bankName{
+          letter-spacing: 2px;
+          text-align: right;
+          margin-right: rem(20);
+        }
+        &:nth-child(odd){
+          background: $downBg;
+        }
+      }
+    }
+  }
+  .closeThis{
+    margin-top: rem(38);
+    width: 100%;
+    text-align: center;
+    .closeBtn{
+      height: rem(80);
+      width: rem(80);
+    }
+  }
+}
+//金币提现
+.goldCash{
+  .formIpt{
+    margin-top: rem(20);
+  }
+  .subBtn{
+    margin-top: rem(60);
+  }
+}
+//提现记录
+.cashRecord{
+  &.hide{
+    display: none;
+  }
+  .rchType{
+    background:#ffcc67 url('../images/person_white.png') no-repeat center !important;
+    background-size: rem(30) rem(34);
+  }
+  .recRight{
+    color: #fe2424 !important;
+  }
+}
+//提现记录详情
+.cashDetail{
+
+}
+//金币明细
+.goldDetail{
+  .keyColor{
+    .header{
+      background: $keyColor;
+      i.leftSwordIcon{
+        background-image: url("../images/left_sword_w_icon.png");
+      }
+      h3{
+        color: #fff;
+      }
+    }
+
+  }
+  .goldDetailGrayBar{
+    margin-top: rem(260);
+  }
+  .goldTotal{
+    background: #fff;
+    height: rem(158);
+    width: 100%;
+    position: fixed;
+    top: rem(0);
+    left: 0;
+    display: flex;
+    .totalItem{
+      text-align: center;
+      span{
+        display: block;
+        font-size: rem(32);
+        line-height: rem(32);
+        margin-top: rem(40);
+        color: #e7bf04;
+      }
+      p{
+        font-size: rem(24);
+        color: #000;
+        line-height: rem(24);
+        margin-top: rem(25);
+      }
+      flex: 1;
+    }
+  }
+  .detailList{
+    .prtListHeader{
+      background: #fdf8e5;
+    }
+    .tableContent{
+      &.buy{
+        td:nth-child(1){
+          color: #eb0f0f;
+        }
+        td:nth-child(2){
+          color: #eb0f0f;
+        }
+      }
+      &.sale{
+        td:nth-child(1){
+          color:$keyColor
+        }
+        td:nth-child(2){
+          color:$keyColor
+        }
+      }
+    }
+  }
+}
+//指定交易
+.assignTrade{
+  .assginForm{
+    overflow: hidden;
+    .formIpt{
+      margin-top: rem(10);
+    }
+    .assignSubBtn{
+      margin-top: rem(20);
+      margin-bottom: rem(26);
+    }
+    .receiverUser{
+      &.error{
+        color: red;
+      }
+      &.ok{
+        color: green;
+      }
+    }
+    .sendWood{
+      color: #000 !important;
+    }
+  }
+  .assginTradeTableWrap{
+    height: rem(300);
+    background: #fff;
+    padding-bottom: rem(120);
+    width: 100%;
+    overflow: auto;
+    .assiginTable{
+     width: 100%;
+      text-align: center;
+      tr{
+        height: rem(60);
+      }
+      .tableTop{
+        font-size: rem(18);
+        color: #4e4e4e;
+        font-weight: bold;
+        background: #e5fcf8;
+      }
+      .tableCon{
+        border-bottom: 1px solid #ececec;
+        color: #4e4e4e;
+        font-size: rem(18);
+        td{
+          .cancelBtn{
+            display: none;
+            width: rem(80);
+            height: rem(42);
+            background: $keyColor;
+            line-height: rem(42);
+            color: #fff;
+            text-align: center;
+            margin: auto;
+            border-radius: rem(6);
+            &.refuse{
+              background: $dangerColor;
+            }
+            &.cancel{
+              background: $upColor;
+            }
+            &.active{
+              display: inline-block;
+            }
+          }
+        }
+        &.buy{
+          .type{
+            color: $upColor;
+          }
+        }
+        &.sale{
+          .type{
+            color: $keyColor;
+          }
+        }
+      }
+    }
+  }
+  .selWoodBox{
+    .selBankWrap .selBankList .bankListItem{
+      font-size: rem(20) !important;
+      span.num{
+        color: #ff8e27;
+      }
+    }
+  }
+  .assignTradeDetail{
+    display: none;
+    &.active{
+      display: block;
+    }
+    background: #fff;
+    position: fixed;
+    z-index: 11;
+    width: rem(574);
+    height: rem(510);
+    @extend .borRau8;
+    overflow: hidden;
+    left: rem(33);
+    .detailTop{
+      background: $keyColor;
+      position: relative;
+      width: 100%;
+      height: rem(58);
+      line-height: rem(58);
+      font-size: rem(24);
+      color: #fff;
+      text-indent: rem(30);
+      letter-spacing: 2px;
+      .closeIcon{
+        display: block;
+        position: absolute;
+        width: rem(58);
+        height: rem(58);
+        top: 0;
+        right: 0;
+        background: url("../images/close_icon.png") no-repeat center;
+        background-size: rem(16);
+      }
+    }
+    .detailBot{
+      height: rem(148);
+      background: #e5fcf8;
+      width: 100%;
+      overflow: hidden;
+      .keyBtn{
+        margin-top: rem(56);
+      }
+    }
+    .detailTable{
+      width: 90%;
+      margin: 0 auto rem(2) auto;
+      tr{
+        width: 100%;
+        height: rem(60);
+        font-size: rem(20);
+        color: #3c3c3c;
+        text-align: left;
+        .woodPic{
+          width: rem(40);
+          height: rem(29);
+        }
+        .woodName{
+          color: #000;
+        }
+        .redFont{
+          color: #f00000;
+        }
+      }
+    }
+  }
+}
+//指定交易订单
+.assignTradeOrder{
+  &.hide{
+    display: none;
+  }
+  .changeTable{
+    width: 100%;
+    border-top: 1px solid #ececec;
+    height: rem(110);
+    display: flex;
+    .tableItem{
+      flex: 1;
+      text-align: center;
+      font-size: rem(24);
+      color: #b0b0b0;
+      line-height: rem(50);
+      span{
+        display: inline-block;
+        margin: rem(25) auto;
+        &.unResolve{
+          position: relative;
+          &:after{
+            content: '';
+            position: absolute;
+            display: block;
+            top:rem(8);
+            right: rem(-6);
+            width: rem(12);
+            height: rem(12);
+            border-radius: rem(6);
+            background: #ff0000;
+            overflow: hidden;
+          }
+        }
+      }
+      &.active{
+        color: #000000;
+        span{
+          border-bottom: 3px solid #ffcc67;
+        }
+      }
+    }
+  }
+  .allAssginTrdOdr{
+    display: none;
+    &.active{
+      display: block;
+    }
+    li{
+      &.add{//收入
+        .rchType{
+          background: $upColor url("../images/person_white.png") no-repeat center;
+          background-size: rem(30) rem(34);
+        }
+        .recRight{
+          color: $upColor;
+        }
+      }
+      &.rdc{//支出
+        .rchType{
+          background: $keyColor url("../images/person_white.png") no-repeat center;
+          background-size: rem(30) rem(34);
+        }
+        .recRight{
+          color: $keyColor;
+        }
+      }
+    }
+  }
+  .unResolveOrder{
+    display: none;
+    &.active{
+      display: block;
+    }
+    li{
+      .rchType{
+        background: #ffcc67 url("../images/person_white.png") no-repeat center;
+        background-size: rem(30) rem(34);
+      }
+      .recRight{
+        color: #ffcc67;
+      }
+    }
+  }
+}
+//指定交易详情
+.assignTradeDetail{
+  letter-spacing: 1px;
+  .rchInfoTable{
+    margin-top: rem(30);
+    .tableT{
+      margin-top: rem(10);
+      &:after{
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -1000px;
+        right: 0;
+        width: 100%;
+        height: 3px;
+        border-top: 3px solid #fff;
+        color: red;
+        -webkit-transform-origin: 0 0;
+        transform-origin: 0 0;
+        //-webkit-transform: scaleY(0.5);
+        //transform: scaleY(0.5);
+        z-index: 4;
+      }
+    }
+  }
+}
+//待处理指定交易订单操作页面
+.assignTradeDetail{
+  .resolveBtn{
+    height: rem(68);
+    margin-top: rem(100);
+    .btnItem{
+      width: 50%;
+      height: rem(68);
+      float: left;
+      text-align: center;
+      font-size: rem(24);
+      line-height: rem(68);
+      color: #fff;
+      &.confirm{
+        background: #f6b32e;
+        border-bottom-left-radius: rem(8);
+        border-top-left-radius: rem(8);
+      }
+      &.cancel{
+        background: #f10600;
+        border-bottom-right-radius: rem(8);
+        border-top-right-radius: rem(8);
+      }
+    }
+  }
+}
+//交易明细
+.TradeRecordList{
+  &.hide{
+    display: none;
+  }
+  .AwardList{
+    .rchRecItem{
+      background: #fff url(../images/right_sword_icon.png) no-repeat right;
+      background-size: rem(12) rem(22);
+      &.sale{
+        .tradeType,.awardRight{
+          color: #fe2424;
+        }
+      }
+      &.buy{
+        .tradeType,.awardRight{
+          color: $keyColor;
+        }
+      }
+      .awardRight{
+        margin-right: rem(30);
+      }
+    }
+  }
+}
+//完善实名认证
+.nameAuth{
+  .tipsMsg{
+    .conWrap{
+      p{
+        margin-top: rem(30);
+        font-size: rem(24);
+        line-height: 30px;
+        color: #999;
+        letter-spacing: 1px;
+      }
+    }
+    display: none;
+    &.active{
+      display: block;
+    }
+  }
+  .authC1,.authC2{
+    display: none;
+    &.active{
+      display: block;
+    }
+  }
+  .upLoadPicBox{
+    .picItem{
+      position: relative;
+      input{
+        position: absolute;
+        z-index: 2;
+        top: 0;
+        left: 0;
+        display: block;
+        opacity: 0;
+        width: rem(450);
+        height: rem(286);
+      }
+      width: rem(450);
+      height: rem(286);
+      margin: rem(36) auto;
+      img{
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+  .picUpBtn{
+    margin:rem(30) auto;
+    width: rem(450);
+  }
+  .authC1{
+    .registBox{
+      margin-top: 10px;
+    }
+    .tipsArea.bot{
+      position: fixed;
+      bottom: 0;
+      left: 0;
+    }
+    .conWrap{
+      .regBtn{
+        margin-top: 30px;
+      }
+    }
+  }
+}
+.curOdrDetail,.childCom{
+  display: none;
+  &.active{
+    display: block;
+  }
+}
+.TradeRecordList{
+  &.hide{
+    display: none;
+  }
+}
+//确认对话框
+.confirmDia{
+  width: rem(500);
+  #payPwd{
+    height: 40px;
+    line-height: 40px;
+    text-indent: 5px;
+    font-size: 16px;
+    border: none;
+    border-bottom:1px solid #777;
+    width: rem(400);
+    display: block;
+    margin: 0 auto;
+  }
+  height: 200px;
+  background: #fff;
+  border-radius: 6px;
+  overflow: hidden;
+  left: calc((100% - 7.8125rem)/2);
+  position: fixed;
+  z-index: 20;
+  .diaText{
+    width: rem(400);
+    height: 70px;
+    margin: 5px auto 0 auto;
+    font-size: 14px;
+    text-align: left;
+    line-height: 16px;
+    color: #666;
+    letter-spacing: 1px;
+  }
+  .btnWrap{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 36px;
+    overflow: hidden;
+    .opBtn{
+      letter-spacing: 2px;
+      width:50%;
+      height: 36px;
+      line-height:36px;
+      color: #fff;
+      text-align: center;
+      font-size: 16px;
+      overflow: hidden;
+      &.cancelBtn{
+        background: #aaa;
+      }
+      &.confimBtn{
+        background: $keyColor;
+      }
+    }
+  }
+  .conHeader{
+    height: 35px;
+    line-height: 4px;
+    background: #fbfbfb;
+    border-bottom: 1px solid #f5f5f5;
+    width: 100%;
+    position: relative;
+    .closeThis{
+      line-height: 35px;
+      position: absolute;
+      width: 35px;
+      height: 35px;
+      text-align: center;
+      font-size: 26px;
+      color: #fff;
+      text-shadow: 0 0 2px  rgba(0,0,0,0.4);
+      top:0;
+      right: 0;
+    }
+  }
+}
+.alertLayer{
+  &.layerCon{
+    z-index: 19;
+  }
+  &.alertLoading{
+    z-index: 30;
+    background: rgba(0,0,0,0);
+    .loading{
+      width: 100px;
+      height: 100px;
+      border-radius: 6px;
+      background:rgba(0,0,0,0.3) url(../images/loading.gif) no-repeat center;
+      background-size: 30px 30px;
+      margin: auto;
+    }
+  }
+}
+.loadFinished{
+  display: none;
+  &.active{
+    display: block;
+  }
+  width: 100%;
+  height: 30px;
+  text-align: center;
+  line-height: 30px;
+  color: #999;
+}
+//返回游戏悬浮按钮
+.backGame{
+  z-index: 99;
+  position: fixed;
+  top: 10%;
+  right: 0;
+  width: 40px;
+  height: 40px;
+  background: rgba(1, 221, 182, 0.42);
+  font-size: 12px;
+  line-height: 40px;
+  font-weight: lighter;
+  border-radius: 20px;
+  //border-top-left-radius: 20px;
+  //border-bottom-left-radius: 20px;
+  border: 1px solid #eee;
+  box-shadow: 0 0 8px 2px rgba(0, 0, 0, 0.09);
+  color: #880319;
+  text-shadow: 0.5px 0.5px #35e6c7;
+  text-align: center;
+}
+/*物品展示页面*/
+.myGoodsList{
+  width: rem(598);
+  margin: rem(106) auto auto auto;
+  .goodItem{
+    box-shadow: 0 0 8px 2px rgba(0,0,0,0.05);
+    width: 100%;
+    height:rem(144);
+    border-radius: 3px;
+    background: #fff;
+    margin-bottom: rem(20);
+    overflow: hidden;
+    .itemImg{
+      display: block;
+      width: rem(107);
+      height: rem(82);
+      margin-top: rem(25);
+      margin-left: rem(20);
+    }
+    .itemRight{
+      height:rem(82);
+      width: rem(450);
+      margin-left: rem(20);
+      .itemName{
+        font-size:rem(24);
+        color: #000;
+        line-height: rem(30);
+        margin-top: rem(30);
+      }
+      .itemInfo{
+        width:rem(364);
+        overflow: hidden;
+        margin-top: rem(26);
+        font-size: rem(18);
+        color: #000;
+        .itemPri{
+          color: #dd6301;
+        }
+      }
+    }
+  }
+}
+//后期增加
+.hasAccount{
+  text-align: center;
+  font-size: rem(20);
+  margin-top: rem(30);
+  padding-bottom: rem(10);
+  text-decoration: underline;
+  color: #aaa;
+}
+.forgetPwd{
+  text-align: right;
+  font-size: rem(20);
+  color: #999;
+}
+.forgetPassword{
+  .forgetPwdForm{
+
+  }
+}
+//页面加载动画
+.spinner {
+  -webkit-transition: all linear 300ms;
+  margin:auto;
+  padding-top: 7rem;
+  background: #ffffff;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top:0;
+  z-index: 9 !important;
+  text-align: center;
+  font-size: 10px;
+}
+.spinner > div {
+  background-color: #DD0116;
+  height: 26px;
+  width: 10px;
+  //border-radius:50%;
+  display: inline-block;
+
+  -webkit-animation: stretchdelay 1.2s infinite ease-in-out;
+  animation: stretchdelay 1.2s infinite ease-in-out;
+}
+.spinner .rect2 {
+  -webkit-animation-delay: -1.1s;
+  animation-delay: -1.1s;
+}
+.spinner .rect3 {
+  -webkit-animation-delay: -1.0s;
+  animation-delay: -1.0s;
+}
+.spinner .rect4 {
+  -webkit-animation-delay: -0.9s;
+  animation-delay: -0.9s;
+}
+.spinner .rect5 {
+  -webkit-animation-delay: -0.8s;
+  animation-delay: -0.8s;
+}
+@-webkit-keyframes stretchdelay {
+  0%, 40%, 100% { -webkit-transform: scaleY(0.4) }
+  20% { -webkit-transform: scaleY(1.0) }
+}
+@keyframes stretchdelay {
+  0%, 40%, 100% {
+    transform: scaleY(0.4);
+    -webkit-transform: scaleY(0.4);
+  }  20% {
+       transform: scaleY(1.0);
+       -webkit-transform: scaleY(1.0);
+     }
+}
+.spinner.hide{
+  -webkit-transform: scale(0);
+}
+.feedbtn{
+  cursor: pointer;
+  moz-user-select: -moz-none;
+  -moz-user-select: none;
+  -o-user-select:none;
+  -khtml-user-select:none;
+  -webkit-user-select:none;
+  -ms-user-select:none;
+  user-select:none;
+}
+//市场修改
+.indexBanner{
+  width: 100%;
+  height: rem(254);
+  background: url("../images/index_banner.png") no-repeat center;
+  background-size: 100% 100%;
+}
+.hqList{
+  background: RGB(239,255,252);
+  width: 100%;
+  height: rem(430);
+  overflow: hidden;
+  .hqItem{
+    position: relative;
+    width: 33.3333333%;
+    height: rem(215);
+    float: left;
+    box-sizing: border-box;
+    border-bottom: 1px solid #ededed;
+    border-right: 1px solid #ededed;
+    &:nth-child(3),&:nth-child(6){
+      border-right: none;
+    }
+    overflow: hidden;
+    &:nth-child(1){
+      background: url("../images/tree1_img.png") no-repeat rem(10);
+      background-size: rem(77) rem(88);
+    }
+    &:nth-child(2){
+      background: url("../images/tree2_img.png") no-repeat rem(10);
+      background-size: rem(79) rem(93);
+    }
+    &:nth-child(3){
+      background: url("../images/tree3_img.png") no-repeat rem(10);
+      background-size: rem(61) rem(102);
+    }
+    &:nth-child(4){
+      background: url("../images/tree4_img.png") no-repeat rem(10);
+      background-size: rem(78) rem(101);
+    }
+    &:nth-child(5){
+      background: url("../images/tree5_img.png") no-repeat rem(10);
+      background-size: rem(58) rem(104);
+    }
+    &:nth-child(6){
+      background: url("../images/tree6_img.png") no-repeat rem(10);
+      background-size: rem(71) rem(88);
+    }
+    .rightInfo{
+      float: right;
+      height: rem(90);
+      margin-top: rem(52);
+      width: rem(114);
+      text-align: left;
+      .treeText{
+        width: rem(99);
+        height: rem(26);
+        margin-top: rem(18);
+      }
+      .upDown{
+        margin-top: rem(10);
+        width: 100%;
+        vertical-align: middle;
+        font-size: rem(30);
+        height: rem(44);
+        line-height: rem(44);
+        span{
+          color: #fe3005;
+          text-shadow:#fff 1px 0 0,#fff 0 1px 0,#fff -1px 0 0,#fff 0 -1px 0;
+
+          -webkit-text-shadow:#fff 1px 0 0,#fff 0 1px 0,#fff -1px 0 0,#fff 0 -1px 0;
+
+          -moz-text-shadow:#fff 1px 0 0,#fff 0 1px 0,#fff -1px 0 0,#fff 0 -1px 0;
+
+          //*filter: Glow(color=#fff, strength=1);
+        }
+        background: url("../images/index_up_icon.png") no-repeat rem(86);
+        background-size: rem(23) rem(23);
+      }
+    }
+    .botInfo{
+      width: 100%;
+      height: rem(50);
+      line-height: rem(50);
+      overflow: hidden;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      div{
+        width: 50%;
+        float: left;
+        text-align: center;
+        font-size: rem(14);
+      }
+    }
+    &.up{
+      .upDown{
+        span{
+          color: #fe3005;
+        }
+        background: url("../images/index_up_icon.png") no-repeat rem(86);
+        background-size: rem(23) rem(23);
+      }
+      .botInfo{
+        span{
+          color: #fe3005;
+        }
+      }
+    }
+    &.down{
+      .upDown{
+        span{
+          color: #44d38c;
+        }
+        background: url("../images/index_down_icob.png") no-repeat rem(86);
+        background-size: rem(23) rem(23);
+      }
+      .botInfo{
+        span{
+          color: #44d38c;
+        }
+      }
+    }
+  }
+}
+.greenTypeSe2{
+  &::-webkit-scrollbar
+  {
+    width: 5px;
+    height: 5px;
+    background-color: #F5F5F5;
+  }
+
+  /*定义滚动条轨道 内阴影+圆角*/
+  &::-webkit-scrollbar-track
+  {
+    -webkit-box-shadow: inset 0 0 2px rgba(0,0,0,0.3);
+    border-radius: 2px;
+    background-color: #F5F5F5;
+  }
+
+  /*定义滑块 内阴影+圆角*/
+  &::-webkit-scrollbar-thumb
+  {
+    border-radius: 2px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+    background-color: #555;
+  }
+}
+.greenTypeSel{
+  width: 100%;
+  overflow-y: hidden;
+  overflow-x: auto;
+  height: rem(150);
+  box-sizing: border-box;
+  //border-top: 1px solid #e6e6e6;
+  //border-bottom: 1px solid #e6e6e6;
+  background: #f5f5f5;
+  .greenItemWrap{
+    height:rem(150);
+    min-width: rem(910) !important;
+    width: rem(910);
+    overflow: hidden;
+    .greemItem{
+      .treeName{
+        width: 94%;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        height: rem(60);
+        line-height: rem(60);
+        font-size: rem(24);
+        color: #000;
+        text-align: right;
+      }
+      position: relative;
+      display: block;
+      float: left;
+      background: none;
+      width: rem(150);
+      height: rem(150);
+      border-right: 1px solid #e6e6e6;
+      &:last-child{
+        border: none;
+      }
+      &.active{
+        background-color: #c4f4ec;
+      }
+      &:nth-child(1){
+        background-image: url("../images/market_tree1.png");
+        background-repeat: no-repeat;
+        background-position:rem(10) center;
+        background-size: rem(99) rem(114);
+      }
+      &:nth-child(2){
+        background-image: url("../images/market_tree2.png");
+        background-repeat: no-repeat;
+        background-position:rem(10) center;
+        background-size: rem(103) rem(120);
+      }
+      &:nth-child(3){
+        background-image: url("../images/market_tree3.png");
+        background-repeat: no-repeat;
+        background-position:rem(10) center;
+        background-size: rem(100) rem(130);
+      }
+      &:nth-child(4){
+        background-image: url("../images/market_tree4.png");
+        background-repeat: no-repeat;
+        background-position:rem(10) center;
+        background-size: rem(77) rem(123);
+      }
+      &:nth-child(5){
+        background-image: url("../images/market_tree5.png");
+        background-repeat: no-repeat;
+        background-position:rem(10) center;
+        background-size: rem(68) rem(120);
+      }
+      &:nth-child(6){
+        background-image: url("../images/market_tree6.png");
+        background-repeat: no-repeat;
+        background-position:rem(10) center;
+        background-size: rem(93) rem(114);
+      }
+    }
+  }
+}
+.marketDetailBox{
+  .marketBaseInfo{
+    .conWrap{
+      .infoLeft{
+        .detailInfo{
+          font-size: rem(18);
+          margin-top: rem(10);
+        }
+        .upDwonIndex{
+          text-align: right;
+          .greenPic{
+            width: rem(75);
+            height: rem(75);
+            float: left;
+            background: url("../images/m_green_bg.png") no-repeat center;
+            background-size: 92%;
+            text-align: center;
+            .greenTextPic{
+              text-align: center;
+              vertical-align: middle;
+              width : 70%;
+            }
+          }
+          .indexNum{
+            float: left;
+            line-height: rem(75);
+          }
+          .indexPic{
+            margin-top: rem(3);
+            margin-left: rem(5);
+            float: left;
+            line-height: rem(75);
+          }
+        }
+      }
+    }
+  }
+  .oprBtnWrap{
+    .dfInfo{
+      color: #b2b2b2;
+      display: none;
+      width: 100%;
+      height: rem(54);
+      line-height: rem(54);
+      font-size: rem(20);
+      position: absolute;
+      left: 0;
+      background: #fff;
+      top: rem(-56);
+      box-shadow: 0px -2px 8px -2px rgba(0,0,0,.2);
+      &.active{
+        display: block;
+      }
+      .woodCnt{
+        width: rem(279);
+        text-align: right;
+      }
+      .floatYk{
+        height: rem(54);
+        overflow: hidden;
+        width: rem(286);
+        text-align: left;
+        span,.infoIcon{
+          display: block;
+          float: left;
+        }
+        .infoIcon{
+          width: rem(20);
+          height: rem(54);
+          background: url("../images/m_up_icon.png") no-repeat center rem(14);
+          background-size: rem(14) rem(24);
+        }
+        &.down{
+          .upColor{
+            color: $keyColor !important;
+          }
+          .infoIcon{
+            width: rem(20);
+            height: rem(54);
+            background: url("../images/m_down_icon.png") no-repeat center rem(14);
+            background-size: rem(14) rem(24);
+          }
+        }
+      }
+    }
+    .xsjIcon{
+      display: none;
+      &.active{
+        display: block;
+      }
+      width: rem(22);
+      height: rem(15);
+      position: absolute;
+      top: rem(-1);
+      left: rem(36);
+      background: url("../images/dao_san_jiao.png") no-repeat center;
+      background-size: 100% 100%;
+    }
+    background: #fff;
+    border-top: 1px solid #e4e4e4;
+    box-sizing: border-box;
+    .innerBox{
+      .oprBtn{
+        width: rem(200);
+        height: rem(45);
+        margin-top: rem(17.5);
+        line-height: rem(45);
+        font-size: rem(22);
+        letter-spacing: rem(4);
+        border-radius: rem(8);
+        &.buyBtn{
+          margin-left: rem(34);
+        }
+        &.saleBtn{
+          margin-left: rem(38);
+        }
+      }
+      .fdWrap{
+        margin-left: rem(23);
+        background: url("../images/m_yk_icon.png") no-repeat center;
+        background-size: rem(30) rem(27);
+        .infoIocn{
+          position: absolute;
+          width: rem(14);
+          height: rem(24);
+          background: url("../images/m_up_icon.png") no-repeat center;
+          background-size: 100%;
+          top: rem(0);
+          right: rem(-5);
+        }
+        &.down{
+          .infoIocn{
+            background: url("../images/m_down_icon.png") no-repeat center;
+            background-size: 100%;
+          }
+        }
+      }
+      .dlgOrder{
+        margin-right: rem(23);
+        background: url("../images/m_dlg_icon.png") no-repeat center;
+        background-size: rem(27) rem(34);
+        .infoDote{
+          background: #dd0101;
+          text-align: center;
+          border-radius: 50%;
+          font-size: rem(14);
+          position: absolute;
+          padding: rem(1) rem(4);
+          top: rem(0);
+          right: rem(0);
+          color: #fff;
+        }
+      }
+      .oprBtnS{
+        position: relative;
+        width: rem(45);
+        height: rem(45);
+        margin-top: rem(17.5);
+      }
+    }
+  }
+  .marketBuyBox{
+    &.marketSaleBox,&.marketBuyBoxObj{
+      &.active{
+        display: block;
+      }
+    }
+    &.marketSaleBox{
+      .boxHeader{
+        background: $keyColor;
+      }
+      .confirmBtn{
+        background: $keyColor !important;
+      }
+    }
+    display: none;
+    width: 100%;
+    height: rem(420);
+    position: fixed;
+    background: #fff;
+    z-index: 11;
+    bottom: 0;
+    left: 0;
+    .boxHeader{
+      width: 100%;
+      height: rem(67);
+      line-height: rem(67);
+      color: #fff;
+      font-size: rem(24);
+      .boxTitle{
+        margin-left: rem(26);
+        letter-spacing: rem(3);
+      }
+      .closeIcon{
+        display: block;
+        float: right;
+        height: rem(67);
+        width: rem(67);
+        background: url("../images/close_icon.png") no-repeat center;
+        background-size: rem(12);
+      }
+    }
+    .mBoxCon{
+      position: relative;
+      .aniText{
+        z-index: 12;
+        position: absolute;
+        display: none;
+        opacity: 1;
+        bottom: rem(270);
+        font-size: rem(18);
+        left: rem(160);
+        width: rem(80);
+        height: rem(30);
+      }
+      position: relative;
+      width: rem(594);
+      height: rem(318);
+      margin: rem(14) auto;
+      overflow: hidden;
+      .mBoxConLeft{
+        width: rem(380);
+        height: rem(318);
+        float: left;
+        box-sizing: border-box;
+        border-right: 1px dashed #cbcbcb;
+        .selPerArea{
+          width: rem(356);
+          height: rem(36);
+          margin: rem(10) auto rem(10) auto;
+          overflow: hidden;
+          .item{
+            float: left;
+            width: rem(90);
+            height: rem(30);
+            line-height: rem(30);
+            text-align: center;
+            color: #3c3c3c;
+            font-size: rem(16);
+            box-sizing: border-box;
+            border: 1px solid #cbcbcb;
+            border-radius: rem(6);
+            &:nth-child(2),&:nth-child(3){
+              margin-left: rem(43);
+            }
+            &.active{
+              color: $keyColor;
+              border: 1px solid $keyColor;
+              background: url("../images/sel_icon_bg.png") no-repeat bottom right;
+              background-size: rem(19) rem(18);
+            }
+          }
+        }
+        .confirmBtn{
+          width: rem(356);
+          margin: rem(10) auto;
+          font-size: rem(24);
+          color: #fff;
+          text-align: center;
+          letter-spacing: rem(4);
+          height: rem(60);
+          line-height: rem(60);
+          background: $upColor;
+          border-radius: rem(8);
+        }
+        .zdInfo{
+          height: rem(18);
+          width: rem(356);
+          margin: rem(4) auto rem(10) auto;
+          font-size: rem(14);
+          color: #444;
+          .yk{
+            &.up{
+              color: $upColor !important;
+            }
+          }
+          .zt{
+            float: left;
+          }
+          .dt{
+            float: right;
+          }
+        }
+      }
+      .mBoxConRight{
+        height: rem(318);
+        float: right;
+        width: rem(190);
+        margin-right: rem(12);
+        .dashSplit{
+          width: 100%;
+          height: 1px;
+          border-bottom: 1px dashed #cbcbcb;
+          margin: rem(6) auto;
+        }
+        .fiveTable{
+          width: 100%;
+          tr{
+            width: 100%;
+            height: rem(30);
+            font-size: rem(18);
+            line-height: rem(30);
+            text-align: center;
+          }
+        }
+        .saleFiveTable{
+
+        }
+        .buyFiveTable{
+
+        }
+      }
+    }
+  }
+}
+//带加减的input
+.inputAR{
+  position: relative;
+  width: rem(356);
+  height: rem(60);
+  border-radius: rem(6);
+  border: 1px solid #cbcbcb;
+  overflow: hidden;
+  margin: 0 auto;
+  .arInput{
+    display: block;
+    width: rem(216);
+    height: rem(60);
+    float: left;
+    text-align: center;
+    font-size: rem(20);
+    border: none;
+  }
+  .arOpr{
+    display: block;
+    width: rem(60);
+    line-height: rem(60);
+    text-align: center;
+    background: #f5f5f5;
+    font-size: rem(24);
+    color: #444;
+    &.redOpr{
+      float: left;
+      border-right: 1px solid #cbcbcb;;
+    }
+    &.addOpr{
+      float: right;
+      border-left: 1px solid #cbcbcb;;
+    }
+    height: rem(60);
+  }
+}

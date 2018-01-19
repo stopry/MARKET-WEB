@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>金币充值</title>
+  <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1, minimum-scale=1,maximum-scale=1"/>
+  <meta name="description" content="Z家园，2017最火爆种植游戏。" />
+  <meta name="keywords" content="Z家园|环保|绿色|种树|农场|种植" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="renderer" content="webkit"/>
+  <meta name="force-rendering" content="webkit"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  <meta name="msapplication-tap-highlight" content="no">
+  <meta name="full-screen" content="yes"/>
+  <meta name="x5-fullscreen" content="true"/>
+  <meta name="360-fullscreen" content="true"/>
+  <meta name="screen-orientation" content=""/>
+  <meta name="x5-orientation" content="">
+  <meta name="browsermode" content="application">
+  <meta name="x5-page-mode" content="app">
+  <link rel="icon" type="image/x-icon" href="../assets/images/favicon.ico">
+  <script src="../assets/js/plugin/flexible.css.js"></script>
+  <script src="../assets/js/plugin/flexible.ios.js"></script>
+  <link href="../assets/css/reset.css" rel="stylesheet">
+  <link href="../assets/css/global.css" rel="stylesheet">
+</head>
+<body>
+<div class="goldRechargeBox">
+  <div class="header">
+    <i class="leftSwordIcon feedbtn" onclick="window.history.back()"></i>
+    <h3 class="headerTitle">金币充值</h3>
+  </div>
+
+  <div class="tipsArea bgGray mt80Rem">
+    <p class="dangerColor">温馨提示:</p>
+    <p class="dangerColor">1. 最低充值10金币，且单笔低于20000金币。</p>
+    <p class="dangerColor">2. 充值比例：1元=1金币。</p>
+  </div>
+  <h3 class="quickPayTitle">
+    快捷支付
+  </h3>
+  <div class="quickPayBox">
+    <div class="payItem feedbtn active">￥50.00</div>
+    <div class="payItem feedbtn">￥200.00</div>
+    <div class="payItem feedbtn">￥1000.00</div>
+  </div>
+  <div class="grayBgBar"></div>
+  <h3 class="quickPayTitle rchNum">
+    充值金额
+  </h3>
+  <div class="WrapB rchIpt">
+    <input class="rchNum" placeholder="请输入充值金额" type="number" name="rchNum">
+  </div>
+  <h3 class="quickPayTitle noBg">
+    第三方支付
+  </h3>
+  <div class="thirdPay WrapB">
+    <div class="thirdItem active feedbtn">
+      <img src="../assets/images/wx_pay_icon.png" alt="">
+      微&nbsp;&nbsp;信
+    </div>
+    <div class="thirdItem feedbtn">
+      <img src="../assets/images/ali_pay_icon.png" alt="">
+      支付宝
+    </div>
+    <div class="thirdItem feedbtn">
+      <img src="../assets/images/bank_pay_icon.png" alt="">
+      银&nbsp;&nbsp;联
+    </div>
+  </div>
+  <div class="WrapB">
+    <div class="btn next feedbtn">
+      下一步
+    </div>
+  </div>
+</div>
+
+<script src="../assets/js/lib/zepto.js"></script>
+<script src="../assets/js/plugin/layer/layer.js"></script>
+<script src="../assets/js/myModule.js"></script>
+<script src="../assets/js/global/global.js"></script>
+<script src="../assets/js/global.js"></script>
+</body>
+</html>
+
+

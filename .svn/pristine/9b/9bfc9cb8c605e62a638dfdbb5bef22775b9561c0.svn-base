@@ -1,0 +1,64 @@
+<script src="gold-detail.component.ts"></script>
+<div class="promoteList goldDetail">
+  <Header
+    class="keyColor"
+    [title]="headerTitle"
+    (onVoted)="back()">
+    >
+  </Header>
+  <div class="goldTotal mt80Rem">
+    <div class="totalItem">
+      <span class="itemNum">{{goldInfo.totalRecharge}}</span>
+      <p class="itemDesc">充值总额</p>
+    </div>
+    <div class="totalItem">
+      <span class="itemNum">{{goldInfo.totalWithdraw}}</span>
+      <p class="itemDesc">提现总额</p>
+    </div>
+    <div class="totalItem">
+      <span class="itemNum">{{goldInfo.totalBonus}}</span>
+      <p class="itemDesc">推广奖励总额</p>
+    </div>
+  </div>
+  <div class="goldDetailGrayBar grayBgBar"></div>
+  <h1 class="secTitle gold">
+    金币明细
+  </h1>
+  <weui-infiniteloader (loadmore)="onLoadMore($event)">
+  <table class="listTable prtList detailList">
+    <tr class="tableHeader prtListHeader">
+      <td>类型</td>
+      <td>金额</td>
+      <td>时间</td>
+    </tr>
+    <tr class="tableContent prtListContent"
+      *ngFor = "let item of list"
+      [ngClass]="{
+        buy:item.tranAmt>=0,
+        sale:item.tranAmt<0
+      }"
+    >
+      <td>{{item.tranType}}</td>
+      <td>{{item.tranAmt}}</td>
+      <td>{{item.tranTime|date:"yyyy/M/d HH:mm:ss"}}</td>
+    </tr>
+
+    <!--<tr class="tableContent buy prtListContent">
+      <td>购买</td>
+      <td>-10000</td>
+      <td>2017/09/05</td>
+    </tr>
+    <tr class="tableContent sale prtListContent">
+      <td>卖出</td>
+      <td>+10000</td>
+      <td>2017/09/05</td>
+    </tr>-->
+  </table>
+    <div class="noCon" [ngClass]="{hide:isHasOdrList}">
+      没有任何内容
+    </div>
+    <div class="loadFinished" [ngClass]="{active:isLoaded}">
+      <!--加载完毕-->
+    </div>
+  </weui-infiniteloader>
+</div>

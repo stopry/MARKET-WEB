@@ -1,0 +1,25 @@
+$(function () {
+
+    var qrcode = new QRCode(document.getElementById("qrcode"), {
+        width : 100,
+        height : 100
+    });
+
+    var lock = Lock.createNew();
+    if (!lock.getLock()) {
+        return;
+    }
+    ajaxHelper.get(getUrl('user/getUserInfo'), {}, function (ret) {
+        if (ret.success) {
+            var userInfo = ret.obj.userInfo;
+            var qrStr = 'http://www.0001wan.com?id='+userInfo.id;
+            $('.codeText').html(userInfo.id);
+            $('.promoteLinkText').html(qrStr);
+            qrcode.makeCode(qrStr);
+
+        } else {
+            showTips('加载信息异常',"error");
+        }
+        lock.release();
+    });
+});
