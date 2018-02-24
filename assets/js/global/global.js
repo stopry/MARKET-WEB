@@ -313,7 +313,7 @@ function initBackGameBtn(){
     });
 }
 function backGame(){
-    window.open("http://www.zjiayuan.com", "_blank");
+    window.open("http://www.zjiayuan.com?marketToken="+encodeURI('bearer '+localStorage.getItem('AUTHORIZATION')), "_blank");
 }
 $(function(){
    if(sessionStorage.getItem('isFromGame')){
