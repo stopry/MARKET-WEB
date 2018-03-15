@@ -12,7 +12,7 @@ $(function () {
     ajaxHelper.get(getUrl('user/getUserInfo'), {}, function (ret) {
         if (ret.success) {
             var userInfo = ret.obj.userInfo;
-            var qrStr = 'http://www.zjiayuan.com?sid='+userInfo.id;
+            var qrStr = 'http://www.zjiayuan.com/?sid='+userInfo.id;
             $('.codeText').html(userInfo.id);
             $('.promoteLinkText').html(qrStr);
             $('#foo').html(qrStr);

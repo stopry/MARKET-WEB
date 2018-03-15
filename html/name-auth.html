@@ -25,6 +25,7 @@
   <script src="../assets/js/plugin/flexible.ios.js"></script>
   <link href="../assets/css/reset.css" rel="stylesheet">
   <link href="../assets/css/global.css" rel="stylesheet">
+  <script src="../assets/js/gold-cash.js"></script>
 </head>
 <body>
 <div class="nameAuth">
@@ -77,6 +78,21 @@
               获取验证码
             </div>
           </div>
+
+          <div class="inputCtr borderBot getMsgCode">
+            <i class="leftIcon reg_idcard"></i>
+            <input class="input right" name="bankName"  id="bankName"  autocomplete="off" disabled placeholder="请选择收款银行" type="text">
+            <!--.disable按钮变灰-->
+            <div class="getVerCode feedbtn" id="selBank" style="border-radius:0">
+              选择银行▼
+            </div>
+          </div>
+
+          <div class="inputCtr borderBot">
+            <i class="leftIcon reg_idcard"></i>
+            <input class="input right" name="bankCard" id="bankCard" autocomplete="off" placeholder="请输入银行卡号" type="number">
+          </div>
+
         </div>
       </form>
       <div class="conWrap">
@@ -85,7 +101,7 @@
         </div>
       </div>
     </div>
-    <div class="tipsArea bgGreen bot">
+    <div class="tipsArea bgGreen bot" id="warmTips">
       <p>温馨提示：</p>
       <p>1.为了保证您的权益，请填写真实的姓名和身份证号码，提交后将不能更改!</p>
       <p>2.每个身份证号码只能绑定一个账号。</p>
@@ -93,6 +109,96 @@
       <p>4.图片大小不超过1M。</p>
     </div>
   </div>
+
+  <!-- 银行选择弹框 -->
+  <div class="selBankBox" >
+    <div class="selBankWrap">
+      <div class="selBankList">
+  
+        <!----><div class="bankListItem feedbtn" >
+        <div class="bankPic fl">
+          <img alt="" src="../assets/images/bank_type_logo_1.png">
+        </div>
+        <div class="bankName fr">中国工商银行</div>
+      </div><div class="bankListItem feedbtn">
+        <div class="bankPic fl">
+          <img alt="" src="../assets/images/bank_type_logo_2.png">
+        </div>
+        <div class="bankName fr">中国农业银行</div>
+      </div><div class="bankListItem feedbtn">
+        <div class="bankPic fl">
+          <img alt="" src="../assets/images/bank_type_logo_3.png">
+        </div>
+        <div class="bankName fr">中国银行</div>
+      </div><div class="bankListItem feedbtn">
+        <div class="bankPic fl">
+          <img alt="" src="../assets/images/bank_type_logo_4.png">
+        </div>
+        <div class="bankName fr">中国建设银行</div>
+      </div><div class="bankListItem feedbtn">
+        <div class="bankPic fl">
+          <img alt="" src="../assets/images/bank_type_logo_5.png">
+        </div>
+        <div class="bankName fr">交通银行</div>
+      </div><div class="bankListItem feedbtn">
+        <div class="bankPic fl">
+          <img alt="" src="../assets/images/bank_type_logo_6.png">
+        </div>
+        <div class="bankName fr">招商银行</div>
+      </div><div class="bankListItem feedbtn">
+        <div class="bankPic fl">
+          <img alt="" src="../assets/images/bank_type_logo_7.png">
+        </div>
+        <div class="bankName fr">广发银行</div>
+      </div><div class="bankListItem feedbtn">
+        <div class="bankPic fl">
+          <img alt="" src="../assets/images/bank_type_logo_8.png">
+        </div>
+        <div class="bankName fr">光大银行</div>
+      </div><div class="bankListItem feedbtn">
+        <div class="bankPic fl">
+          <img alt="" src="../assets/images/bank_type_logo_9.png">
+        </div>
+        <div class="bankName fr">中国邮政储蓄银行</div>
+      </div><div class="bankListItem feedbtn">
+        <div class="bankPic fl">
+          <img alt="" src="../assets/images/bank_type_logo_10.png">
+        </div>
+        <div class="bankName fr">上海浦东发展银行</div>
+      </div><div class="bankListItem feedbtn">
+        <div class="bankPic fl">
+          <img alt="" src="../assets/images/bank_type_logo_11.png">
+        </div>
+        <div class="bankName fr">华夏银行</div>
+      </div><div class="bankListItem feedbtn">
+        <div class="bankPic fl">
+          <img alt="" src="../assets/images/bank_type_logo_12.png">
+        </div>
+        <div class="bankName fr">中国民生银行</div>
+      </div><div class="bankListItem feedbtn">
+        <div class="bankPic fl">
+          <img alt="" src="../assets/images/bank_type_logo_13.png">
+        </div>
+        <div class="bankName fr">平安银行</div>
+      </div><div class="bankListItem feedbtn">
+        <div class="bankPic fl">
+          <img alt="" src="../assets/images/bank_type_logo_14.png">
+        </div>
+        <div class="bankName fr">中信银行</div>
+      </div><div class="bankListItem feedbtn">
+        <div class="bankPic fl">
+          <img alt="" src="../assets/images/bank_type_logo_15.png">
+        </div>
+        <div class="bankName fr">兴业银行</div>
+      </div>
+  
+      </div>
+    </div>
+    <div class="closeThis">
+      <img alt="" id="closeBtn" class="closeBtn feedbtn" src="../assets/images/close_sel_bankcard.png" style="opacity: 1;">
+    </div>
+  </div>
+
   <!--C2认证div-->
   <!--.active 显示此部分-->
   <div class="authC2">

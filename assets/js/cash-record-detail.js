@@ -7,7 +7,7 @@ $(function () {
     ajaxHelper.get(getUrl('acct/withdrawDetail'), {id:id}, function (ret) {
         if (ret.success) {
             var info = ret.obj;
-            $("#amt").html((info.amt).toFixed(2));
+            $("#amt").html((info.amt).toFixed(2)+"元");
             $("#status").html(showWithdrawStatus(info.status));
             $("#charge").html((info.charge).toFixed(2));
             $("#cardNo").html(info.cardNo);

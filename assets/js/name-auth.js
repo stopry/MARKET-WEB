@@ -1,5 +1,31 @@
 $(function () {
 
+    //银行卡号得到焦点时隐藏底部温馨提示
+    $("#bankCard").focus(function () {
+        $("#warmTips").hide();
+    }).blur(function () {
+        $("#warmTips").show();
+    });
+
+    objVerticalCenter(".selBankBox")
+
+    $("#selBank").click(function () {
+        showLayerBlack(1);
+        $(".selBankBox").addClass('active');
+    });
+
+    $(".closeBtn").click(function () {
+        showLayerBlack(false);
+        $(".selBankBox").removeClass('active');
+    });
+
+    $(".selBankBox .selBankList .bankListItem").click(function () {
+        var _index = $(this).find(".bankName").html();
+        $("#bankName").val(_index);
+        $(".closeBtn").click();
+    });
+
+
     var userInfo=JSON.parse(localStorage.getItem('userInfo'));
     if(userInfo.certLevel == "C0"){
         if(userInfo.levelStatus==='1'){
@@ -73,13 +99,15 @@ $(function () {
         para.realName = FormUtil.getParaVal('#realName');
         para.idCard = FormUtil.getParaVal('#idCard');
         para.code = FormUtil.getParaVal('#msgCode');
+        para.bankName = FormUtil.getParaVal('#bankName');
+        para.cardNo = FormUtil.getParaVal('#bankCard');
         if (!lock.getLock()) {
             return;
         }
         ajaxHelper.post(getUrl('security/commitCertOne'), para, function (ret) {
             if (ret.success) {
                 showTips('C1认证成功');
-                location="user-center.html";
+                setTimeout(function(){location="user-center.html";},2000);
             } else {
                 showTips(ret.msg,"error");
             }

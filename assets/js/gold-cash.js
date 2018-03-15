@@ -47,8 +47,11 @@ function withdraw() {
     }else if(pwd.length!=6||isNaN(pwd)){
         showTips('支付密码必须是6位纯数字');
         return false;
-    }else if(amt<100 || amt>10000) {
-        showTips('提现金额必须大于100元小于10000元');
+    }else if(amt<1000 || amt>1000000) {
+        showTips('提现金币必须大于1000小于1000000金币');
+        return false;
+    }else if(amt%1000!=0){
+        showTips('提现金币必须必须是1000的倍数');
         return false;
     }
 
@@ -58,10 +61,20 @@ function withdraw() {
     }
     ajaxHelper.post(getUrl("acct/withdraw"), data, function (ret) {
         if (ret.success) {
-            showTips('提现成功');
-            location.reload();
+
+            location = '/html/cash-success.html?gold='+data.amt;
+
+            //   layer.confirm('提现成功', {
+            //     btn: ['确定'] //按钮
+            //   }, function () {
+            //     location.reload();
+            //   });
+            // showTips('提现成功');
+            // setTimeout(function () {
+            //   location.reload();
+            // },3000);
         } else {
-            showTips('提现异常', "error");
+            showTips(ret.msg, "error");
         }
         lock.release();
     },false);

@@ -7,12 +7,12 @@ $(function () {
     ajaxHelper.get(getUrl('acct/rechargeDetail'), {id:id}, function (ret) {
         if (ret.success) {
             var info = ret.obj;
-            $("#payType").html(showPayChannel(info.payType));
+            $("#payType").html(showPayChannel(info.payChannel));
             $("#payAmt").html(info.payAmt);
             $("#status").html(showRechargeStatus(info.status));
-            $("#payType2").html(showPayChannel(info.payType));
+            $("#payType2").html(showPayChannel(info.payChannel));
             $("#remark").html(info.remark);
-            $("#payTime").html(Util.formatDate(info.payTime));
+            $("#payTime").html(Util.formatDate(info.orderTime));
             $("#outOrder").html(info.outOrder);
 
         } else {

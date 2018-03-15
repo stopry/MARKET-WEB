@@ -43,7 +43,7 @@ $(function () {
                          html += '</div> <div class="payStr"> <div class="rchTypeText">';
                          html += showPayChannel(item.payChannel);
                          html += '</div> <div class="rchTime">';
-                         html += Util.formatDate(item.payTime);
+                         html += Util.formatDate(item.orderTime);
                          html += '</div></div> </div> <div class="recRight fr">';
                          html += item.payAmt;
                          html += '</div> </li>';

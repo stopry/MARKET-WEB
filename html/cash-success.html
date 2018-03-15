@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>金币明细</title>
+  <title>提现成功</title>
   <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1, minimum-scale=1,maximum-scale=1"/>
   <meta name="description" content="Z家园，2017最火爆种植游戏。" />
   <meta name="keywords" content="Z家园|环保|绿色|种树|农场|种植" />
@@ -25,47 +25,49 @@
   <script src="../assets/js/plugin/flexible.ios.js"></script>
   <link href="../assets/css/reset.css" rel="stylesheet">
   <link href="../assets/css/global.css" rel="stylesheet">
+  <style>
+      .rechargeSuccessBox .rchSusPic{
+        width: 4.14063rem;
+        height: 4.78125rem;
+        margin: 2.25rem auto 0.65625rem auto;
+        background: url(../assets/images/cash_success.png) no-repeat center;
+        background-size: 66%;
+      }
+  </style>
 </head>
 <body>
-
-<div class="promoteList goldDetail">
+<div class="rechargeSuccessBox">
   <div class="header">
-    <i class="leftSwordIcon feedbtn" onclick="window.history.back()"></i>
-    <h3 class="headerTitle">金币明细</h3>
+    <i class="leftSwordIcon feedbtn" onclick="history.back();"></i>
+    <h3 class="headerTitle">提现成功</h3>
   </div>
-  <div class="goldTotal mt80Rem">
-    <div class="totalItem">
-      <span class="itemNum" id="totalRecharge">0000</span>
-      <p class="itemDesc">充值总金币</p>
-    </div>
-    <div class="totalItem">
-      <span class="itemNum" id="totalWithdraw">0000</span>
-      <p class="itemDesc">提现总金币</p>
-    </div>
-    <div class="totalItem">
-      <span class="itemNum" id="totalBonus">0000</span>
-      <p class="itemDesc">推广奖励金币</p>
-    </div>
-  </div>
-  <div class="goldDetailGrayBar grayBgBar"></div>
-  <h1 class="secTitle gold">
-    金币明细
-  </h1>
-    <table class="listTable prtList detailList" id="tab">
-      <tr class="tableHeader prtListHeader">
-        <td>类型</td>
-        <td>金币</td>
-        <td>时间</td>
-      </tr>
+  <div class="rchSusPic">
 
+  </div>
+  <div class="payInfoWrap">
+    <table class="payInfo WrapB">
+      <!-- <tr>
+        <td>
+          银行卡
+        </td>
+        <td  id="type">
+          中国银行&nbsp;尾号4567
+        </td>
+      </tr> -->
+      <tr>
+        <td>
+          提现金额
+        </td>
+        <td id="money">
+          <p class="money"></p>
+        </td>
+      </tr>
     </table>
-    <!--.hide 隐藏这个提示-->
-    <div class="noCon hide">
-      没有任何内容
+  </div>
+  <div class="WrapB">
+    <div class="btn radiu keyBtn mt80Rem feedbtn" id="ok" onclick="history.back();">
+      完成
     </div>
-  <!--.active显示此提示-->
-  <div class="loadFinished">
-    没有更多了
   </div>
 </div>
 
@@ -74,6 +76,11 @@
 <script src="../assets/js/myModule.js"></script>
 <script src="../assets/js/global/global.js"></script>
 <script src="../assets/js/global.js"></script>
-<script src="../assets/js/gold-detail.js"></script>
+<script>
+    $(function(){
+        var m = Util.getQueryString('gold');
+        $(".money").html("￥"+m);
+    });
+</script>
 </body>
 </html>
