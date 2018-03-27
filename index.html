@@ -106,6 +106,7 @@
     <div class="rect5"></div>
   </div>
   <script src="./assets/js/lib/zepto.js"></script>
+  <script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
   <script src="./assets/js/plugin/layer/layer.js"></script>
   <script src="./assets/js/plugin/swiper.js"></script>
   <script src="./assets/js/myModule.js"></script>
@@ -117,6 +118,101 @@
     $(function(){
       $("#spinner").remove();
     });
+
+    $(function(){
+
+    });
+
+    //全局变量
+    window.Global={
+      version:1,
+      promotCode:0,//推广码
+      user:{
+        isVistor:!1,//是否为游客
+      },
+      isFirstCom:true,
+      isFirstFromGame:true,
+      isFormCash:false,
+      //微信分享数据
+      wxShare:{
+        title: '《Z家园》一款能打造碳汇价值的游戏！',
+        desc: '躺着赚钱，还不快来！',
+//        link: !cc.sys.isNative?window.location.origin+'sid=0':'http://www.zjiayuan.com',
+        link: 'http://www.senchen.vip/goUrl.html?url='+window.location.href,
+        //imgUrl: !cc.sys.isNative?window.location.origin+'/res/raw-assets/res/textures/global/share_logo.png':'http://www.zjiayuan.com'
+        imgUrl:'http://wap.qa.zjiayuan.com/res/raw-assets/res/textures/global/share_logo.png'
+      }
+    };
+
+    function getDataAndRegist(){
+      $.ajax({
+        url:'/market/wx/getJsapiInfo',
+        type:'GET',
+        data:{urlStr:window.location.href},
+        success:function(res){
+          console.log(res);
+          if(res.success){
+            var obj = res.obj;
+            wx.config({
+              debug: false,
+              appId: 'wxaaefb51cb3707a3a',
+              timestamp: parseInt(obj.timestamp),//服务端获取
+              nonceStr: obj.nonceStr,//服务端获取
+              signature: obj.signature,//服务端获取
+              jsApiList: [
+                'checkJsApi',
+                'onMenuShareTimeline',//分享到朋友圈
+                'onMenuShareAppMessage',//分享到微信好友
+              ]
+            });
+          }
+
+
+
+        },
+        error:function(error){
+
+        }
+      })
+    }
+    setTimeout(function(){
+      getDataAndRegist();
+    },1000);
+
+    wx.ready(function () {
+        console.log(Global.wxShare);
+        // 2. 分享接口
+        // 2.1 监听“分享给朋友”，按钮点击、自定义分享内容及分享结果接口
+        wx.onMenuShareAppMessage({
+            title: Global.wxShare.title,
+            desc: Global.wxShare.desc,
+            link: Global.wxShare.link,
+            imgUrl: Global.wxShare.imgUrl,
+            success: function () {
+                console.log("分享成功");
+            },
+            cancel: function () {
+                console.log("分享失败");
+            }
+        });
+
+        // 2.2 监听“分享到朋友圈”按钮点击、自定义分享内容及分享结果接口
+        wx.onMenuShareTimeline({
+            title: Global.wxShare.title,
+            desc: Global.wxShare.desc,
+            link: Global.wxShare.link,
+            imgUrl: Global.wxShare.imgUrl,
+            success: function () {
+                console.log("分享成功");
+            },
+            cancel: function () {
+                console.log("分享失败");
+            }
+        });
+    });
+
+
+
   </script>
 </body>
 </html>

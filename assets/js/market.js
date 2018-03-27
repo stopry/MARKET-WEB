@@ -119,6 +119,7 @@ $(function () {
     //卖出框买入量选择
     $(".marketSaleBox .selPerArea .item").click(function () {
         $(this).addClass('active').siblings('.item').removeClass('active');
+        // autoShowFee();
     });
 
     //委托订单点击撤销
@@ -190,7 +191,7 @@ $(function () {
                 caclCanBuy();
             }
         });
-
+        autoShowFee();
     });
 
     $(document).on('click', '.marketBuyBoxObj .fiveTable tr', function (e) {
@@ -469,15 +470,16 @@ $(function () {
                     $('#mcCntHtml').html('可交易量：' + data.cnt);
                     var k = parseInt(data.cnt / minTran);
                     canTranCnt = minTran * k;
+                  canTranCnt2 = getCanTranCntPer(2);
+
+                  canTranCnt3 = getCanTranCntPer(3);
+
+                  $('#mcCnt').attr('placeholder', '可卖出' + data.cnt);
                 }
             } else {
                 canTranCnt = 0;
             }
-            canTranCnt2 = getCanTranCntPer(2);
 
-            canTranCnt3 = getCanTranCntPer(3);
-
-            $('#mcCnt').attr('placeholder', '可卖出' + canTranCnt);
         }, showload);
     }
 
@@ -490,6 +492,7 @@ $(function () {
         } else {
             target.val(canTranCnt3);
         }
+        autoShowFee();
     });
 
     // 1/2
@@ -501,6 +504,7 @@ $(function () {
         } else {
             target.val(canTranCnt2);
         }
+      autoShowFee();
     });
 
     // all
@@ -508,6 +512,7 @@ $(function () {
         var key = $(this).data('val');
         var target = $('#' + key);
         target.val(canTranCnt);
+      autoShowFee();
     });
 
     //涨停
@@ -1114,4 +1119,23 @@ $(function () {
         ];
         ani(arr);
     },5000);
+
+
+  $('#mcPrice').keyup(function () {
+    autoShowFee();
+  });
+  $('#mcCnt').keyup(function () {
+    autoShowFee();
+  });
 });
+
+//自动计算收费费
+function autoShowFee() {
+  var val = $("#mcPrice").val();
+  var num = $("#mcCnt").val();
+  var fee = val*num*0.01;
+  if(fee&&fee<1) fee=1;
+  fee = fee.toFixed(2);
+  $("#mcCharge").html(fee);
+  // console.log(val,num,fee);
+}

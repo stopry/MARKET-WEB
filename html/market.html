@@ -371,27 +371,27 @@
             <div class="aniText">0000</div>
             <div class="mBoxConLeft">
                 <div class="inputAR">
-                    <i class="arOpr redOpr feedbtn subPrice" data-val="mcPrice" data-type="mc">-</i>
+                    <i class="arOpr redOpr feedbtn subPrice" onclick="autoShowFee();" data-val="mcPrice" data-type="mc">-</i>
                     <input type="number" class="arInput" id="mcPrice"/>
-                    <i class="arOpr addOpr feedbtn addPrice" data-val="mcPrice" data-type="mc">+</i>
+                    <i class="arOpr addOpr feedbtn addPrice" onclick="autoShowFee();" data-val="mcPrice" data-type="mc">+</i>
                 </div>
                 <div class="zdInfo">
                     <span class="zt" id="mczt">涨停：0.00</span>
                     <span class="dt" id="mcdt">跌停：0.00</span>
                 </div>
                 <div class="inputAR">
-                    <i class="arOpr redOpr feedbtn subCnt" data-val="mcCnt" data-type="mc">-</i>
+                    <i class="arOpr redOpr feedbtn subCnt" onclick="autoShowFee();" data-val="mcCnt" data-type="mc">-</i>
                     <input type="number" placeholder="" class="arInput" id="mcCnt" />
-                    <i class="arOpr addOpr feedbtn addCnt" data-val="mcCnt" data-type="mc">+</i>
+                    <i class="arOpr addOpr feedbtn addCnt" onclick="autoShowFee();" data-val="mcCnt" data-type="mc">+</i>
                 </div>
                 <div class="selPerArea">
-                    <div class="item feedbtn threeBtn" data-val="mcCnt" id="mc_3_cnt">
+                    <div class="item feedbtn threeBtn" data-val="mcCnt"  id="mc_3_cnt">
                         1/3
                     </div>
-                    <div class="item feedbtn twoBtn" data-val="mcCnt" id="mc_2_cnt">
+                    <div class="item feedbtn twoBtn" data-val="mcCnt"  id="mc_2_cnt">
                         1/2
                     </div>
-                    <div class="item feedbtn allBtn" data-val="mcCnt" id="mc_all_cnt">
+                    <div class="item feedbtn allBtn" data-val="mcCnt"  id="mc_all_cnt">
                         全仓
                     </div>
                 </div>

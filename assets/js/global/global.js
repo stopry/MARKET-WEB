@@ -186,7 +186,7 @@ function showConIpt(text,confirmFn,cancelFn){
         '<div class="diaText">'+
         text+
         '</div>'+
-        '<input type="password" placeholder="请输入交易密码" id="payPwd">'+
+        '<input type="password" placeholder="请输入二级密码" id="payPwd">'+
         '<div class="btnWrap">'+
         '<div class="opBtn cancelBtn fl feedbtn">'+
         '取消'+
@@ -210,7 +210,7 @@ function showConIpt(text,confirmFn,cancelFn){
     confirDia.find('.confimBtn').click(function(){
         var pwd = confirDia.find('#payPwd').val();
         if(!pwd){
-            showTips('请输入交易密码','error');
+            showTips('请输入二级密码','error');
             return;
         }
         confirmFn(pwd);

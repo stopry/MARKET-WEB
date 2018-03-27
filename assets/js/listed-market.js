@@ -392,7 +392,7 @@ function guazhai() {
         return false;
     }
     if (!paypwd) {
-        showTips('请输入交易密码');
+        showTips('请输入二级密码');
         return false;
     }
 

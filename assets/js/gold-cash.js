@@ -42,10 +42,10 @@ function withdraw() {
         showTips('请输入提现金额');
         return false;
     }else if(!pwd){
-        showTips('请输入支付密码');
+        showTips('请输入二级密码');
         return false;
     }else if(pwd.length!=6||isNaN(pwd)){
-        showTips('支付密码必须是6位纯数字');
+        showTips('二级密码必须是6位纯数字');
         return false;
     }else if(amt<1000 || amt>1000000) {
         showTips('提现金币必须大于1000小于1000000金币');

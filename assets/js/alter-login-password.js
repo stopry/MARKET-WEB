@@ -13,7 +13,7 @@ $('#updatePwdBtn').on('click', function (ret) {
         return;
     }
     if (!validate.checkPwd(para.newPwd)) {
-        validate.showErr('密码由英文字母开头，只能包含英文字母、数字、下划线的6至20位字符串组成', '#updatePwdNewPwd');
+        validate.showErr('密码应该6至20位字符串组成', '#updatePwdNewPwd');
         return;
     }
     if (rePwd != para.newPwd) {

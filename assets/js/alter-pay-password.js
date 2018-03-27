@@ -61,7 +61,7 @@ $(function(){
             showTips('请再次输入密码');
             return false;
         }else if(password.length!=6||isNaN(password)){
-            showTips('支付密码必须是6位纯数字');
+            showTips('二级密码必须是6位纯数字');
             return false;
         }else if(!password===passwordT){
             showTips('两次密码不一样');
@@ -74,7 +74,7 @@ $(function(){
                 if(!res.success){
                     showTips(res.msg);
                 }else{
-                    showTips('重置支付密码成功');
+                    showTips('重置二级密码成功');
                     location="user-center.html";
                 }
                 lock.release();

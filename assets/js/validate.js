@@ -13,7 +13,7 @@ var validate = {
         }
     },
     checkPwd: function (pwd) { //密码正则,由字母开头
-        var re = /^[a-zA-Z][a-zA-Z0-9_]{5,19}$/;
+        var re = /^.{3,20}$/;
         if (re.test(pwd)) {
             return true;
         } else {

@@ -101,6 +101,7 @@ $(function () {
         para.code = FormUtil.getParaVal('#msgCode');
         para.bankName = FormUtil.getParaVal('#bankName');
         para.cardNo = FormUtil.getParaVal('#bankCard');
+        para.payPwd = FormUtil.getParaVal('#payPwd');
         if (!lock.getLock()) {
             return;
         }
