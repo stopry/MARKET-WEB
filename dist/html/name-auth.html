@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>实名认证</title>
+  <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1, minimum-scale=1,maximum-scale=1"/>
+  <meta name="description" content="Z家园，2017最火爆种植游戏。" />
+  <meta name="keywords" content="Z家园|环保|绿色|种树|农场|种植" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="renderer" content="webkit"/>
+  <meta name="force-rendering" content="webkit"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  <meta name="msapplication-tap-highlight" content="no">
+  <meta name="full-screen" content="yes"/>
+  <meta name="x5-fullscreen" content="true"/>
+  <meta name="360-fullscreen" content="true"/>
+  <meta name="screen-orientation" content=""/>
+  <meta name="x5-orientation" content="">
+  <meta name="browsermode" content="application">
+  <meta name="x5-page-mode" content="app">
+  <link rel="icon" type="image/x-icon" href="../assets/images/favicon.ico?v=b64f2e47c6">
+  <script src="../assets/js/plugin/flexible.css.js?v=121a71fac1"></script>
+  <script src="../assets/js/plugin/flexible.ios.js?v=2f6d8ee4fc"></script>
+  <link href="../assets/css/reset.css?v=bbf6df972c" rel="stylesheet">
+  <link href="../assets/css/global.css?v=cc214c3438" rel="stylesheet">
+  <!-- <script src="../assets/js/gold-cash.js?v=bb27684a25"></script> -->
+</head>
+<body>
+<div class="nameAuth">
+  <div class="header">
+    <i class="leftSwordIcon feedbtn" onclick="window.history.back()"></i>
+    <h3 class="headerTitle">实名认证</h3>
+  </div>
+  <!--提示内容 .active 显示此提示-->
+  <div class="tipsMsg">
+    <div class="grayBgBar mt80Rem"></div>
+    <div class="conWrap">
+      <p>
+        这里是提示内容
+      </p>
+    </div>
+  </div>
+  <!--C1认证div-->
+  <!--.active显示C1认证部分-->
+  <div class="authC1">
+    <div class="grayBgBar mt80Rem"></div>
+    <div class="tipsArea">
+      <p class="keyColor">
+        *您已通过实名认证[C0]，您可以申请更高等级的认证[C1]。<br/>
+        如实名信息有误，请主动联系客服进行修改以后，再进行C1认证！
+      </p>
+    </div>
+    <div class="registBox">
+      <form class="regForm">
+        <div class="conWrap">
+          <div class="inputCtr borderBot">
+            <i class="leftIcon reg_name"></i>
+            <input class="input right" name="realName" id="realName" autocomplete="off" placeholder="请输入您的真实姓名" type="text">
+          </div>
+          <div class="inputCtr borderBot">
+            <i class="leftIcon reg_idcard"></i>
+            <input class="input right" name="idCard" id="idCard" autocomplete="off" placeholder="请输入您的身份证号码" type="text">
+          </div>
+          <div class="inputCtr borderBot">
+            <i class="leftIcon reg_capcode"></i>
+            <input class="input right"  id="verCode" placeholder="请输入图形验证码"  type="text">
+            <div class="rightOpr getCapCode feedbtn">
+              <img alt="" id="imgCode" src="../assets/images/erw_code.png?v=037d2f83c9" style="width: 100%;height: 1rem !important;">
+            </div>
+          </div>
+          <div class="inputCtr borderBot getMsgCode">
+            <i class="leftIcon reg_vercode"></i>
+            <input class="input right" name="msgCode"  id="msgCode"  autocomplete="off" placeholder="请输入短信验证码" type="number">
+            <!--.disable按钮变灰-->
+            <div class="getVerCode feedbtn" id="getVerCode">
+              获取验证码
+            </div>
+          </div>
+
+          <div class="inputCtr borderBot getMsgCode">
+            <i class="leftIcon reg_idcard"></i>
+            <input class="input right" name="bankName"  id="bankName"  autocomplete="off" disabled placeholder="请选择收款银行" type="text">
+            <!--.disable按钮变灰-->
+            <div class="getVerCode feedbtn" id="selBank" style="border-radius:0">
+              选择银行▼
+            </div>
+          </div>
+
+          <div class="inputCtr borderBot">
+            <i class="leftIcon reg_idcard"></i>
+            <input class="input right" name="bankCard" id="bankCard" autocomplete="off" placeholder="请输入银行卡号" type="number">
+          </div>
+
+          <div class="inputCtr borderBot">
+            <i class="leftIcon reg_idcard"></i>
+            <input class="input right" name="payPwd" id="payPwd" autocomplete="off" placeholder="请设置二级密码" type="password">
+          </div>
+        </div>
+      </form>
+      <div class="conWrap">
+        <div class="regBtn btn keyBtn feedbtn" id="c1btn">
+          提交
+        </div>
+      </div>
+    </div>
+    <div class="tipsArea bgGreen bot" id="warmTips">
+      <p>温馨提示：</p>
+      <p class="dangerColor">
+        二级密码是您游戏内用于交易物品，提现时所用的密码，并非您的银行卡密码，设置后请妥善保存，请勿转告他人以免造成不必要的损失。
+      </p>
+      <p>1.为了保证您的权益，请填写真实的姓名和身份证号码，提交后将不能更改!</p>
+      <p>2.每个身份证号码只能绑定一个账号。</p>
+      <p>3.实名认证分LV1，LV2，LV3三个等级；C1等级需要提供正确的姓名与证件号码，LV2等级需要您提供正确的证件正反面照片，LV3等级暂未开放；</p>
+      <p>4.图片大小不超过1M。</p>
+    </div>
+  </div>
+
+  <!-- 银行选择弹框 -->
+  <div class="selBankBox" >
+    <div class="selBankWrap">
+      <div class="selBankList">
+  
+        <!----><div class="bankListItem feedbtn" >
+        <div class="bankPic fl">
+          <img alt="" src="../assets/images/bank_type_logo_1.png?v=a51d741b2d">
+        </div>
+        <div class="bankName fr">中国工商银行</div>
+      </div><div class="bankListItem feedbtn">
+        <div class="bankPic fl">
+          <img alt="" src="../assets/images/bank_type_logo_2.png?v=1827d5f8c6">
+        </div>
+        <div class="bankName fr">中国农业银行</div>
+      </div><div class="bankListItem feedbtn">
+        <div class="bankPic fl">
+          <img alt="" src="../assets/images/bank_type_logo_3.png?v=38df850bfb">
+        </div>
+        <div class="bankName fr">中国银行</div>
+      </div><div class="bankListItem feedbtn">
+        <div class="bankPic fl">
+          <img alt="" src="../assets/images/bank_type_logo_4.png?v=1a80ae2358">
+        </div>
+        <div class="bankName fr">中国建设银行</div>
+      </div><div class="bankListItem feedbtn">
+        <div class="bankPic fl">
+          <img alt="" src="../assets/images/bank_type_logo_5.png?v=d511e70982">
+        </div>
+        <div class="bankName fr">交通银行</div>
+      </div><div class="bankListItem feedbtn">
+        <div class="bankPic fl">
+          <img alt="" src="../assets/images/bank_type_logo_6.png?v=d29d8ac141">
+        </div>
+        <div class="bankName fr">招商银行</div>
+      </div><div class="bankListItem feedbtn">
+        <div class="bankPic fl">
+          <img alt="" src="../assets/images/bank_type_logo_7.png?v=53c61d9309">
+        </div>
+        <div class="bankName fr">广发银行</div>
+      </div><div class="bankListItem feedbtn">
+        <div class="bankPic fl">
+          <img alt="" src="../assets/images/bank_type_logo_8.png?v=5bbab6e566">
+        </div>
+        <div class="bankName fr">光大银行</div>
+      </div><div class="bankListItem feedbtn">
+        <div class="bankPic fl">
+          <img alt="" src="../assets/images/bank_type_logo_9.png?v=bad02e1505">
+        </div>
+        <div class="bankName fr">中国邮政储蓄银行</div>
+      </div><div class="bankListItem feedbtn">
+        <div class="bankPic fl">
+          <img alt="" src="../assets/images/bank_type_logo_10.png?v=5be2bc726d">
+        </div>
+        <div class="bankName fr">上海浦东发展银行</div>
+      </div><div class="bankListItem feedbtn">
+        <div class="bankPic fl">
+          <img alt="" src="../assets/images/bank_type_logo_11.png?v=280441cfc0">
+        </div>
+        <div class="bankName fr">华夏银行</div>
+      </div><div class="bankListItem feedbtn">
+        <div class="bankPic fl">
+          <img alt="" src="../assets/images/bank_type_logo_12.png?v=db9809b572">
+        </div>
+        <div class="bankName fr">中国民生银行</div>
+      </div><div class="bankListItem feedbtn">
+        <div class="bankPic fl">
+          <img alt="" src="../assets/images/bank_type_logo_13.png?v=d862199ba6">
+        </div>
+        <div class="bankName fr">平安银行</div>
+      </div><div class="bankListItem feedbtn">
+        <div class="bankPic fl">
+          <img alt="" src="../assets/images/bank_type_logo_14.png?v=f408c636d7">
+        </div>
+        <div class="bankName fr">中信银行</div>
+      </div><div class="bankListItem feedbtn">
+        <div class="bankPic fl">
+          <img alt="" src="../assets/images/bank_type_logo_15.png?v=7f6a6a42af">
+        </div>
+        <div class="bankName fr">兴业银行</div>
+      </div>
+  
+      </div>
+    </div>
+    <div class="closeThis">
+      <img alt="" id="closeBtn" class="closeBtn feedbtn" src="../assets/images/close_sel_bankcard.png?v=d7b7ae5327" style="opacity: 1;">
+    </div>
+  </div>
+
+  <!--C2认证div-->
+  <!--.active 显示此部分-->
+  <div class="authC2">
+    <div class="grayBgBar mt80Rem"></div>
+    <div class="tipsArea">
+      <p class="keyColor">
+        *您已通过实名认证[C1]，您可以申请更高等级的认证[C2]。<br/>
+        如实名信息有误，请主动联系客服进行修改以后，再进行C2认证！
+      </p>
+    </div>
+    <div class="upLoadPicBox">
+      <div class="picItem front feedbtn">
+        <input type="file"  accept="image/png,image/jpg,image/jpeg,image/gif" capture="camera" id="idCardPos" name="idCard"/>
+        <img id="imgFront" src="../assets/images/up_idcard_front.png?v=2312beb7ba" alt="">
+      </div>
+      <div feedButton class="picItem reverse feedbtn">
+        <input type="file"  accept="image/png,image/jpg,image/jpeg,image/gif" capture="camera" id="idCardRvs" name="idCardRvs"/>
+        <img id="imgRvs" src="../assets/images/up_idcard_reverse.png?v=95a894c20e" alt="">
+      </div>
+    </div>
+    <div class="btn keyBtn picUpBtn feedbtn" id="c2btn">提交</div>
+    <div class="tipsArea bgGreen">
+      <p>温馨提示：</p>
+      <p>1.为了保证您的权益，请填写真实的姓名和身份证号码，提交后将不能更改!</p>
+      <p>2.每个身份证号码只能绑定一个账号。</p>
+      <p>3.实名认证分LV1，LV2，LV3三个等级；C1等级需要提供正确的姓名与证件号码，LV2等级需要您提供正确的证件正反面照片，LV3等级暂未开放；</p>
+      <p>4.图片大小不超过1M。</p>
+    </div>
+  </div>
+</div>
+
+<script src="../assets/js/lib/zepto.js?v=963e87793e"></script>
+<script src="../assets/js/plugin/layer/layer.js?v=a72f23715d"></script>
+<script src="../assets/js/plugin/upload/plupload.full.min.js?v=eaddf44440"></script>
+<script src="../assets/js/myModule.js?v=7955b579f7"></script>
+<script src="../assets/js/global/global.js?v=bd36b807fb"></script>
+<script src="../assets/js/global.js?v=bd36b807fb"></script>
+<script src="../assets/js/name-auth.js?v=1b20bb58f5"></script>
+</body>
+</html>

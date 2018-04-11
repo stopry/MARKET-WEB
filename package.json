@@ -2,12 +2,16 @@
   "name": "q7mobile-we-ui",
   "version": "0.0.0",
   "license": "MIT",
-  "scripts": {
-  },
+  "scripts": {},
   "private": true,
   "devDependencies": {
     "gulp": "^3.9.1",
+    "gulp-rev": "^8.0.0",
+    "gulp-rev-collector": "^1.1.1",
+    "gulp-rev-collector-hu": "^1.2.2",
+    "gulp-rev-hu": "^8.0.0",
     "gulp-sass": "^3.1.0",
-    "gulp-watch": "^4.3.11"
+    "gulp-watch": "^4.3.11",
+    "rev-path-hu": "^1.0.0"
   }
 }
