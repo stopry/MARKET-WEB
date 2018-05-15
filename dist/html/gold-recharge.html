@@ -24,7 +24,7 @@
   <script src="../assets/js/plugin/flexible.css.js?v=121a71fac1"></script>
   <script src="../assets/js/plugin/flexible.ios.js?v=2f6d8ee4fc"></script>
   <link href="../assets/css/reset.css?v=bbf6df972c" rel="stylesheet">
-  <link href="../assets/css/global.css?v=cc214c3438" rel="stylesheet">
+  <link href="../assets/css/global.css?v=a19fc410af" rel="stylesheet">
 </head>
 <body>
 <div class="goldRechargeBox">
@@ -42,36 +42,37 @@
     快捷支付
   </h3>
   <div class="quickPayBox">
-    <div class="payItem feedbtn active" data-val="100">￥100.00</div>
+    <div class="payItem feedbtn active" data-val="10">￥10.00</div>
+    <div class="payItem feedbtn" data-val="100">￥100.00</div>
     <div class="payItem feedbtn" data-val="500">￥500.00</div>
     <div class="payItem feedbtn" data-val="1000">￥1000.00</div>
     <div class="payItem feedbtn" data-val="5000">￥5000.00</div>
   </div>
   <div class="grayBgBar"></div>
   <h3 class="quickPayTitle rchNum">
-    充值金额
+    输入金额 <span style="color:#999">(10的整数倍)</span>
   </h3>
   <div class="WrapB rchIpt">
-    <input class="rchNum" placeholder="请输入充值金额" type="number" name="rchNum" id="rchNum" value="100">
+    <input class="rchNum" placeholder="请输入充值金额" type="number" name="rchNum" id="rchNum" value="">
   </div>
   <h3 class="quickPayTitle noBg">
     第三方支付
   </h3>
   <div class="thirdPay WrapB">
-    <div class="thirdItem active feedbtn">
+    <div class="thirdItem  active feedbtn">
       <img src="../assets/images/wx_pay_icon.png?v=3301dd097b" alt="">
       微&nbsp;&nbsp;信
     </div>
-    <div class="thirdItem feedbtn">
-      <img src="../assets/images/ali_pay_icon.png?v=e9db5c3190" alt="">
-      支付宝
-    </div>
+    <!--<div class="thirdItem   feedbtn" id="ali">-->
+      <!--<img src="../assets/images/ali_pay_icon.png?v=e9db5c3190" alt="">-->
+      <!--支付宝-->
+    <!--</div>-->
     <div class="thirdItem feedbtn">
       <img src="../assets/images/bank_pay_icon.png?v=8c8f1cc0b5" alt="">
       银&nbsp;&nbsp;联
     </div>
   </div>
-  <div class="WrapB">
+  <div class="WrapB" style="margin-bottom:20px;">
     <div class="btn next feedbtn" id="next">
       下一步
     </div>
@@ -103,7 +104,7 @@
 <script src="../assets/js/myModule.js?v=7955b579f7"></script>
 <script src="../assets/js/global/global.js?v=bd36b807fb"></script>
 <script src="../assets/js/global.js?v=bd36b807fb"></script>
-<script src="../assets/js/gold-recharge.js?v=e065a52fa1?v=123"></script>
+<script src="../assets/js/gold-recharge.js?v=123b57e102c9"></script>
 
 </body>
 </html>

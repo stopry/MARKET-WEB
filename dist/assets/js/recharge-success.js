@@ -10,6 +10,10 @@ $(function () {
         $("#type").html("银联支付");
         $("#money").html("￥"+money);
     }
+    if(type == 'zfb'){
+        $("#type").html("支付宝支付");
+        $("#money").html("￥"+parseInt(money).toFixed(2));
+    }
 
     $("#ok").click(function () {
         location="gold-recharge.html";

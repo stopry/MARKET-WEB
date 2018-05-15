@@ -29,10 +29,10 @@ var MinuteChart = {
             minuteChart.option = {
                 animation: minuteChart.isFirst,
                 grid: [{
-                    left: '1%',
-                    right: '1%',
-                    top: '8%',
-                    height: '249px'
+                  left: '1%',
+                  right: '1%',
+                  top: '8%',
+                  bottom:'13%',
                 }],
                 xAxis: {
                     scale: true,
@@ -160,10 +160,10 @@ var MinuteChart = {
         minuteChart.setChartHeight = function(h){
             minuteChart.chart.setOption({
                 grid:[{
-                    left: '1%',
-                    right: '1%',
-                    top: '8%',
-                    height: h
+                  left: '1%',
+                  right: '1%',
+                  top: '8%',
+                  bottom:'13%',
                 }]
             });
         }
@@ -201,7 +201,7 @@ var MinuteChart = {
                     }
                     minuteChart.buildOption();
                     minuteChart.chart.setOption(minuteChart.option);
-                    GlobalAutoChartM();
+                    // GlobalAutoChartM();
                     minuteChart.isInit = true;
                 }, false);
             } else {

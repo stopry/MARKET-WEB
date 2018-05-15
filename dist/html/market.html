@@ -25,84 +25,91 @@
     <script src="../assets/js/plugin/flexible.css.js?v=121a71fac1"></script>
     <script src="../assets/js/plugin/flexible.ios.js?v=2f6d8ee4fc"></script>
     <link href="../assets/css/reset.css?v=bbf6df972c" rel="stylesheet">
-    <link href="../assets/css/global.css?v=cc214c3438" rel="stylesheet">
+    <link href="../assets/css/global.css?v=a19fc410af" rel="stylesheet">
+    <script src="../assets/js/pro_candle.js?v=0905cb2d52"></script>
 </head>
 <body>
 <div class="marketDetailBox">
-    <div class="toAssignTrade feedbtn" onclick="location='/html/history-trade.html?pid=4001'">
-        <img src="../assets/images/trade_his_icon.png?v=b477feb93d" style="width: 100%" alt="">
+    <div class="toAssignTrade feedbtn" id="cebiao" onclick="location='/html/history-trade.html?pid=4001'">
+        <img src="../assets/images/ce_biao.png?v=cff8cb3d03" style="width: 100%" alt="">
     </div>
-    <div id="greenTypeSel" class="greenTypeSel greenTypeSe2" scroll="no">
-        <div class="greenItemWrap">
-            <div class="greemItem feedbtn">
-                <p class="treeName">柳树</p>
-            </div>
-            <div class="greemItem feedbtn">
-                <p class="treeName">松树</p>
-            </div>
-            <div class="greemItem feedbtn">
-                <p class="treeName">槐树</p>
-            </div>
-            <div class="greemItem feedbtn ">
-                <p class="treeName">梧桐</p>
-            </div>
-            <div class="greemItem feedbtn">
-                <p class="treeName">杉树</p>
-            </div>
-            <div class="greemItem feedbtn">
-                <p class="treeName">银杏</p>
+    <div class="newHeader">
+        <img src="../assets/images/san_jiao.png?v=a407cd90b1" class="xsj" alt="">
+        <div id="active_tree" class="feedbtn">
+            <p id="tree_name">柳树</p>
+        </div>
+        <div id="greenTypeSel" class="greenTypeSel greenTypeSe2" scroll="no">
+            <div class="greenItemWrap">
+                <div class="greemItem feedbtn">
+                    <p class="treeName">柳树</p>
+                </div>
+                <div class="greemItem feedbtn">
+                    <p class="treeName">松树</p>
+                </div>
+                <div class="greemItem feedbtn">
+                    <p class="treeName">槐树</p>
+                </div>
+                <div class="greemItem feedbtn ">
+                    <p class="treeName">梧桐</p>
+                </div>
+                <div class="greemItem feedbtn">
+                    <p class="treeName">杉树</p>
+                </div>
+                <div class="greemItem feedbtn">
+                    <p class="treeName">银杏</p>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="marketBaseInfo">
-        <div class="conWrap">
-            <div class="infoLeft fl">
-                <!--.down下跌样式-->
-                <div class="upDwonIndex" id="upDownIndex">
-                    <div class="greenPic">
-                        <img src="../assets/images/tree1_txt.png?v=2e98e13f52" class="greenTextPic" alt="">
+        <div class="marketBaseInfo">
+            <div class="conWrap">
+                <div class="infoLeft fl">
+                    <!--.down下跌样式-->
+                    <div class="upDwonIndex" id="upDownIndex">
+                        <div class="greenPic">
+                            <img src="../assets/images/tree1_txt.png?v=2e98e13f52" class="greenTextPic" alt="">
+                        </div>
+                        <!--.ani动画效果-->
+                        <div class="indexNum clip ani" id="nowPrice">0.00</div>
+                        <div class="indexPic clip ani" id = "nowPriseBg">
+                            &nbsp;
+                        </div>
                     </div>
-                    <!--.ani动画效果-->
-                    <div class="indexNum clip ani" id="nowPrice">0.00</div>
-                    <div class="indexPic clip ani" id = "nowPriseBg">
-                        &nbsp;
+                    <!--.down下跌样式-->
+                    <div class="detailInfo" id="detailInfo">
+                        <!--.ani动画效果-->
+                        <div class="infoDetail fl clip ani" id="changePrice">0.00</div>
+                        <!--.ani动画效果-->
+                        <div class="infoDetail fl clip ani" id="changeRate">0.00%</div>
                     </div>
                 </div>
-                <!--.down下跌样式-->
-                <div class="detailInfo" id="detailInfo">
-                    <!--.ani动画效果-->
-                    <div class="infoDetail fl clip ani" id="changePrice">0.00</div>
-                    <!--.ani动画效果-->
-                    <div class="infoDetail fl clip ani" id="changeRate">0.00%</div>
+                <div class="infoRight fr">
+                    <table>
+                        <tr>
+                            <td>
+                                <p>今开</p>
+                                <!--.ani动画效果-->
+                                <span class="clip ani" style="display: inline-block" id="toOpenPrice">0.00</span>
+                            </td>
+                            <td>
+                                <p>成交</p>
+                                <!--.ani动画效果-->
+                                <span class="clip ani" style="display: inline-block" id="tranVolume">2000</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>最高</p>
+                                <!--.ani动画效果-->
+                                <span class="mostUp clip ani" style="display: inline-block" id="heightPrice" >0.00</span>
+                            </td>
+                            <td>
+                                <p>最低</p>
+                                <!--.ani动画效果-->
+                                <span class="mostDown clip ani" style="display: inline-block" id="lowPrice">0.00</span>
+                            </td>
+                        </tr>
+                    </table>
                 </div>
-            </div>
-            <div class="infoRight fr">
-                <table>
-                    <tr>
-                        <td>
-                            <p>今开</p>
-                            <!--.ani动画效果-->
-                            <span class="clip ani" style="display: inline-block" id="toOpenPrice">0.00</span>
-                        </td>
-                        <td>
-                            <p>成交</p>
-                            <!--.ani动画效果-->
-                            <span class="clip ani" style="display: inline-block" id="tranVolume">2000</span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <p>最高</p>
-                            <!--.ani动画效果-->
-                            <span class="mostUp clip ani" style="display: inline-block" id="heightPrice" >0.00</span>
-                        </td>
-                        <td>
-                            <p>最低</p>
-                            <!--.ani动画效果-->
-                            <span class="mostDown clip ani" style="display: inline-block" id="lowPrice">0.00</span>
-                        </td>
-                    </tr>
-                </table>
             </div>
         </div>
     </div>
@@ -190,13 +197,17 @@
     </div>
     <div class="oprBtnWrap">
         <div class="dfInfo">
-            <div class="woodCnt fl">
+            <div class="woodCnt fl" style="width:33%;text-align:center;">
+                <span>总市值：</span>
+                <span class="keyColor" id="zsz">0</span>
+            </div>
+            <div class="woodCnt fl" style="width:33%;text-align:center;">
                 <span>持仓数量：</span>
                 <span class="keyColor" id="ccsl">0</span>
                 <input id="avgPrice" type="hidden">
             </div>
             <!--.down下跌样式-->
-            <div class="floatYk fr" id="fdyksz">
+            <div class="floatYk fr" id="fdyksz" style="width:33%;text-align:center;"> 
                 <span>浮动盈亏：</span>
                 <span class="upColor" id="fdyk">
           0.00
@@ -229,7 +240,7 @@
         </div>
     </div>
     <div class="footer">
-        <a feedButton href="/index.html" class="navItem">
+        <a feedButton href="/index.html?v=f25e66b786" class="navItem">
             <div class="navIcon">
 
             </div>
@@ -486,7 +497,12 @@
                 </tr>
                 <tbody id="entrustList">
                 <!--.sale .buy .ing .fure 四个类对应不同数据-->
-
+                    <!-- <tr class="tabCon"><td>fff</td></tr>
+                    <tr class="tabCon"><td>fff</td></tr>
+                    <tr class="tabCon"><td>fff</td></tr>
+                    <tr class="tabCon"><td>fff</td></tr>
+                    <tr class="tabCon"><td>fff</td></tr>
+                    <tr class="tabCon"><td>fff</td></tr> -->
                 </tbody>
             </table>
             <!--.active 显示这个提示-->
@@ -500,10 +516,10 @@
 <script src="../assets/js/myModule.js?v=7955b579f7"></script>
 <script src="../assets/js/global/global.js?v=bd36b807fb"></script>
 <script src="../assets/js/plugin/echarts.min.js?v=9aaea45917"></script>
-<script src="../assets/js/pro_candle.js?v=7a233c6d19"></script>
-<script src="../assets/js/pro_minute.js?v=b1f45dd4be"></script>
+<script src="../assets/js/pro_candle.js?v=0905cb2d52"></script>
+<script src="../assets/js/pro_minute.js?v=d1611642f7"></script>
 <script src="../assets/js/global.js?v=bd36b807fb"></script>
-<script src="../assets/js/market.js?v=13765ee07d?v=123"></script>
-<script src="../assets/js/StorageUtil.js?v=e6c8e6fdc8"></script>
+<script src="../assets/js/market.js?v=a9c22cc85b042617370508"></script>
+<script src="../assets/js/StorageUtil.js?v=e6c88e6fdc8"></script>
 </body>
 </html>

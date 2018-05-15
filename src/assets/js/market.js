@@ -1,4 +1,20 @@
+var orderPage = 1;//订单列表页数
 $(function () {
+
+    function adpHeight() {
+      var buySaleH = $(".dgtTableWrap").height();//卖三买三高度
+      var h = $(window).height();
+      var selTreeH = $(".newHeader").height();//头部选择高度
+      var baseInfoH = 0;//基本信息高度
+      var changeCahrtTableH = $(".chartChange").height();//切换图标选择高度
+      var oprBtnWrapH = $(".oprBtnWrap").height();//操作按钮区域高度
+      var footerH = $(".footer").height();//footer高度
+      var chartH = h-(selTreeH+baseInfoH+buySaleH+changeCahrtTableH+oprBtnWrapH+footerH);
+      console.log(chartH);
+      $('#charts').height(chartH);
+    }
+    adpHeight();
+
     var showBuySale = true;//默认显示买三卖三
     //头部商品切换
     $(".greenItemWrap .greemItem").click(function () {
@@ -16,6 +32,11 @@ $(function () {
         }
         autoHeightChart();
     });
+
+    $(window).resize(function(){
+        adpHeight();
+        autoHeightChart();
+    })
 
     var cType;
 
@@ -49,7 +70,8 @@ $(function () {
     $('.oprBtnWrap .dlgOrder').click(function () {
         var proId = getProId();
         //加载委托列表
-        loadEntrust(proId);
+        orderPage = 1;
+        loadEntrust(proId,true,true);
 
         showDlgBox(1);
     });
@@ -79,6 +101,7 @@ $(function () {
     }
 
     $('.oprBtn.saleBtn').click(function () {
+        //showTips("暂未开放,敬请期待!",'warm');
         showBuyBox();
     });
     $(".marketBuyBoxObj .closeIcon").click(function () {
@@ -106,6 +129,7 @@ $(function () {
     }
 
     $('.oprBtn.buyBtn').click(function () {
+        //showTips("暂未开放,敬请期待!",'warm');
         showSaleBox();
     });
     $(".marketSaleBox .closeIcon").click(function () {
@@ -129,10 +153,11 @@ $(function () {
         showConDia('确认撤销此订单吗?', function () {
             ajaxHelper.get(getUrl('tran/cancelOrder'), {'orderId': id}, function (ret) {
                 if (ret.success) {
-                    loadEntrust(proId, false);
+                    orderPage = 1;
+                    loadEntrust(proId, true,true);
                     showTips('撤消申请成功', 'success');
                 } else {
-                    showTips(ret.msg)
+                    showTips(ret.msg,'warm')
                 }
             });
         }, function () {
@@ -328,7 +353,7 @@ $(function () {
         var priceKey = $(this).data('val');
         var price = (Number($('#' + priceKey).val()) + 0.01).toFixed(2);
         if (price > zt) {
-            showTips('价格不能高于跌停价','warm');
+            showTips('价格不能高于涨停价','warm');
             return;
         }
         $('#' + priceKey).val(price);
@@ -358,7 +383,7 @@ $(function () {
         var cntKey = $(this).data('val');
         var cnt = (Number($('#' + cntKey).val()) + minTran);
         if (cnt > canTranCnt) {
-            showTips('您最多可交易' + canTranCnt);
+            showTips('您最多可交易' + canTranCnt,'warm');
             return;
         }
         $('#' + cntKey).val(cnt);
@@ -371,7 +396,7 @@ $(function () {
         var cntKey = $(this).data('val');
         var cnt = (Number($('#' + cntKey).val()) - minTran);
         if (cnt <= 0) {
-            showTips("数量不能少于" + minTran);
+            showTips("数量不能少于" + minTran,'warm');
             return;
         }
         $('#' + cntKey).val(cnt);
@@ -591,7 +616,7 @@ $(function () {
                     setProList(list);
                     showProList(list);
                 } else {
-                    showTips('加载商品列表失败');
+                    showTips('加载商品列表失败','error');
                 }
             });
         } else {
@@ -624,15 +649,21 @@ $(function () {
             //头部商品切换,得新绑定
             $(".greenItemWrap .greemItem").click(function () {
                 var w = $(window).width();
-                $(this).addClass('active').siblings('.greemItem').removeClass('active');
+                var isac = $(this).hasClass('active');
+                $('#greenTypeSel').removeClass('active');
                 var selectProId = $(this).data('val');
                 var currProId = getProId();
                 var _index = $(this).index();
-                if(_index>2){
-                    $("#greenTypeSel").animate({scrollLeft:w},300);
-                }else{
-                    $("#greenTypeSel").animate({scrollLeft:-w},300);
-                }
+                var itemH = $("#greenTypeSel .greemItem").height();
+
+                var self = $(this);
+                self.addClass('active').siblings('.greemItem').removeClass('active');
+              showCurTree();
+                // if(_index>2){
+                //     $("#greenTypeSel").animate({scrollLeft:w},300);
+                // }else{
+                //     $("#greenTypeSel").animate({scrollLeft:-w},300);
+                // }
                 if (selectProId == currProId) {
                     return;
                 }
@@ -641,6 +672,17 @@ $(function () {
         }
     }
 
+    //显示当前树苗
+  function showCurTree() {
+    var img =  $(".greenItemWrap .greemItem.active").css('background-image');
+    var text = $(".greenItemWrap .greemItem.active p").html();
+    $('#active_tree').css('background-image',img);
+    $('#tree_name').html(text);
+  }
+
+    $("#active_tree").click(function () {
+      $("#greenTypeSel").toggleClass('active');
+    });
     //加载商品信息
     function loadProInfo(proId, showLoading) {
         if (showLoading == void(0)) {
@@ -696,7 +738,7 @@ $(function () {
             //跌停
             $('#mcdt').html('跌停:' + qInfo.fallStaying.toFixed(2));
             $('#mrdt').html('跌停:' + qInfo.fallStaying.toFixed(2));
-            dt = qInfo.fallStaying.toFixed(2)
+            dt = qInfo.fallStaying.toFixed(2);
 
             nowPrice = qInfo.nowPrice.toFixed(2);
 
@@ -849,15 +891,27 @@ $(function () {
 
     //加载浮动盈亏
     function loadItem(data) {
+        // console.log(data);
         if(data != null){
-            $('#ccsl').html(data.cnt + data.dCnt);
+            var zsl = data.cnt + data.dCnt
+            $('#ccsl').html(zsl);
+            var nowPrice = $("#nowPrice").html() //parseFloat();
+            var zsz = (zsl*nowPrice).toFixed(2)
+            $("#zsz").html(zsz);
             $('#avgPrice').val(data.avgPrice);
         }else{
             $('#ccsl').html(0);
             $('#avgPrice').val(0.00);
+            $("#zsz").html(0.00);
         }
-        caleProfitLoss();
+        //caleProfitLoss();
     }
+
+  setInterval(function () {
+    if (null != oauth.getToken()) {
+      caleProfitLoss();
+    }
+  }, 1000);
 
     //计算浮动盈亏
     function caleProfitLoss() {
@@ -877,30 +931,50 @@ $(function () {
                     $('#fdyk').removeClass("keyColor");
                 }
             }
-        });
+        },!1);
 
     }
+    var orderLoding = false;
+    //下拉加载订单列表
+    $(".dgtOrderBox .boxCon").on('scroll',function(){
+        if(orderLoding) return;
+        var cH = $(".dgtOrderBox").height()-$(".dgtOrderBox .closeBox").height();
+        var alH = $(".entOrderTable").height();
+        var scrH =  $(".dgtOrderBox .boxCon").scrollTop();
+        console.log(cH,scrH,alH);
+        if(cH+scrH>alH-10){
+            console.log('daole')
+            $('#entrustList').append(html);
+            orderPage++
+            var proId = getProId();
+            loadEntrust(proId,true,true);
+        }
+    });
 
     //加载委托列表
-    function loadEntrust(proId, showLoad) {
+    function loadEntrust(proId, showLoad,isFresh) {
+        var isFresh = isFresh||false;
         var para = {
             'proId': proId,
-            'pageNum': 1,
+            'pageNum': orderPage,
             'type': 'CUR'
         };
+        orderLoding = true;
         ajaxHelper.get(getUrl('tran/listEntrustOrder'), para, function (ret) {
+            orderLoding = false;
             if (ret.success) {
                 var list = ret.obj.records;
                 if (list != null) {
-                    showEntrustList(list);
+                    showEntrustList(list,isFresh);
                 }
             }
         }, showLoad);
     }
 
-    function showEntrustList(list) {
+    function showEntrustList(list,isFirst) {
+        var isFirst = isFirst||false;
         var size = 0;
-        if (list != null) {
+        if (list != null&&list.length) {
             var html = '';
             $.each(list, function (key, val) {
                 var cls1 = val.enType == 0 ? 'sale' : 'buy';
@@ -922,7 +996,12 @@ $(function () {
                     '</tr>';
                 size++;
             });
-            $('#entrustList').html(html);
+            if(isFirst){
+                $('#entrustList').html(html);
+            }else{
+                $('#entrustList').append(html);
+            }
+            
         }
         $('#entrustListCnt').html(size);
     }
@@ -954,7 +1033,7 @@ $(function () {
             return;
         }
         if (para.cnt < minTran) {
-            showTips('数量不能小于' + minTran);
+            showTips('数量不能小于' + minTran,'warm');
             return;
         }
         if (para.cnt % minTran != 0) {
@@ -966,10 +1045,10 @@ $(function () {
         }
         ajaxHelper.post(getUrl('tran/entrustOrder'), para, function (ret) {
             if (ret.success) {
-                showTips('委托成功')
+                showTips('委托成功','success')
                 closeSaleBox();
             } else {
-                showTips(ret.msg);
+                showTips(ret.msg,'warm');
             }
             loadSaleInfo(false);
         }, true, function () {
@@ -987,27 +1066,27 @@ $(function () {
             'type': 0
         }
         if (para.price == '') {
-            showTips('请输入买入价格');
+            showTips('请输入买入价格','warm');
             return;
         }
         if (para.cnt == '') {
-            showTips('请输入买入数量');
+            showTips('请输入买入数量','warm');
             return;
         }
         if (para.price > zt) {
-            showTips('买入价格不能高于涨停价');
+            showTips('买入价格不能高于涨停价','warm');
             return;
         }
         if (para.price < dt) {
-            showTips('买入价格不能低于跌停价');
+            showTips('买入价格不能低于跌停价','warm');
             return;
         }
         if (para.cnt < minTran) {
-            showTips('数量不能小于' + minTran);
+            showTips('数量不能小于' + minTran,'warm');
             return;
         }
         if (para.cnt % minTran != 0) {
-            showTips('数量只能是' + minTran + '的倍数');
+            showTips('数量只能是' + minTran + '的倍数','warm');
             return;
         }
         if (!buyLock.getLock()) {
@@ -1015,10 +1094,10 @@ $(function () {
         }
         ajaxHelper.post(getUrl('tran/entrustOrder'), para, function (ret) {
             if (ret.success) {
-                showTips('委托成功')
+                showTips('委托成功','success')
                 closeBuyBox();
             } else {
-                showTips(ret.msg);
+                showTips(ret.msg,'warm');
             }
             loadBuyInfo(false);
         }, true, function () {
@@ -1048,47 +1127,41 @@ $(function () {
         if(proId){
             proId = parseInt(proId)-4001;
             $(".greenItemWrap .greemItem").eq(proId).addClass('active').siblings('.greemItem').removeClass('active');
-            if(proId>2){
-                $("#greenTypeSel").scrollLeft(w);
-            }
+            var itemH = $("#greenTypeSel .greemItem").height();
+            $('.greenTypeSel .greenItemWrap').css('top',-(proId*itemH));
+          showCurTree();
+            // if(proId>2){
+            //     $("#greenTypeSel").scrollLeft(w);
+            // }
         }
     }
     activeProById();
     //图标大小自适应
     var buySaleH = $(".dgtTableWrap").height();//卖三买三高度
     function autoHeightChart() {
-        // if(isPc()) return;
+        // return;
         var h = $(window).height();
-        var selTreeH = $("#greenTypeSel").height();//头部选择高度
-        var baseInfoH = $(".marketBaseInfo").height();//基本信息高度
+        var selTreeH = $(".newHeader").height();//头部选择高度
+        // var baseInfoH = $(".marketBaseInfo").height();//基本信息高度
+        var baseInfoH = 0;//基本信息高度
         var changeCahrtTableH = $(".chartChange").height();//切换图标选择高度
         var oprBtnWrapH = $(".oprBtnWrap").height();//操作按钮区域高度
         var footerH = $(".footer").height();//footer高度
         //图标高度
         var chartH;
-        // console.log(showBuySale);
         if(showBuySale){
-            chartH = h-(selTreeH+baseInfoH+buySaleH+changeCahrtTableH+oprBtnWrapH+footerH)-70;
-            // console.log(1);
+            chartH = h-(selTreeH+baseInfoH+buySaleH+changeCahrtTableH+oprBtnWrapH+footerH);
         }else{
-            chartH = h-(selTreeH+baseInfoH+changeCahrtTableH+oprBtnWrapH+footerH)-70;
-            // console.log(2)
-            // chartH =50;
+            chartH = h-(selTreeH+baseInfoH+changeCahrtTableH+oprBtnWrapH+footerH);
         }
-        // console.log((selTreeH+baseInfoH+buySaleH+changeCahrtTableH+oprBtnWrapH+footerH),(selTreeH+baseInfoH+changeCahrtTableH+oprBtnWrapH+footerH),"前后")
-        // console.log(buySaleH,'卖三',h);
-        // console.log(chartH);
-        // $(".WrapB").height(chartH);
-        // $(".marketDetailBox .ChartBox .chart").height(chartH+60);
-        // $(".marketDetailBox .ChartBox").height(chartH+60);
-        // $("#charts>div").height(chartH+60);
-        //设置图表高度
-        chart.option.grid[0].height = chartH;
-        chart.chart.setOption(chart.option);
-        // chart.setChartHeight(chartH);
+        console.log(chartH,444);
+        $('#charts').height(chartH);
+        // chart.option.grid[0].height = chartH+'px';
+        $(".chartBtn.seled").trigger('click');
+       // chart.chart.setOption(chart.option);
     }
-    GlobalAutoChart = autoHeightChart;
-    GlobalAutoChartM = autoHeightChart;
+    // GlobalAutoChart = autoHeightChart;
+    // GlobalAutoChartM = autoHeightChart;
     //翻转动画
     function ani(arr) {
         var l = arr.length;

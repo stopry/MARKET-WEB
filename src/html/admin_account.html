@@ -20,11 +20,11 @@
   <meta name="x5-orientation" content="">
   <meta name="browsermode" content="application">
   <meta name="x5-page-mode" content="app">
-  <link rel="icon" type="image/x-icon" href="../assets/images/favicon.ico">
-  <script src="../assets/js/plugin/flexible.css.js"></script>
-  <script src="../assets/js/plugin/flexible.ios.js"></script>
-  <link href="../assets/css/reset.css" rel="stylesheet">
-  <link href="../assets/css/global.css" rel="stylesheet">
+  <link rel="icon" type="image/x-icon" href="../assets/images/favicon.ico?v=b64f2e47c6">
+  <script src="../assets/js/plugin/flexible.css.js?v=121a71fac1"></script>
+  <script src="../assets/js/plugin/flexible.ios.js?v=2f6d8ee4fc"></script>
+  <link href="../assets/css/reset.css?v=bbf6df972c" rel="stylesheet">
+  <link href="../assets/css/global.css?v=a19fc410af" rel="stylesheet">
 </head>
 <body>
 <div class="alterMobile alterLoginPwd">
@@ -39,6 +39,26 @@
       <div class="title">开户姓名</div>
       <input class="input" type="text" id="realName" name="realName"  type="password" disabled>
     </div>
+    
+    <div class="formIpt">
+      <div class="title">手机号码</div>
+      <input class="input" type="text" id="mobile" name="originPwd"  type="password">
+    </div>
+    <div class="formIpt">
+      <div class="title">图片验证码</div>
+      <input class="input right"  id="verCode"  type="text">
+      <div class="rightOpr getCapCode feedbtn">
+        <img alt="" id="imgCode" src="../assets/images/erw_code.png?v=037d2f83c9" style="width: 100%;height: 1.1425rem !important;">
+      </div>
+    </div>
+    <div class="formIpt">
+      <div class="title">短信验证码</div>
+      <input class="input right"  id="msgCode" type="number">
+      <div class="rightOpr getVerCode feedbtn" id="getVerCode">
+        获取验证码
+      </div>
+    </div>
+
     <div class="formIpt">
       <div class="title">收款银行</div>
       <input class="input" disabled="" id="bankName" name="bankName" type="text">
@@ -65,77 +85,77 @@
 
       <!----><div class="bankListItem feedbtn" >
       <div class="bankPic fl">
-        <img alt="" src="../assets/images/bank_type_logo_1.png">
+        <img alt="" src="../assets/images/bank_type_logo_1.png?v=a51d741b2d">
       </div>
       <div class="bankName fr">中国工商银行</div>
     </div><div class="bankListItem feedbtn">
       <div class="bankPic fl">
-        <img alt="" src="../assets/images/bank_type_logo_2.png">
+        <img alt="" src="../assets/images/bank_type_logo_2.png?v=1827d5f8c6">
       </div>
       <div class="bankName fr">中国农业银行</div>
     </div><div class="bankListItem feedbtn">
       <div class="bankPic fl">
-        <img alt="" src="../assets/images/bank_type_logo_3.png">
+        <img alt="" src="../assets/images/bank_type_logo_3.png?v=38df850bfb">
       </div>
       <div class="bankName fr">中国银行</div>
     </div><div class="bankListItem feedbtn">
       <div class="bankPic fl">
-        <img alt="" src="../assets/images/bank_type_logo_4.png">
+        <img alt="" src="../assets/images/bank_type_logo_4.png?v=1a80ae2358">
       </div>
       <div class="bankName fr">中国建设银行</div>
     </div><div class="bankListItem feedbtn">
       <div class="bankPic fl">
-        <img alt="" src="../assets/images/bank_type_logo_5.png">
+        <img alt="" src="../assets/images/bank_type_logo_5.png?v=d511e70982">
       </div>
       <div class="bankName fr">交通银行</div>
     </div><div class="bankListItem feedbtn">
       <div class="bankPic fl">
-        <img alt="" src="../assets/images/bank_type_logo_6.png">
+        <img alt="" src="../assets/images/bank_type_logo_6.png?v=d29d8ac141">
       </div>
       <div class="bankName fr">招商银行</div>
     </div><div class="bankListItem feedbtn">
       <div class="bankPic fl">
-        <img alt="" src="../assets/images/bank_type_logo_7.png">
+        <img alt="" src="../assets/images/bank_type_logo_7.png?v=53c61d9309">
       </div>
       <div class="bankName fr">广发银行</div>
     </div><div class="bankListItem feedbtn">
       <div class="bankPic fl">
-        <img alt="" src="../assets/images/bank_type_logo_8.png">
+        <img alt="" src="../assets/images/bank_type_logo_8.png?v=5bbab6e566">
       </div>
       <div class="bankName fr">光大银行</div>
     </div><div class="bankListItem feedbtn">
       <div class="bankPic fl">
-        <img alt="" src="../assets/images/bank_type_logo_9.png">
+        <img alt="" src="../assets/images/bank_type_logo_9.png?v=bad02e1505">
       </div>
       <div class="bankName fr">中国邮政储蓄银行</div>
     </div><div class="bankListItem feedbtn">
       <div class="bankPic fl">
-        <img alt="" src="../assets/images/bank_type_logo_10.png">
+        <img alt="" src="../assets/images/bank_type_logo_10.png?v=5be2bc726d">
       </div>
       <div class="bankName fr">上海浦东发展银行</div>
     </div><div class="bankListItem feedbtn">
       <div class="bankPic fl">
-        <img alt="" src="../assets/images/bank_type_logo_11.png">
+        <img alt="" src="../assets/images/bank_type_logo_11.png?v=280441cfc0">
       </div>
       <div class="bankName fr">华夏银行</div>
     </div><div class="bankListItem feedbtn">
       <div class="bankPic fl">
-        <img alt="" src="../assets/images/bank_type_logo_12.png">
+        <img alt="" src="../assets/images/bank_type_logo_12.png?v=db9809b572">
       </div>
       <div class="bankName fr">中国民生银行</div>
     </div><div class="bankListItem feedbtn">
       <div class="bankPic fl">
-        <img alt="" src="../assets/images/bank_type_logo_13.png">
+        <img alt="" src="../assets/images/bank_type_logo_13.png?v=d862199ba6">
       </div>
       <div class="bankName fr">平安银行</div>
     </div><div class="bankListItem feedbtn">
       <div class="bankPic fl">
-        <img alt="" src="../assets/images/bank_type_logo_14.png">
+        <img alt="" src="../assets/images/bank_type_logo_14.png?v=f408c636d7">
       </div>
       <div class="bankName fr">中信银行</div>
     </div><div class="bankListItem feedbtn">
       <div class="bankPic fl">
-        <img alt="" src="../assets/images/bank_type_logo_15.png">
+        <img alt="" src="../assets/images/bank_type_logo_15.png?v=7f6a6a42af">
       </div>
       <div class="bankName fr">兴业银行</div>
     </div>
@@ -143,16 +163,16 @@
     </div>
   </div>
   <div class="closeThis">
-    <img alt="" id="closeBtn" class="closeBtn feedbtn" src="../assets/images/close_sel_bankcard.png" style="opacity: 1;">
+    <img alt="" id="closeBtn" class="closeBtn feedbtn" src="../assets/images/close_sel_bankcard.png?v=d7b7ae5327" style="opacity: 1;">
   </div>
 </div>
-<script src="../assets/js/lib/zepto.js"></script>
-<script src="../assets/js/plugin/layer/layer.js"></script>
-<script src="../assets/js/myModule.js"></script>
-<script src="../assets/js/global/global.js"></script>
-<script src="../assets/js/global.js"></script>
-<script src="../assets/js/validate.js"></script>
-<script src="../assets/js/admin_account.js"></script>
+<script src="../assets/js/lib/zepto.js?v=963e87793e"></script>
+<script src="../assets/js/plugin/layer/layer.js?v=a72f23715d"></script>
+<script src="../assets/js/myModule.js?v=7955b579f7"></script>
+<script src="../assets/js/global/global.js?v=bd36b807fb"></script>
+<script src="../assets/js/global.js?v=bd36b807fb"></script>
+<script src="../assets/js/validate.js?v=60df21b15f"></script>
+<script src="../assets/js/admin_account.js?v=0b7098d928"></script>
 </body>
 </html>
 

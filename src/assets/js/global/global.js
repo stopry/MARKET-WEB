@@ -16,6 +16,10 @@ $(function(){
         $(".marketBuyBox").css("left",left+'px');
         $(".marketsaleBox").css("left",left+'px');
         $(".botOprArea").css("left",left+'px');
+        $("#active_tree").css("left",left+'px');
+        $("#greenTypeSel").css("left",left+'px');
+        $(".xsj").css("left",left+120+'px');
+
     }
     function setFont() {
        var _winW = $(window).width();

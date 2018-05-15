@@ -23,7 +23,7 @@ $(function () {
         }
     });
 
-
+    //加载推广列表
     function loadList(pageNum){
         var para = {
             pageNum: pageNum
@@ -53,7 +53,7 @@ $(function () {
                     html += Util.formatDate(item.tranTime);
                     html += '</div></div></div>';
                     html += '<div class="recRight awardRight fr">';
-                    html += item.tranAmt;
+                    html += (item.tranAmt).toFixed(2);
                     html += '<p>已到账</p></div></li>';
 
                 }

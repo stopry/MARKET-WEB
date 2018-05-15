@@ -1,5 +1,4 @@
 $(function () {
-
     //若是从market APP跳转至本页面
     var _token = Util.getQueryString('token');
     if(_token){//如果带了token过来
@@ -33,7 +32,7 @@ $(function () {
     }
 
 
-    var money = 100;//默认金额50
+    var money = 10;//默认金额50
     var payType = 1;//默认支付方式快捷支付 input输入支付为2
     var payChannel = 1;//默认支付渠道 微信 1 2 3 微信 支付宝 银联
     var _index = 0;//默认快捷支付选择的dom index
@@ -43,15 +42,16 @@ $(function () {
         payType = 1;
         $(this).addClass('active').siblings(".payItem").removeClass('active');
         var idx = $(this).index();
+        _index = idx;
         var _money = $(this).data("val");
         money = _money;
-        $("#rchNum").val(money);
+        //$("#rchNum").val(money);
     });
     //支付渠道选择效果
     $(".thirdPay .thirdItem").click(function () {
         $(this).addClass('active').siblings(".thirdItem").removeClass('active');
         var _idx = $(this).index();
-        payChannel = _idx+1;
+        payChannel = _idx+2;
         console.log(payChannel);
     });
     // 输入框事件
@@ -71,7 +71,9 @@ $(function () {
 
 
     $("#next").click(function () {
-        var money=$("#rchNum").val();
+        var iptVal = $.trim($("#rchNum").val());
+        money = iptVal||money;
+        //var money=$("#rchNum").val();
         if(money<10){
             showTips('充值金额必须大于10元',"error");
             return;
@@ -80,11 +82,13 @@ $(function () {
         if(payChannel == 1){
             //
             if(Util.isWeiXin()){
-                var redirect_url = 'http%3a%2f%2fpay.zjiayuan.com%2fwxpay.html%3fmoney%3d'+money;
+                var redirect_url = 'http%3a%2f%2fpay.zjiayuan.com%2fwxpay.html%3fmoney%3d'+money+'%26userId%3d'+userInfo.id;
                 var appid = 'wxaaefb51cb3707a3a';
                 var url= 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=' + appid + '&redirect_uri=' + redirect_url + '&response_type=code&scope=snsapi_base&state=123#wechat_redirect';
                 location.href=url;
             }else {
+                showTips('请在微信中打开', "warm");
+               /*
                 var data = {
                     clientId: "123456",
                     openid: "",
@@ -108,7 +112,7 @@ $(function () {
                     } else {
                         showTips('获取二维码异常', "error");
                     }
-                });
+                });*/
             }
 
         }

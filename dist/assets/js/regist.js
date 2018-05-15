@@ -92,6 +92,7 @@ $(function(){
         var prtCode = ($('#prtCode').val()).trim();
         var password = ($('#password').val()).trim();
         var passwordT = ($('#passwordT').val()).trim();
+        var payPassword =  ($('#payPwd').val()).trim();
         var reg = {
             "captchaCode": captchaCode,//图形验证码后缀uuid
             "captchaValue": verCode,//图形验证码
@@ -104,6 +105,7 @@ $(function(){
             "channel":channel,//渠道
             "mobile": mobile,//手机号码
             "password": password,//密码
+            payPassword:payPassword,
             "superiorId": prtCode|0//推荐码
         };
         if(!mobile){
@@ -127,6 +129,9 @@ $(function(){
         }else if(!password===passwordT){
             showTips('两次密码不一样');
             return false;
+        }else if(!payPassword){
+            showTips('请输入二级密码');
+            return false;
         }else if(!$("#agreenClause").prop('checked')){
             showTips('请同意《Z家园服务条款》');
             return false;
@@ -138,9 +143,12 @@ $(function(){
                 if(!res.success){
                     showTips(res.msg)
                 }else{
-                    showTips('注册成功');
+                    showTips('注册成功','success');
                     $(".regSuccess").addClass('.active');
                     $(".registBox").addClass('.hide');
+                    setTimeout(function(){
+                        location.href = '/html/login.html'
+                    },2000);
                 }
                 lock.release();
             },false,false)

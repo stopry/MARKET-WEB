@@ -1,16 +1,15 @@
 $(function () {
     var money = Util.getQueryString('money');
     var code = Util.getQueryString('code');
+    var userId = Util.getQueryString('userId');
     var recDatas = {
         'code': code
     }
 
     var openid;
-    var userId;
     ajaxHelper.get(getUrl('game/wx/getOpenid'), recDatas, function (ret) {
         if (ret.success) {
-            openid = ret.obj.openid;
-            userId = ret.obj.uid;
+            openid = ret.obj;
             pay();
         } else {
             showTips('获取OPENID异常', "error");

@@ -352,64 +352,62 @@ $(function () {
 var lock = Lock.createNew();
 
 function guazhai() {
-    showTips("功能暂未开放",'warm');
-    return;
-    // var pId;
-    // var pName;
-    // var cnt;
-    // var paypwd;
-    // if (type == 1) {
-    //     pId = ($("#g_greenId").val()).trim();
-    //     paypwd = ($('#g_password').val()).trim();
-    //     pName = ($("#g_greenName").val()).trim();
-    //     cnt = ($('#g_cnt').val()).trim();
-    // } else if (type == 2) {
-    //     pId = ($("#z_greenId").val()).trim();
-    //     paypwd = ($('#z_password').val()).trim();
-    //     pName = ($("#z_greenName").val()).trim();
-    //     cnt = ($('#z_cnt').val()).trim();
-    // }
-    // var para = {
-    //     "type": type,//图形验证码后缀uuid
-    //     "pId": pId,//图形验证码
-    //     "pName": pName,//图形验证码
-    //     "cnt": cnt,//图形验证码
-    //     "paypwd": paypwd//密码
-    //
-    // };
-    // if (!pId) {
-    //     showTips('请选择绿能');
-    //     return false;
-    // }
-    // if (!pName) {
-    //     showTips('请选择绿能');
-    //     return false;
-    // }
-    // if (!cnt) {
-    //     showTips('请输入数量');
-    //     return false;
-    // }
-    // if (parseInt(cnt)<=0) {
-    //     showTips('请输入数量');
-    //     return false;
-    // }
-    // if (!paypwd) {
-    //     showTips('请输入二级密码');
-    //     return false;
-    // }
-    //
-    // if (!lock.getLock()) {
-    //     return;
-    // }
-    // ajaxHelper.post(getUrl('listing/listAndDelist'), para, function (res) {
-    //     if (!res.success) {
-    //         showTips(res.msg);
-    //     } else {
-    //         showTips('操作成功');
-    //         location.reload();
-    //     }
-    //     lock.release();
-    // }, false, false)
+    var pId;
+    var pName;
+    var cnt;
+    var paypwd;
+    if (type == 1) {
+        pId = ($("#g_greenId").val()).trim();
+        paypwd = ($('#g_password').val()).trim();
+        pName = ($("#g_greenName").val()).trim();
+        cnt = ($('#g_cnt').val()).trim();
+    } else if (type == 2) {
+        pId = ($("#z_greenId").val()).trim();
+        paypwd = ($('#z_password').val()).trim();
+        pName = ($("#z_greenName").val()).trim();
+        cnt = ($('#z_cnt').val()).trim();
+    }
+    var para = {
+        "type": type,//图形验证码后缀uuid
+        "pId": pId,//图形验证码
+        "pName": pName,//图形验证码
+        "cnt": cnt,//图形验证码
+        "paypwd": paypwd//密码
+
+    };
+    if (!pId) {
+        showTips('请选择绿能');
+        return false;
+    }
+    if (!pName) {
+        showTips('请选择绿能');
+        return false;
+    }
+    if (!cnt) {
+        showTips('请输入数量');
+        return false;
+    }
+    if (parseInt(cnt)<=0) {
+        showTips('请输入数量');
+        return false;
+    }
+    if (!paypwd) {
+        showTips('请输入二级密码');
+        return false;
+    }
+
+    if (!lock.getLock()) {
+        return;
+    }
+    ajaxHelper.post(getUrl('listing/listAndDelist'), para, function (res) {
+        if (!res.success) {
+            showTips(res.msg);
+        } else {
+            showTips('操作成功');
+            location.reload();
+        }
+        lock.release();
+    }, false, false)
 
 };
 

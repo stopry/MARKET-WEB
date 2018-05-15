@@ -24,15 +24,15 @@
   <script src="../assets/js/plugin/flexible.css.js?v=121a71fac1"></script>
   <script src="../assets/js/plugin/flexible.ios.js?v=2f6d8ee4fc"></script>
   <link href="../assets/css/reset.css?v=bbf6df972c" rel="stylesheet">
-  <link href="../assets/css/global.css?v=cc214c3438" rel="stylesheet">
+  <link href="../assets/css/global.css?v=a19fc410af" rel="stylesheet">
   <style>
-      .rechargeSuccessBox .rchSusPic{
-        width: 4.14063rem;
-        height: 4.78125rem;
-        margin: 2.25rem auto 0.65625rem auto;
-        background: url(../assets/images/cash_success.png?v=00d09b4c41) no-repeat center;
-        background-size: 66%;
-      }
+    .rechargeSuccessBox .rchSusPic{
+      width: 4.14063rem;
+      height: 4.78125rem;
+      margin: 2.25rem auto 0.65625rem auto;
+      background: url(../assets/images/cash_success.png?v=00d09b4c41) no-repeat center;
+      background-size: 66%;
+    }
   </style>
 </head>
 <body>
@@ -65,7 +65,7 @@
     </table>
   </div>
   <div class="WrapB">
-    <div class="btn radiu keyBtn mt80Rem feedbtn" id="ok" onclick="history.back();">
+    <div class="btn radiu keyBtn mt80Rem feedbtn" id="ok" onclick="to_cash()">
       完成
     </div>
   </div>
@@ -82,6 +82,10 @@
         m=m/100;
         $(".money").html("￥"+m);
     });
+
+    function to_cash() {
+        window.location = '/html/user-center.html';
+    }
 </script>
 </body>
 </html>

@@ -20,20 +20,26 @@
   <meta name="x5-orientation" content="">
   <meta name="browsermode" content="application">
   <meta name="x5-page-mode" content="app">
-  <link rel="icon" type="image/x-icon" href="../assets/images/favicon.ico">
-  <script src="../assets/js/plugin/flexible.css.js"></script>
-  <script src="../assets/js/plugin/flexible.ios.js"></script>
-  <link href="../assets/css/reset.css" rel="stylesheet">
-  <link href="../assets/css/global.css" rel="stylesheet">
+  <link rel="icon" type="image/x-icon" href="../assets/images/favicon.ico?v=b64f2e47c6">
+  <script src="../assets/js/plugin/flexible.css.js?v=121a71fac1"></script>
+  <script src="../assets/js/plugin/flexible.ios.js?v=2f6d8ee4fc"></script>
+  <link href="../assets/css/reset.css?v=bbf6df972c" rel="stylesheet">
+  <link href="../assets/css/global.css?v=a19fc410af" rel="stylesheet">
+  <style>
+    .userCenter .accountRevise.accountReviseTop .reviseItem:nth-child(5) {
+    background: url(../assets/images/aliPay_icon.png) no-repeat 0.3125rem;
+    background-size: 0.49063rem auto;
+}
+  </style>
 </head>
 <body>
   <div class="userCenter">
   <div class="ucHeader">
     <div onclick="location='/html/name-auth.html'" class="toVerify tc feedbtn">
-      <img src="../assets/images/nama_auth-icon.png" alt="" style="width: 100%">
+      <img src="../assets/images/nama_auth-icon.png?v=9ba926be78" alt="" style="width: 100%">
     </div>
     <div class="baseInfo WrapB">
-      <img id="userPic" class="userPic feedbtn" src="../assets/images/default_user_pic.png" alt="">
+      <img id="userPic" class="userPic feedbtn" src="../assets/images/default_user_pic.png?v=6e0b059805" alt="">
       <div class="playerInfo">
         <div class="infoTop">
           <span class="userName" id="userName">我的姓名</span>
@@ -41,7 +47,7 @@
         </div>
         <div class="infoBot">
           <div onclick="location='/html/gold-recharge.html'" class="linkBtn btnRch feedbtn">金币充值</div>
-          <div onclick="location='/html/gold-cash.html'" class="linkBtn btnCash feedbtn">金币提现</div>
+          <div onclick="location='/html/gold-cash.html?v=0507'" class="linkBtn btnCash feedbtn">金币提现</div>
         </div>
       </div>
     </div>
@@ -62,64 +68,67 @@
   </div>
   <div class="orderArea w100">
     <div onclick="location='/html/entrust-order.html'" class="orderItem feedbtn">
-      <img src="../assets/images/deg_order.png" alt="">
+      <img src="../assets/images/deg_order.png?v=a1d672563a" alt="">
       <p>委托订单</p>
     </div>
     <div onclick="location='/html/trade-record-list.html'" class="orderItem feedbtn">
-      <img src="../assets/images/trade_detail.png" alt="">
+      <img src="../assets/images/trade_detail.png?v=8f96cdccf6" alt="">
       <p>交易明细</p>
     </div>
     <div id="listed" class="orderItem feedbtn">
-      <img src="../assets/images/appoint_order.png" alt="">
+      <img src="../assets/images/appoint_order.png?v=eae753d334" alt="">
       <p>上市下架</p>
     </div>
   </div>
   <div class="grayBgBar"></div>
   <div class="w100 accountRevise accountReviseTop">
     <div onclick="location='/html/unbind_mobile.html'" class="reviseItem feedbtn">
-      <img src="../assets/images/center_list_mobile.png" alt="">修改绑定手机
+      <img src="../assets/images/center_list_mobile.png?v=b76d94195a" alt="">修改绑定手机
     </div>
     <div onclick="location='/html/alter-login-password.html'" class="reviseItem feedbtn">
-      <img src="../assets/images/center_list_mobile.png" alt="">修改登陆密码
+      <img src="../assets/images/center_list_mobile.png?v=b76d94195a" alt="">修改登陆密码
     </div>
     <div onclick="location='/html/alter-pay-password.html'" class="reviseItem feedbtn">
-      <img src="../assets/images/center_list_mobile.png" alt="">重置二级密码
+      <img src="../assets/images/center_list_mobile.png?v=b76d94195a" alt="">重置二级密码
     </div>
     <div  class="reviseItem feedbtn" onclick="location='/html/admin_account.html'" id="setAccount">
-      <img src="../assets/images/center_list_mobile.png" alt="">管理账户
+      <img src="../assets/images/center_list_mobile.png?v=b76d94195a" alt="">管理账户
+    </div>
+    <div  class="reviseItem feedbtn" onclick="location='/html/bindAliPay.html'" id="setAccount">
+      <img src="../assets/images/center_list_mobile.png?v=b76d94195a" alt="">绑定支付宝
     </div>
   </div>
   <div class="grayBgBar"></div>
   <div class="w100 accountRevise accountReviseBot goldArea pb80Rem">
     <div onclick="location='/html/recharge-record.html'" class="reviseItem feedbtn">
-      <img src="../assets/images/center_list_mobile.png" alt="">充值记录
+      <img src="../assets/images/center_list_mobile.png?v=b76d94195a" alt="">充值记录
     </div>
     <div onclick="location='/html/cash-record.html'" class="reviseItem feedbtn">
-      <img src="../assets/images/center_list_mobile.png" alt="">提现记录
+      <img src="../assets/images/center_list_mobile.png?v=b76d94195a" alt="">提现记录
     </div>
     <div onclick="location='/html/my-goods.html'" class="reviseItem feedbtn">
-      <img src="../assets/images/center_list_mobile.png" alt="">持有产品
+      <img src="../assets/images/center_list_mobile.png?v=b76d94195a" alt="">持有产品
     </div>
     <div onclick="location='/html/gold-detail.html'" class="reviseItem feedbtn">
-      <img src="../assets/images/center_list_mobile.png" alt="">金币明细
+      <img src="../assets/images/center_list_mobile.png?v=b76d94195a" alt="">金币明细
     </div>
     <!--.open打开折叠菜单 .close关闭折叠菜单-->
     <div class="reviseItem prtCenter open feedbtn">
       <i class="staIcon"></i>
-      <img src="../assets/images/center_list_mobile.png" alt="">推广中心
+      <img src="../assets/images/center_list_mobile.png?v=b76d94195a" alt="">推广中心
     </div>
     <!--.open打开这个折叠菜单-->
     <div class="prtOpen open feedbtn">
-      <div onclick="location='/html/promote-link.html'" class="prtItem">
-        <img src="../assets/images/prt_link_icon.png" alt="">
+      <div onclick="location='/html/promote-link.html?v=0427'" class="prtItem">
+        <img src="../assets/images/prt_link_icon.png?v=0a9eaf9e21" alt="">
         <p>推广链接</p>
       </div>
       <div onclick="location='/html/promote-list.html'" class="prtItem feedbtn">
-        <img src="../assets/images/prt_list_icon.png" alt="">
+        <img src="../assets/images/prt_list_icon.png?v=4efb37f24b" alt="">
         <p>推广列表</p>
       </div>
       <div onclick="location='/html/promote-award.html'" class="prtItem feedbtn">
-        <img src="../assets/images/prt_award_icon.png" alt="">
+        <img src="../assets/images/prt_award_icon.png?v=9798003c0e" alt="">
         <p>推广奖励</p>
       </div>
     </div>
@@ -129,7 +138,7 @@
     </div>
   </div>
     <div class="footer">
-      <a href="/index.html" class="navItem feedbtn">
+      <a href="/index.html?v=f25e66b786" class="navItem feedbtn">
         <div class="navIcon">
 
         </div>
@@ -155,12 +164,12 @@
       </a>
     </div>
 </div>
-  <script src="../assets/js/lib/zepto.js"></script>
-  <script src="../assets/js/plugin/layer/layer.js"></script>
-  <script src="../assets/js/plugin/upload/plupload.full.min.js"></script>
-  <script src="../assets/js/myModule.js"></script>
-  <script src="../assets/js/global/global.js"></script>
-  <script src="../assets/js/global.js"></script>
-  <script src="../assets/js/usercenter.js"></script>
+  <script src="../assets/js/lib/zepto.js?v=963e87793e"></script>
+  <script src="../assets/js/plugin/layer/layer.js?v=a72f23715d"></script>
+  <script src="../assets/js/plugin/upload/plupload.full.min.js?v=eaddf44440"></script>
+  <script src="../assets/js/myModule.js?v=7955b579f7"></script>
+  <script src="../assets/js/global/global.js?v=bd36b807fb"></script>
+  <script src="../assets/js/global.js?v=bd36b807fb"></script>
+  <script src="../assets/js/usercenter.js?v=9bd2297654"></script>
 </body>
 </html>

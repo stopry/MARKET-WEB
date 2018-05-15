@@ -15,4 +15,20 @@ $(function () {
     qrcode.makeCode(qrurl);
 
 
+    setInterval(function () {
+        query(orderno);
+    },3000);
+
+    function query(orderno) {
+        var data = {
+            orderNo: orderno
+        }
+        ajaxHelper.get(getPayUrl("pay/query"), data, function (ret) {
+            if (ret.obj) {
+                location.href = 'html/recharge-success.html?money='+money+'&type=wx';
+            }
+        },false);
+
+    }
+
 })

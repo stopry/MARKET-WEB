@@ -105,11 +105,10 @@ var CandleChart = {
                     }
                 },
                 grid: [{
-                    left: '1%',
-                    right: 1,
-                    bottom: '15%',
-                    top: 20,
-                    // height: '249px'
+                  left: '1%',
+                  right: '1%',
+                  top: '8%',
+                  bottom:'13%',
                 }]
                 ,
                 xAxis: {
@@ -163,10 +162,10 @@ var CandleChart = {
                         data: candleChart.data.values,
                         itemStyle: {
                             normal: {
-                                color: '#dd0125',
-                                color0: '#01ddb6',
-                                borderColor: '#dd0125',
-                                borderColor0: '#01ddb6'
+                              color: '#ffffff',
+                              color0: '#009933',
+                              borderColor: '#FF0000',
+                              borderColor0: '#008F28'
                             }
                         }
                     },
@@ -232,10 +231,10 @@ var CandleChart = {
         candleChart.setChartHeight = function(h){
             candleChart.chart.setOption({
                 grid:[{
-                    left: '1%',
-                    right: '1%',
-                    top: '8%',
-                    height: h
+                  left: '1%',
+                  right: '1%',
+                  top: '8%',
+                  bottom:'13%',
                 }]
             });
         }
@@ -269,7 +268,7 @@ var CandleChart = {
 
                     }
                     candleChart.chart.setOption(candleChart.option);
-                    GlobalAutoChart();
+                    // GlobalAutoChart();
                     candleChart.isInit = true;
                 }, false);
             } else {

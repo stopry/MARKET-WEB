@@ -39,6 +39,16 @@ gulp.task('fav',function(){
   .pipe(gulp.dest('dist'))
 })
 
+/*
+gulp.task('wechatpage',function(){
+	return gulp.src('src/weChatPage/*.*')
+	.pipe(rev())
+	.pipe(gulp.dest('dist/weChatPage'))
+	.pipe(rev.manifest())
+	.pipe(gulp.dest('rev/weChatPage'))
+})
+*/
+
 gulp.task('rev',['css','js','img','fav'],function(){
     return gulp.src(['rev/**/*.json','src/**/*.html'])
                .pipe(revCollector({

@@ -20,12 +20,17 @@
   <meta name="x5-orientation" content="">
   <meta name="browsermode" content="application">
   <meta name="x5-page-mode" content="app">
-  <link rel="icon" type="image/x-icon" href="./assets/images/favicon.ico">
-  <script src="./assets/js/plugin/flexible.css.js"></script>
-  <script src="./assets/js/plugin/flexible.ios.js"></script>
-  <link href="./assets/css/swiper.css" rel="stylesheet">
-  <link href="./assets/css/reset.css" rel="stylesheet">
-  <link href="./assets/css/global.css" rel="stylesheet">
+  <link rel="icon" type="image/x-icon" href="./assets/images/favicon.ico?v=b64f2e47c6">
+  <script src="./assets/js/plugin/flexible.css.js?v=121a71fac1"></script>
+  <script src="./assets/js/plugin/flexible.ios.js?v=2f6d8ee4fc"></script>
+  <link href="./assets/css/swiper.css?v=2ac52b81ee" rel="stylesheet">
+  <link href="./assets/css/reset.css?v=bbf6df972c" rel="stylesheet">
+  <link href="./assets/css/global.css?v=a19fc410af" rel="stylesheet">
+  <style>
+    .hqList .hqItem .rightInfo .upDown{
+      font-size: 0.40875rem
+    }
+  </style>
 </head>
 <body>
   <div class="indexBanner swiper-container">
@@ -37,7 +42,7 @@
   <ul class="hqList" id="ul">
 
   </ul>
-  <div class="ziXunList">
+  <!-- <div class="ziXunList">
     <div class="ziXunHeader">
       <span class="headerItem active fl feedbtn">
         资讯
@@ -70,9 +75,9 @@
         </li>
       </ul>
     </div>
-  </div>
+  </div> -->
   <div class="footer">
-    <a href="index.html" class="navItem active feedbtn">
+    <a href="index.html?v=f25e66b786" class="navItem active feedbtn">
       <div class="navIcon">
 
       </div>
@@ -84,7 +89,7 @@
       </div>
       <p>行情</p>
     </a>
-    <a href="/html/market.html" class="navItem feedbtn">
+    <a href="/html/market.html?v=04261056" class="navItem feedbtn">
       <div class="navIcon">
 
       </div>
@@ -105,113 +110,19 @@
     <div class="rect4"></div>
     <div class="rect5"></div>
   </div>
-  <script src="./assets/js/lib/zepto.js"></script>
+  <script src="./assets/js/lib/zepto.js?v=963e87793e"></script>
   <script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
-  <script src="./assets/js/plugin/layer/layer.js"></script>
-  <script src="./assets/js/plugin/swiper.js"></script>
-  <script src="./assets/js/myModule.js"></script>
-  <script src="./assets/js/global/global.js"></script>
-  <script src="./assets/js/global.js"></script>
-  <script src="./assets/js/StorageUtil.js"></script>
-  <script src="./assets/js/index.js"></script>
+  <script src="./assets/js/plugin/layer/layer.js?v=a72f23715d"></script>
+  <script src="./assets/js/plugin/swiper.js?v=b60785bfa8"></script>
+  <script src="./assets/js/myModule.js?v=7955b579f7"></script>
+  <script src="./assets/js/global/global.js?v=bd36b807fb"></script>
+  <script src="./assets/js/global.js?v=bd36b807fb"></script>
+  <script src="./assets/js/StorageUtil.js?v=e6c8e6fdc8"></script>
+  <script src="./assets/js/index.js?v=1161420486"></script>
   <script>
     $(function(){
       $("#spinner").remove();
     });
-
-    $(function(){
-
-    });
-
-    //全局变量
-    window.Global={
-      version:1,
-      promotCode:0,//推广码
-      user:{
-        isVistor:!1,//是否为游客
-      },
-      isFirstCom:true,
-      isFirstFromGame:true,
-      isFormCash:false,
-      //微信分享数据
-      wxShare:{
-        title: '《Z家园》一款能打造碳汇价值的游戏！',
-        desc: '躺着赚钱，还不快来！',
-//        link: !cc.sys.isNative?window.location.origin+'sid=0':'http://www.zjiayuan.com',
-        link: 'http://www.senchen.vip/goUrl.html?url='+window.location.href,
-        //imgUrl: !cc.sys.isNative?window.location.origin+'/res/raw-assets/res/textures/global/share_logo.png':'http://www.zjiayuan.com'
-        imgUrl:'http://wap.qa.zjiayuan.com/res/raw-assets/res/textures/global/share_logo.png'
-      }
-    };
-
-    function getDataAndRegist(){
-      $.ajax({
-        url:'/market/wx/getJsapiInfo',
-        type:'GET',
-        data:{urlStr:window.location.href},
-        success:function(res){
-          console.log(res);
-          if(res.success){
-            var obj = res.obj;
-            wx.config({
-              debug: false,
-              appId: 'wxaaefb51cb3707a3a',
-              timestamp: parseInt(obj.timestamp),//服务端获取
-              nonceStr: obj.nonceStr,//服务端获取
-              signature: obj.signature,//服务端获取
-              jsApiList: [
-                'checkJsApi',
-                'onMenuShareTimeline',//分享到朋友圈
-                'onMenuShareAppMessage',//分享到微信好友
-              ]
-            });
-          }
-
-
-
-        },
-        error:function(error){
-
-        }
-      })
-    }
-    setTimeout(function(){
-      getDataAndRegist();
-    },1000);
-
-    wx.ready(function () {
-        console.log(Global.wxShare);
-        // 2. 分享接口
-        // 2.1 监听“分享给朋友”，按钮点击、自定义分享内容及分享结果接口
-        wx.onMenuShareAppMessage({
-            title: Global.wxShare.title,
-            desc: Global.wxShare.desc,
-            link: Global.wxShare.link,
-            imgUrl: Global.wxShare.imgUrl,
-            success: function () {
-                console.log("分享成功");
-            },
-            cancel: function () {
-                console.log("分享失败");
-            }
-        });
-
-        // 2.2 监听“分享到朋友圈”按钮点击、自定义分享内容及分享结果接口
-        wx.onMenuShareTimeline({
-            title: Global.wxShare.title,
-            desc: Global.wxShare.desc,
-            link: Global.wxShare.link,
-            imgUrl: Global.wxShare.imgUrl,
-            success: function () {
-                console.log("分享成功");
-            },
-            cancel: function () {
-                console.log("分享失败");
-            }
-        });
-    });
-
-
 
   </script>
 </body>
